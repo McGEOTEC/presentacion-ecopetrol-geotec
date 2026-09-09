@@ -254,7 +254,6 @@ h1,h2,h3,h4{
   padding: 1.1rem 0 1.1rem 1.6rem; border-bottom:1px solid rgba(244,243,234,.12);
   min-width:0; overflow-wrap:break-word;
 }
-.hero-stat:last-child{ border-bottom:none; }
 .hero-stat .num{
   font-family:var(--font-mono); font-size:2.5rem; font-weight:700; color:#FBFAF3;
   line-height:1; display:flex; align-items:baseline; gap:.15rem;
@@ -591,17 +590,6 @@ h1,h2,h3,h4{
 }
 .read-only-badge small{ color:#C7C4AE; font-size:.78rem; }
 
-.terminal{
-  background:var(--term-bg); font-family:var(--font-mono); font-size:.82rem;
-  padding:1.4rem 1.5rem; display:flex; flex-direction:column; justify-content:center; min-height:280px;
-}
-.terminal .t-line{ color:var(--term-fg); margin-bottom:.45rem; opacity:0; white-space:pre-wrap; }
-.terminal .t-line .p{ color:var(--term-prompt); }
-.terminal .t-line.ok{ color:var(--term-ok); }
-.terminal .t-line.warn{ color:var(--term-warn); }
-.terminal .cursor{ display:inline-block; width:7px; height:14px; background:var(--term-fg); vertical-align:middle; animation:blink 1s step-end infinite; }
-@keyframes blink{ 50%{ opacity:0; } }
-
 .validation-map{
   display:grid; grid-template-columns:.82fr 1.18fr; gap:2rem;
   align-items:stretch; margin-bottom:2.5rem;
@@ -916,7 +904,6 @@ details.accordion[open] summary .chev{ transform:rotate(45deg); }
     max-width:100%;
     border-bottom:1px solid rgba(244,243,234,.12);
   }
-  .hero-stat:last-child{ border-bottom:none; }
   .hero-stat .label{ max-width:none; overflow-wrap:anywhere; }
   .section{ padding:4.5rem 0; }
   .navbar{ padding:.6rem 5vw; }
@@ -1460,18 +1447,6 @@ section[id], header[id]{ scroll-margin-top:clamp(78px, 9vw, 112px); }
 
 @media (max-width:900px){
   .hero-grid{ grid-template-columns:1fr; align-items:start; }
-  .hero-stats{
-    display:grid;
-    grid-template-columns:repeat(3, minmax(0,1fr));
-    border-left:none;
-    border-top:1px solid rgba(244,243,234,.16);
-  }
-  .hero-stat{
-    padding:1rem;
-    border-bottom:none;
-    border-left:1px solid rgba(244,243,234,.12);
-  }
-  .hero-stat:first-child{ border-left:none; }
   .timeline-track{ left:20px; }
   .t-item{
     padding-left:58px;
@@ -1549,7 +1524,6 @@ section[id], header[id]{ scroll-margin-top:clamp(78px, 9vw, 112px); }
     border-bottom:1px solid rgba(244,243,234,.12);
     padding:1rem 0;
   }
-  .hero-stat:last-child{ border-bottom:none; }
   .diag-head{ align-items:flex-start; }
   .diag-card,
   .team-item,
@@ -1815,7 +1789,7 @@ body{
   grid-template-columns:minmax(0, 1.4fr) minmax(260px, .6fr);
   align-items:stretch;
   gap:0;
-  margin:-.5rem 0 3rem;
+  margin:-.5rem 0 0;
   border:1px solid var(--line);
   border-radius:var(--radius);
   overflow:hidden;
@@ -1824,7 +1798,7 @@ body{
 .sector-visual img{
   width:100%;
   height:100%;
-  min-height:260px;
+  min-height:170px;
   object-fit:cover;
   filter:saturate(.88) contrast(.96);
 }
@@ -1871,7 +1845,7 @@ body{
 
 @media (max-width:900px){
   .sector-visual{ grid-template-columns:1fr; }
-  .sector-visual img{ min-height:220px; }
+  .sector-visual img{ min-height:150px; }
   .alliance-fauna{
     right:-70px;
     top:3rem;
@@ -1887,8 +1861,8 @@ body{
     width:430px;
     opacity:.22;
   }
-  .sector-visual{ margin-bottom:2.2rem; }
-  .sector-visual img{ min-height:180px; }
+  .sector-visual{ margin-bottom:0; }
+  .sector-visual img{ min-height:130px; }
   .alliance-fauna{
     right:-150px;
     top:1.5rem;
@@ -2591,17 +2565,6 @@ body{
   z-index:1;
 }
 
-/* ============================================================
-   V4.8 — Garza más alta y por encima del hero
-   ============================================================ */
-.hero-fauna{
-  bottom:clamp(1.8rem, 5vw, 4.5rem) !important;
-  z-index:999 !important;
-  opacity:1 !important;
-  filter:saturate(1.08) contrast(1.04) drop-shadow(0 22px 42px rgba(0,0,0,.24)) !important;
-  pointer-events:none;
-}
-
 .hero .container{
   position:relative;
   z-index:10;
@@ -2734,7 +2697,7 @@ body{
 /* --- Segregación de permisos (metodología) ----------------- */
 .perm-flow{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
   gap:1px;
   background:var(--line);
   border:1px solid var(--line);
@@ -2742,20 +2705,33 @@ body{
   overflow:hidden;
   margin-bottom:1.4rem;
 }
-.perm-step{ background:var(--card); padding:1.3rem 1.25rem; }
+.perm-step{
+  background:var(--card);
+  padding:1.85rem 1.6rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap:.75rem;
+}
 .perm-step--client{ background:var(--paper-alt); }
 .perm-role{
   display:block;
   font-family:var(--font-mono);
-  font-size:.7rem;
+  font-size:clamp(0.92rem, 0.3vw + 0.85rem, 1.05rem);
   font-weight:700;
   letter-spacing:.09em;
   text-transform:uppercase;
   color:var(--olive);
-  margin-bottom:.5rem;
+  margin-bottom:0;
 }
 .perm-step--client .perm-role{ color:var(--eco-green); }
-.perm-step p{ font-size:.94rem; line-height:1.55; color:var(--ink-soft); }
+.perm-step p{
+  font-size:clamp(1.15rem, 0.4vw + 1.05rem, 1.32rem);
+  line-height:1.5;
+  color:var(--ink);
+  font-weight:400;
+  margin:0;
+}
 
 /* --- Dos rutas de aseguramiento ---------------------------- */
 .route-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(310px, 1fr)); gap:1.4rem; }
@@ -3011,65 +2987,432 @@ body{
   color:var(--ink-faint) !important;
 }
 
-/* --- Por qué GEOTEC ---------------------------------------- */
-.why-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:1.6rem; }
-.why-card{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--radius);
-  padding:1.8rem 1.6rem;
-}
-.why-n{
-  font-family:var(--font-mono);
-  font-size:1.5rem;
-  font-weight:700;
-  color:var(--mustard);
-  line-height:1;
-}
-.why-card h3{
-  font-size:clamp(1.14rem, .55vw + 1rem, 1.34rem);
-  font-weight:800;
-  color:#FBFAF3;
-  margin:.75rem 0 .8rem;
-  line-height:1.28;
-}
-.why-card p{ font-size:.95rem; line-height:1.68; color:#C7C4AE; }
-.why-card b{ color:#FBFAF3; font-weight:700; }
-.why-close{
-  margin:3rem 0 0;
-  padding:1.6rem 0;
-  border-top:1px solid rgba(255,255,255,.14);
-  border-bottom:1px solid rgba(255,255,255,.14);
-  font-family:var(--font-display);
-  font-size:clamp(1.3rem, 1.4vw + 1rem, 2rem);
-  font-weight:900;
-  line-height:1.3;
-  color:#FBFAF3;
-  text-align:center;
+/* ============================================================
+   POR QUÉ GEOTEC — DISEÑO CLARO, LUMINOSO Y DE MÁXIMO IMPACTO
+   ============================================================ */
+
+.section-why-bright {
+  background-color: #FAF8F2 !important;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(253, 208, 0, 0.2) 0%, rgba(151, 164, 25, 0.07) 45%, transparent 75%),
+    linear-gradient(180deg, #FFFFFF 0%, #FAF8F2 50%, #F4F1E4 100%),
+    url('assets/fondo_gris.png') !important;
+  background-size: auto, auto, 520px !important;
+  background-blend-mode: normal, normal, soft-light !important;
+  position: relative;
+  border-top: 3px solid rgba(245, 196, 0, 0.75);
+  border-bottom: 2px solid rgba(98, 108, 16, 0.18);
+  box-shadow: inset 0 24px 35px -20px rgba(245, 196, 0, 0.18);
+  color: #23261C;
+  padding-block: clamp(4.5rem, 8vw, 7rem) !important;
 }
 
-/* --- Límites del alcance ----------------------------------- */
-.limits{ margin-top:3rem; }
-.limits-head{
-  font-family:var(--font-mono);
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--mustard-bright);
-  margin-bottom:1.1rem;
+/* Header del bloque */
+.section-why-bright .section-head {
+  max-width: 840px;
+  margin: 0 auto 3.8rem;
+  text-align: center;
 }
-.limits-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.1rem; }
-.limit-item{
-  padding:1.1rem 1.2rem;
-  background:rgba(0,0,0,.18);
-  border-left:2px solid rgba(255,255,255,.18);
-  border-radius:0 6px 6px 0;
-  font-size:.9rem;
-  line-height:1.6;
-  color:#C9C7B6;
+
+.why-eyebrow-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
 }
-.limit-item b{ color:#E4E2D2; display:block; margin-bottom:.25rem; }
+
+.why-eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(253, 208, 0, 0.22), rgba(151, 164, 25, 0.14));
+  border: 1.5px solid rgba(245, 196, 0, 0.65);
+  color: #433D06;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(245, 196, 0, 0.18);
+}
+
+.why-sparkle-icon {
+  width: 15px;
+  height: 15px;
+  color: #B28800;
+}
+
+.section-why-bright .section-head h2 {
+  font-size: clamp(2.1rem, 3.4vw, 3rem);
+  font-weight: 900;
+  color: #1E2310;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+  margin-bottom: 1.2rem;
+}
+
+.why-brand-highlight {
+  color: #363B12;
+  background: linear-gradient(120deg, rgba(253, 208, 0, 0.4) 0%, rgba(253, 208, 0, 0.12) 100%);
+  padding: 0 10px;
+  border-radius: 6px;
+  border-bottom: 3px solid #F5C400;
+}
+
+.why-title-sub {
+  display: block;
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  font-weight: 700;
+  color: #626C10;
+  margin-top: 0.45rem;
+}
+
+.why-lede {
+  font-size: clamp(1.05rem, 1vw, 1.2rem);
+  line-height: 1.75;
+  color: #444935;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.why-lede strong {
+  color: #1E2310;
+  font-weight: 700;
+}
+
+/* Grilla de 3 tarjetas maestras */
+.section-why-bright .why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-bottom: 3.5rem;
+}
+
+/* Tarjeta Maestra Luminous */
+.section-why-bright .why-card {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(151, 164, 25, 0.26) !important;
+  border-radius: 18px !important;
+  padding: 2.2rem 1.9rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 16px 40px rgba(35, 38, 28, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.section-why-bright .why-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #FDD000 0%, #97A419 60%, #626C10 100%);
+}
+
+.section-why-bright .why-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: #F5C400 !important;
+  box-shadow: 0 26px 56px rgba(54, 59, 18, 0.16), 0 0 0 1.5px rgba(245, 196, 0, 0.65) !important;
+}
+
+/* Encabezado interno de la tarjeta */
+.why-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.3rem;
+}
+
+.section-why-bright .why-n {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #FFF8D6 0%, #FEF0AC 100%);
+  border: 1.5px solid #F5C400;
+  border-radius: 12px;
+  color: #3B3400;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.35rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(245, 196, 0, 0.28);
+  flex-shrink: 0;
+}
+
+.why-badge-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 5px 11px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill-live {
+  background: rgba(98, 108, 16, 0.12);
+  color: #38400A;
+  border: 1px solid rgba(98, 108, 16, 0.28);
+}
+
+.pill-shield {
+  background: rgba(245, 196, 0, 0.16);
+  color: #524700;
+  border: 1px solid rgba(245, 196, 0, 0.45);
+}
+
+.pill-scale {
+  background: rgba(54, 59, 18, 0.09);
+  color: #2D310F;
+  border: 1px solid rgba(54, 59, 18, 0.22);
+}
+
+.why-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #6C7A10;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(108, 122, 16, 0.4);
+  animation: whyPulse 2s infinite;
+}
+
+@keyframes whyPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 122, 16, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(108, 122, 16, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(108, 122, 16, 0); }
+}
+
+/* Títulos y textos dentro de la tarjeta */
+.section-why-bright .why-card h3 {
+  font-size: 1.28rem !important;
+  font-weight: 800 !important;
+  color: #1A1E11 !important;
+  line-height: 1.32 !important;
+  margin: 0 0 0.85rem 0 !important;
+}
+
+.section-why-bright .why-card p {
+  font-size: 0.96rem !important;
+  line-height: 1.68 !important;
+  color: #3F4432 !important;
+  margin-bottom: 0.9rem !important;
+}
+
+.why-card-note {
+  font-size: 0.88rem !important;
+  line-height: 1.58 !important;
+  color: #555B46 !important;
+  margin-top: 0.4rem;
+}
+
+.why-card-note strong {
+  color: #1E2310 !important;
+}
+
+/* Nube de etiquetas de evidencia */
+.why-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0.6rem 0 1rem;
+}
+
+.why-tag {
+  background: rgba(98, 108, 16, 0.08);
+  border: 1px solid rgba(98, 108, 16, 0.2);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.79rem;
+  font-weight: 700;
+  color: #363D0C;
+  letter-spacing: 0.01em;
+}
+
+/* Caja de beneficio clave */
+.why-card-callout {
+  margin-top: auto;
+  padding-top: 1rem;
+  background: linear-gradient(135deg, rgba(253, 208, 0, 0.11) 0%, rgba(151, 164, 25, 0.06) 100%);
+  border-left: 3.5px solid #F5C400;
+  border-radius: 0 8px 8px 0;
+  padding: 0.9rem 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.why-callout-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.why-callout-text {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #2C3119;
+}
+
+.why-callout-text strong {
+  color: #161A0C;
+}
+
+/* Gran Banner de Cierre Ejecutivo */
+.why-close-banner {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFEEF 45%, #FAF7E8 100%) !important;
+  border: 2px solid #F5C400 !important;
+  border-radius: 20px !important;
+  padding: 2.4rem 3.2rem !important;
+  margin: 3.5rem 0 4.2rem !important;
+  box-shadow: 0 20px 48px rgba(54, 59, 18, 0.1), 0 0 0 4px rgba(245, 196, 0, 0.16) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 2.2rem !important;
+}
+
+.why-banner-badge {
+  flex-shrink: 0;
+  width: 74px;
+  height: 74px;
+  background: linear-gradient(135deg, #FAF7E7, #FFF5CC);
+  border: 2px solid #F5C400;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(245, 196, 0, 0.3);
+}
+
+.why-banner-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.why-banner-body {
+  flex: 1;
+}
+
+.why-banner-eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6C780F;
+  margin-bottom: 0.4rem;
+}
+
+.why-banner-quote {
+  margin: 0;
+  font-family: var(--font-display, var(--font-ui, sans-serif));
+  font-size: clamp(1.15rem, 1.4vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.48;
+  color: #1F2412;
+}
+
+.why-banner-quote strong {
+  color: #0E1206;
+  font-weight: 900;
+}
+
+.why-banner-quote em {
+  font-style: normal;
+  color: #4A5408;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: #F5C400;
+  text-underline-offset: 4px;
+}
+
+/* Bloque de límites y exclusiones */
+.section-why-bright .limits {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(98, 108, 16, 0.18);
+}
+
+.limits-header {
+  margin-bottom: 1.8rem;
+}
+
+.limits-eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #626C10;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.limits-header h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1F2412;
+  margin-bottom: 0.35rem;
+}
+
+.limits-header p {
+  font-size: 0.96rem;
+  color: #555A44;
+}
+
+.section-why-bright .limits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.2rem;
+}
+
+.section-why-bright .limit-item {
+  background: #FFFFFF !important;
+  border: 1px solid #E4E1D2 !important;
+  border-left: 4px solid #626C10 !important;
+  border-radius: 0 10px 10px 0 !important;
+  padding: 1.25rem 1.4rem !important;
+  box-shadow: 0 4px 14px rgba(35, 38, 28, 0.04) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.62 !important;
+  color: #3F4432 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.section-why-bright .limit-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 18px rgba(35, 38, 28, 0.08) !important;
+  border-left-color: #F5C400 !important;
+}
+
+.section-why-bright .limit-item b {
+  color: #1A1E11 !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  display: block !important;
+  margin-bottom: 0.3rem !important;
+}
+
+@media (max-width: 1024px) {
+  .section-why-bright .why-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .why-close-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.8rem !important;
+    gap: 1.2rem !important;
+  }
+}
 
 /* --- Adaptación a pantallas estrechas ---------------------- */
 @media (max-width: 860px){
@@ -3093,11 +3436,25 @@ body{
 /* La barra creció con las secciones nuevas: se aprieta el interlineado y se
    permite que el bloque de enlaces ceda ancho antes que los logotipos. */
 .navbar{ padding-left:3.2vw !important; padding-right:3.2vw !important; }
-.nav-links{ gap:clamp(.6rem, 1.35vw, 1.5rem) !important; }
-.nav-links a{ font-size:clamp(.68rem, .38vw + .55rem, .82rem) !important; }
+.nav-links{ gap:clamp(.5rem, 1.35vw, 1.5rem) !important; }
+.nav-links a{ font-size:clamp(.6rem, .38vw + .5rem, .82rem) !important; }
 @media (max-width: 1240px){
   .nav-links a{ letter-spacing:.03em !important; }
 }
+/* Fix: en anchos intermedios (justo antes del menú hamburguesa) los 9
+   enlaces no cabían y, por el bug clásico de flexbox (min-width:auto por
+   defecto en los flex-items), en vez de encogerse se desbordaban ENCIMA de
+   los logos en lugar de dejarles espacio. Se obliga a .nav-links a poder
+   encogerse hasta 0 y se recorta cualquier remanente en vez de superponerlo;
+   los logos quedan con flex-shrink:0 para que nunca cedan ancho ellos. */
+.navbar .brand-lockup,
+.navbar .client-logo{ flex-shrink:0 !important; }
+.nav-links{
+  min-width:0 !important;
+  overflow:hidden !important;
+  flex-wrap:nowrap !important;
+}
+.nav-links a{ white-space:nowrap; }
 
 /* ============================================================
    V8.1 — Ajuste final de hero móvil
@@ -3658,30 +4015,40 @@ body{
   overflow:hidden;
 }
 
-/* Panel del titular: fondo oscuro, marca de agua de línea y tipografía grande. */
+/* Panel del titular: fondo oscuro, arte técnico iluminado y tipografía grande. */
 .rol-panel--titulo .rol-caja{
   background:var(--charcoal);
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
   min-height:250px;
+  position:relative;
 }
 .rol-arte{
   position:absolute;
-  top:-8%; right:-12%;
-  width:62%;
+  top:1.2rem;
+  right:1.2rem;
+  width:clamp(115px, 36%, 150px);
   height:auto;
-  opacity:.3;
+  opacity:0.95;
   pointer-events:none;
+  filter:drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+  transition:transform .35s ease, filter .35s ease;
+}
+.rol-lamina:hover .rol-arte{
+  transform:scale(1.04);
+  filter:drop-shadow(0 8px 22px rgba(151, 164, 25, 0.28));
 }
 .rol-panel--titulo h4{
   position:relative;
+  z-index:2;
   font-family:var(--font-display);
   font-size:clamp(1.35rem, 1.5vw + 1rem, 1.9rem);
   font-weight:900;
   line-height:1.16;
   color:#FBFAF3;
   margin-bottom:.7rem;
+  max-width:85%;
 }
 .rol-emph{
   color:var(--mustard-bright);
@@ -3690,12 +4057,13 @@ body{
 .rol-cola{ color:#C7C4AE; font-weight:400; }
 .rol-meta{
   position:relative;
+  z-index:2;
   font-family:var(--font-mono);
-  font-size:.68rem;
+  font-size:.72rem;
   font-weight:700;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:var(--olive-line);
+  color:var(--mustard, #FDD000);
 }
 
 /* Panel del párrafo: papel, para que el contraste marque la pareja. */
@@ -3806,3 +4174,1373 @@ body{
    .diag-block— no hereda el margen de ese bloque y queda pegada a lo que
    sigue. Se le da el mismo ritmo vertical. */
 .diag-note.reveal{ margin-bottom:3.2rem; }
+
+/* ============ Interactividad y Tilt 3D (GEOTEC Brand) ============ */
+.terminal {
+  background: #23261C; /* Tinta oscura GEOTEC */
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 280px;
+  border: 1px solid rgba(151, 164, 25, 0.4); /* Verde Oliva #97A419 */
+  padding: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.term-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.8rem 1.2rem; background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); flex-wrap: wrap; gap: 0.5rem;
+}
+.term-title { color: #8C9078; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.term-actions { display: flex; gap: 0.5rem; }
+.term-btn {
+  background: rgba(253, 208, 0, 0.1); /* Amarillo GEOTEC #FDD000 */
+  color: #FDD000; border: 1px solid rgba(253, 208, 0, 0.3);
+  padding: 0.4rem 0.8rem; border-radius: 4px; font-family: var(--font-mono);
+  font-size: 0.75rem; cursor: pointer; transition: all 0.3s var(--ease);
+}
+.term-btn:hover { background: #FDD000; color: #363B12; box-shadow: 0 4px 12px rgba(253, 208, 0, 0.3); }
+.term-btn-clear { background: transparent; border-color: rgba(255,255,255,0.2); color: #aaa; }
+.term-btn-clear:hover { background: rgba(255,255,255,0.1); color: #fff; box-shadow: none; }
+.term-body-container { padding: 1.4rem 1.5rem; flex: 1; overflow-y: auto; }
+#term-body { color: #BDD47A; white-space: pre-wrap; margin: 0; line-height: 1.6; }
+.t-line { margin-bottom: .45rem; }
+.t-line .p { color: #8C9B18; }
+.t-line.ok { color: #7EC850; }
+.t-line.warn { color: #FDD000; }
+.cursor { display: inline-block; width: 7px; height: 14px; background: #BDD47A; vertical-align: middle; animation: blink 1s step-end infinite; margin-left: 4px;}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Drag to Explore */
+.ecopetrol-map { cursor: grab; }
+.ecopetrol-map:active { cursor: grabbing; }
+.drag-indicator {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: #FDD000; color: #363B12; padding: 10px 20px; border-radius: 50px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.1em; pointer-events: none; z-index: 1000; opacity: 1;
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.ecopetrol-map:hover .drag-indicator { opacity: 0; transform: translate(-50%, -60%); }
+.tilt-card { transition: transform 0.15s ease, box-shadow 0.15s ease; transform-style: preserve-3d; will-change: transform; }
+
+/* ============ GEOTEC Intro Motion (Splash Screen) ============ */
+body:not(.is-loaded) { overflow: hidden; }
+#geotec-preloader {
+  position: fixed; inset: 0; background: #FBFAF3; z-index: 999999;
+  display: flex; justify-content: center; align-items: center;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.preloader-logo {
+  width: clamp(220px, 25vw, 340px);
+  opacity: 0; transform: scale(0.9) translateY(20px);
+  animation: geotecIntro 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation-delay: 0.2s;
+}
+@keyframes geotecIntro { 100% { opacity: 1; transform: scale(1) translateY(0); } }
+body.is-loaded #geotec-preloader { transform: translateY(-100%); pointer-events: none; }
+body:not(.is-loaded) .hero .reveal { opacity: 0 !important; transform: translateY(22px) !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .preloader-logo { animation: none; opacity: 1; transform: none; }
+  #geotec-preloader { transition: none; }
+}
+
+/* ============ Data Rings ============ */
+.data-ring-container { position: relative; display: flex; align-items: center; gap: 1rem; padding: 1rem 0; }
+.data-ring { width: 65px; height: 65px; transform: rotate(-90deg); flex-shrink: 0; }
+.ring-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 8; }
+.ring-progress {
+  fill: none; stroke: #FDD000; stroke-width: 8; stroke-dasharray: 283; stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.22, 0.61, 0.36, 1); stroke-linecap: round;
+}
+.hero-stats.is-visible .ring-progress { stroke-dashoffset: var(--target-dash); }
+.num-wrapper { position: absolute; left: 32.5px; transform: translateX(-50%); display: flex; justify-content: center; }
+.data-ring-container .num { font-size: 1.2rem; font-weight: 700; color: #FFF; font-family: var(--font-mono); }
+.data-ring-container .unit { font-size: 0.8rem; color: #FDD000; }
+
+/* ============ Hero: reveal cinético del h1 + glow ambiental ============ */
+.hero-glow {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(560px circle at var(--gx, 50%) var(--gy, 50%), rgba(245, 196, 0, 0.08), transparent 68%);
+}
+.word-mask { display: inline-block; overflow: hidden; vertical-align: top; }
+.word-inner {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform .7s var(--ease);
+  transition-delay: var(--w-stagger, 0ms);
+}
+.kinetic-title.is-visible .word-inner { transform: translateY(0); }
+
+/* Título de sección: mismo reveal por palabras que el h1 del hero, más la
+   rayita del eyebrow dibujándose de izquierda a derecha. */
+.section-head .eyebrow::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .6s var(--ease) .1s;
+}
+.section-head.is-visible .eyebrow::before { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .section-head .eyebrow::before { transition: none; transform: scaleX(1); }
+}
+
+/* ============ Corrección Visual Hero (Bento Grid & Glassmorphism) ============ */
+.hero h1 {
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  max-width: 22ch; /* Liberamos el texto para evitar que se vea muy colosal y cortado */
+  margin-bottom: 1.2rem;
+  color: #FBFAF3;
+  text-wrap: balance;
+  line-height: 1.15;
+}
+
+.hero-lede {
+  font-size: 1.05rem;
+  color: #CFCBAE;
+  max-width: 60ch; /* Más amplio para emparejar la columna izquierda */
+  font-weight: 300;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Convertimos las stats en un Bento Grid elegante */
+.hero-stats {
+  position: relative;
+  z-index: 10;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas abajo */
+  gap: 1.2rem;
+  border-left: none; /* Quitamos la línea vieja */
+}
+
+.hero-stat {
+  /* Efecto Glassmorphism */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-stat:hover {
+  border-color: rgba(151, 164, 25, 0.5); /* Hover Verde Oliva GEOTEC */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* La primera tarjeta ocupa todo el ancho */
+.hero-stat:first-child {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hero-stat .label {
+  font-size: 0.85rem;
+  color: #C7C4AE;
+  margin-top: 0.8rem;
+  max-width: none;
+  line-height: 1.5;
+}
+
+.hero-stat:first-child .label {
+  margin-top: 0;
+  margin-left: 1.2rem;
+}
+
+/* Garza flotando en el hueco superior derecho del grid (align-items:end deja
+   ese espacio libre sobre las tarjetas), como marca de agua cinemática */
+.hero-fauna {
+  position: absolute;
+  top: clamp(14rem, 7vw, 4.5rem);
+  right: clamp(7rem, 4vw, 3rem);
+  bottom: auto;
+  width: clamp(250px, 26vw, 500px);
+  opacity: 3;
+  z-index: 1; /* Detrás del grid */
+  pointer-events: none;
+  animation: hero-fauna-float 7s ease-in-out infinite;
+}
+@keyframes hero-fauna-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-fauna { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .hero-stats { grid-template-columns: 1fr; }
+  .hero-stat:first-child { flex-direction: column; align-items: flex-start; }
+  .hero-stat:first-child .label { margin-left: 0; margin-top: 0.8rem; }
+}
+
+/* Tarjetas sin anillo: número grande + acento de color, sin fingir un % */
+.hero-stat--plain .num { font-size: clamp(2rem, 2.4vw, 2.4rem); }
+.stat-accent {
+  display: block;
+  width: 0;
+  height: 2px;
+  border-radius: 1px;
+  margin: .7rem 0 .9rem;
+  transition: width 1s var(--ease);
+}
+.hero-stats.is-visible .stat-accent { width: 30px; }
+@media (prefers-reduced-motion: reduce) {
+  .stat-accent { transition: none; width: 30px; }
+}
+
+/* ============ Rediseño Storytelling "Diagnóstico" ============ */
+/* Imagen grande y visible a la izquierda; a la derecha solo el Dato
+   Crítico, con la respuesta como globo de texto (no ocupa espacio fijo). */
+.diag-story-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.diag-story-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.glass-panel {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.8rem;
+  box-shadow: 0 10px 30px rgba(35, 38, 28, 0.05); /* Tinta GEOTEC #23261C */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.glass-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(98, 108, 16, 0.12); /* Verde Oliva GEOTEC */
+}
+
+.pulse-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.pulse-label {
+  font-size: 0.75rem;
+  color: var(--mustard-bright); /* Amarillo GEOTEC #F5C400 */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--mustard-bright);
+  border-radius: 50%;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(245, 196, 0, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(245, 196, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 196, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot { animation: none; }
+}
+
+@media (max-width: 960px) {
+  .diag-story-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* Punto "calmo" (sin pulso) para el panel de La respuesta — contrasta con el
+   punto de alerta del Dato Crítico: primero la urgencia, después la calma. */
+.pulse-dot--calm {
+  background: var(--olive);
+  animation: none;
+  box-shadow: none;
+}
+
+/* Desplegable: "Dato Crítico" controla la respuesta, para no mostrar todo
+   el texto de entrada y ahorrar espacio vertical. */
+.pulse-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 1.2rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--mustard-ink, var(--olive));
+  cursor: pointer;
+}
+.pulse-cta:hover { color: var(--olive-deep); }
+.pulse-cta-arrow { display: inline-block; transition: transform .3s var(--ease); }
+.pulse-cta[aria-expanded="true"] .pulse-cta-arrow { transform: rotate(90deg); }
+
+/* Globo de texto: la respuesta se expande de forma integrada dentro del flujo
+   para no solaparse nunca con el siguiente capítulo ni con otras gráficas. */
+.respuesta-bubble {
+  position: relative;
+  margin-top: 0;
+  background: #FAF9F5;
+  border: 1px solid transparent;
+  border-left: 4px solid transparent;
+  border-radius: 12px;
+  padding: 0 1.8rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: max-height .4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity .3s ease,
+              padding .4s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-top .4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform .3s ease,
+              visibility .3s;
+  box-shadow: none;
+}
+.respuesta-bubble::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 34px;
+  width: 14px;
+  height: 14px;
+  background: #FAF9F5;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.respuesta-bubble.is-open {
+  margin-top: 1.4rem;
+  border-color: var(--line);
+  border-left-color: var(--mustard);
+  max-height: 800px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 10px 24px rgba(35, 38, 28, 0.08);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.respuesta-bubble.is-open::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .respuesta-bubble { transition: none; }
+  .pulse-cta-arrow { transition: none; }
+}
+
+/* ============ Hilo narrativo del Diagnóstico ============ */
+/* Conecta contexto → problema → evidencia/respuesta → modelo como una sola
+   secuencia, en vez de bloques sueltos. La línea se "enciende" tramo por
+   tramo a medida que cada capítulo entra en pantalla (ver script.js). */
+.story-thread { position: relative; }
+
+.thread-line {
+  position: absolute;
+  left: 22px;
+  top: 23px;
+  bottom: 23px;
+  width: 2px;
+  background: var(--line);
+}
+
+.thread-progress {
+  position: absolute;
+  left: 22px;
+  top: 23px;
+  width: 2px;
+  height: 0;
+  background: var(--mustard-bright);
+  transition: height 1s var(--ease);
+}
+
+.story-chapter {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 1.6rem;
+  align-items: start;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.story-chapter:last-child { margin-bottom: 0; }
+.story-chapter.is-visible { opacity: 1; transform: none; }
+
+.chapter-marker {
+  position: relative;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: .85rem;
+  color: var(--ink-faint);
+  transition: background .5s var(--ease), border-color .5s var(--ease), color .5s var(--ease);
+}
+
+.story-chapter.is-visible .chapter-marker {
+  background: var(--mustard-bright);
+  border-color: var(--mustard-bright);
+  color: var(--olive-deep);
+}
+
+.chapter-body { min-width: 0; }
+
+@media (max-width: 640px) {
+  .story-chapter { grid-template-columns: 36px 1fr; gap: 1.1rem; }
+  .chapter-marker { width: 36px; height: 36px; font-size: .72rem; }
+  .thread-line, .thread-progress { left: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-marker { transition: none; }
+  .thread-progress { transition: none; }
+  .story-chapter { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============ Lightbox de diagramas ============ */
+.lightbox-trigger { cursor: zoom-in; }
+
+figure:has(.lightbox-trigger) { position: relative; }
+
+.zoom-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(24, 26, 18, .72);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .25s ease, transform .25s ease, background .2s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+.zoom-icon svg { width: 18px; height: 18px; }
+
+figure:has(.lightbox-trigger):hover .zoom-icon,
+.lightbox-trigger:focus-visible ~ .zoom-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .zoom-icon { opacity: .85; transform: scale(1); background: rgba(24, 26, 18, .6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-icon { transition: none; }
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: #FFFFFF;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s;
+}
+.lightbox-overlay.active { opacity: 1; visibility: visible; }
+
+.lightbox-img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(35, 38, 28, 0.12);
+  transform: scale(.96);
+  transition: transform .3s ease;
+}
+.lightbox-overlay.active .lightbox-img { transform: scale(1); }
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line, #E5E2D8);
+  background: #FFFFFF;
+  color: #23261C;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(35, 38, 28, 0.10);
+  transition: all .2s ease;
+  z-index: 10001;
+}
+.lightbox-close:hover {
+  background: #FAF9F5;
+  color: #000000;
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(35, 38, 28, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-overlay, .lightbox-img { transition: none; }
+}
+
+/* ============ Mención de marca en el cuerpo del texto ============ */
+.brand-mark {
+  font-weight: 700;
+  color: #97A419; /* Verde Oliva GEOTEC */
+}
+
+/* ============ Cursor personalizado ============ */
+/* Acompaña la flecha del sistema (no la reemplaza): un punto que sigue al
+   mouse y un anillo con un leve retraso que crece sobre elementos clicables. */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--mustard-bright);
+  transition: opacity .3s ease;
+}
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(245, 196, 0, .5);
+  transition: width .25s var(--ease), height .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease), opacity .3s ease, transform .12s linear;
+}
+.cursor-ring.is-active {
+  width: 46px;
+  height: 46px;
+  border-color: rgba(245, 196, 0, .85);
+  background: rgba(245, 196, 0, .08);
+}
+body.custom-cursor-active .cursor-dot,
+body.custom-cursor-active .cursor-ring {
+  opacity: 1;
+}
+
+/* ============ Selección de texto y scrollbar ============ */
+::selection { background: rgba(253, 208, 0, .35); color: var(--ink); }
+::-moz-selection { background: rgba(253, 208, 0, .35); color: var(--ink); }
+
+html { scrollbar-width: thin; scrollbar-color: var(--olive-line) var(--paper); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--olive-line); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--olive); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ============ Metodología: reducción de carga visual ============ */
+
+/* 1. Flujo de datos animado sobre la fila de roles */
+.perm-pipeline { margin-bottom: .7rem; }
+.perm-pipeline-line {
+  position: relative;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(151, 164, 25, .2);
+  overflow: hidden;
+}
+.data-flow-particle {
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #FDD000, #97A419, transparent);
+  animation: dataFlow 3s infinite cubic-bezier(.4, 0, .2, 1);
+}
+@keyframes dataFlow {
+  0% { left: -20%; }
+  100% { left: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .data-flow-particle { animation: none; left: 40%; }
+}
+
+/* 2. Rutas A/B: el detalle se revela al pasar el mouse, para no mostrar
+   los seis párrafos apilados de una sola vez. En touch/sin hover el
+   contenido queda siempre visible (nunca se esconde texto sin forma de
+   alcanzarlo con el dedo). */
+.route-card.hold-to-reveal { cursor: pointer; }
+.hold-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .7rem;
+  color: var(--olive);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: .8rem 0 0;
+  transition: opacity .3s ease, height .3s ease, margin .3s ease;
+}
+.pulse-dot-small {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--olive);
+  animation: pulse-ring 2s infinite;
+}
+.route-content { overflow: hidden; }
+
+@media (hover: hover) and (pointer: fine) {
+  .hold-to-reveal .route-content {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height .6s cubic-bezier(.22, 1, .36, 1), opacity .4s ease, margin-top .4s ease;
+  }
+  .hold-to-reveal:hover .route-content,
+  .hold-to-reveal:focus .route-content {
+    max-height: 600px;
+    opacity: 1;
+    margin-top: 1rem;
+  }
+  .hold-to-reveal:hover .hold-indicator,
+  .hold-to-reveal:focus .hold-indicator {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  .hold-indicator { display: none; }
+}
+
+.route-card--dark { background: var(--charcoal); }
+.route-card--dark p { color: #C7C4AE; }
+.route-card--dark b { color: #FDD000; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot-small { animation: none; }
+  .hold-to-reveal .route-content { transition: none; }
+}
+
+/* ============ Pilar isometrico CSS/SVG: 9 principios ============ */
+.principles-3d-canvas {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.02);
+  margin-top: 2rem;
+}
+
+.principles-pillar-stack {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.p-item {
+  display: flex;
+  align-items: center;
+  margin-top: -24px;
+  position: relative;
+  z-index: 1;
+  transition: transform .4s cubic-bezier(.22, 1, .36, 1), z-index 0s;
+}
+
+.p-item:first-child { margin-top: 0; }
+
+.p-item:hover {
+  transform: translateX(12px) scale(1.02);
+  z-index: 10;
+}
+
+.p-pillar {
+  width: 80px;
+  height: 120px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='120' viewBox='0 0 100 130' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 H70 V130 H30 Z' fill='%23F4F1E1'/%3E%3Cpath d='M 5 45 L 50 22 L 95 45' fill='none' stroke='%23FFFFFF' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M 5 45 L 50 68 V 125 L 5 102 Z' fill='%23C1C798' stroke='%23FFFFFF' stroke-width='4' stroke-linejoin='round'/%3E%3Cpath d='M 50 68 L 95 45 V 125 L 50 102 Z' fill='%2397A419' stroke='%23FFFFFF' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  filter: drop-shadow(0 15px 15px rgba(35, 38, 28, .15));
+}
+
+.p-num {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--olive-deep);
+  transform: skewY(25deg);
+}
+
+.p-icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 2.5rem;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,.05);
+}
+
+.p-item:hover .p-icon {
+  color: var(--mustard-bright);
+  border-color: var(--mustard-bright);
+}
+
+.p-line {
+  flex-grow: 1;
+  border-bottom: 3px dashed #C7C4AE;
+  margin: 0 1.5rem;
+  opacity: .6;
+  transition: border-color .3s ease;
+}
+
+.p-item:hover .p-line { border-color: var(--olive); }
+
+.p-text {
+  width: 55%;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  transition: all .3s ease;
+}
+
+.p-item:hover .p-text {
+  border-left-color: var(--mustard-bright);
+  box-shadow: 0 10px 25px rgba(35,38,28,.08);
+}
+
+.p-text h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--olive-deep); margin: 0; }
+.p-text p { font-size: .95rem; color: var(--ink-soft); line-height: 1.5; margin: .3rem 0 0; }
+
+/* Secuencia pastel por bloque, del amarillo de marca al verde oliva de marca */
+.p-item:nth-child(1) .p-text { background: #FFF3D6; }
+.p-item:nth-child(2) .p-text { background: #FCEAC0; }
+.p-item:nth-child(3) .p-text { background: #F5E6B0; }
+.p-item:nth-child(4) .p-text { background: #EDE6A0; }
+.p-item:nth-child(5) .p-text { background: #E3E39C; }
+.p-item:nth-child(6) .p-text { background: #D8E39C; }
+.p-item:nth-child(7) .p-text { background: #CFE0A0; }
+.p-item:nth-child(8) .p-text { background: #C3DBA0; }
+.p-item:nth-child(9) .p-text { background: #B8D6A0; }
+
+@media (max-width: 768px) {
+  .p-line { display: none; }
+  .p-text { width: auto; margin-left: 1.5rem; padding: .9rem 1.1rem; border: none; box-shadow: none; }
+  .p-item:hover .p-text { box-shadow: none; border: none; }
+  .p-icon { margin-left: 1rem; }
+  .p-item { margin-top: -15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-item, .p-item:hover, .p-text, .p-icon, .p-line { transition: none; }
+  .p-item:hover { transform: none; }
+}
+
+/* ============ Aplicativos: grilla ambient glow + modal de detalle ============ */
+.premium-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+  margin: 2.5rem 0;
+}
+
+.premium-app-card {
+  position: relative;
+  height: 280px;
+  background: #181A12;
+  border: 1px solid var(--olive-deep);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: border-color .5s ease;
+}
+.premium-app-card:hover { border-color: rgba(151, 164, 25, .5); }
+
+.premium-app-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ambient-glow {
+  position: absolute;
+  bottom: -50%;
+  left: -20%;
+  width: 140%;
+  height: 120%;
+  background: radial-gradient(circle at top center, rgba(151, 164, 25, .15) 0%, rgba(253, 208, 0, .05) 50%, transparent 70%);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease, transform .8s cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+.premium-app-card:hover .ambient-glow { opacity: 1; transform: translateY(0); }
+
+.card-content-front {
+  position: absolute;
+  z-index: 5;
+  padding: 0 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  transition: opacity .4s ease, transform .5s ease;
+}
+.app-title-minimal {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #C7C4AE;
+  letter-spacing: .04em;
+  margin: 0;
+  transition: color .4s ease;
+}
+.premium-app-card:hover .app-title-minimal { color: #FBFAF3; }
+
+.app-click-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  color: #7B7C68;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  opacity: .85;
+  transition: color .3s ease, opacity .3s ease;
+}
+.app-click-hint svg { width: 13px; height: 13px; }
+.premium-app-card:hover .app-click-hint { color: var(--mustard-bright); opacity: 1; }
+.premium-app-card:hover .card-content-front { opacity: 0; transform: translateY(-20px); }
+
+.card-content-reveal {
+  position: absolute;
+  inset: 0;
+  padding: 2.5rem 2rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+}
+.premium-app-card:hover .card-content-reveal { opacity: 1; transform: translateY(0); }
+
+.app-tag-outline {
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: var(--mustard-bright);
+  border: 1px solid rgba(253, 208, 0, .3);
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.card-content-reveal h4 { font-size: 1.1rem; color: #FBFAF3; margin: 0 0 .6rem; font-weight: 700; line-height: 1.35; }
+.app-detail-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--mustard-bright);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-top: .9rem;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .premium-app-card { height: auto; min-height: 200px; padding: 1.6rem 1.4rem; align-items: flex-start; text-align: left; }
+  .ambient-glow { opacity: .5; transform: none; }
+  .card-content-front, .card-content-reveal { position: static; opacity: 1; transform: none; transition: none; pointer-events: auto; padding: 0; align-items: flex-start; }
+  .card-content-reveal { margin-top: .9rem; }
+  .app-title-minimal { font-size: 1.4rem; color: #FBFAF3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-app-card, .premium-app-card:hover, .ambient-glow, .card-content-front, .card-content-reveal, .app-title-minimal, .app-click-hint { transition: none; }
+}
+
+/* --- Modal de detalle: contenido completo original, sin recortes --- */
+.app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 26, 18, .92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s;
+}
+.app-modal-overlay.active { opacity: 1; visibility: visible; }
+
+.app-modal-panel {
+  position: relative;
+  width: min(1100px, 92vw);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--paper);
+  border-radius: 16px;
+  padding: 3rem 2.4rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,.4);
+  transform: scale(.97);
+  transition: transform .3s ease;
+}
+.app-modal-overlay.active .app-modal-panel { transform: scale(1); }
+
+.app-modal-close {
+  position: sticky;
+  float: right;
+  top: 0;
+  margin-left: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+  color: var(--charcoal);
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 5;
+  transition: background .2s ease;
+}
+.app-modal-close:hover { background: var(--paper); }
+
+.app-modal-content { display: none; }
+.app-modal-content.is-active { display: block; }
+
+@media (max-width: 640px) {
+  .app-modal-panel { padding: 4.4rem 1.2rem 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-modal-overlay, .app-modal-panel { transition: none; }
+}
+/* --- Complementos del Motor Central --- */
+.core-label {
+  position: absolute;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(151,164,25,0.4);
+  color: #C7C4AE;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+.core-result-box {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  background: rgba(151,164,25,0.1);
+  border: 2px solid #97A419;
+  color: #FBFAF3;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* --- Línea de Tiempo Inferior --- */
+.timeline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(35,38,28,0.8);
+  border: 1px solid #54574E;
+  padding: 2rem;
+  border-radius: 12px;
+}
+.time-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 150px;
+  border-bottom: 3px solid #97A419;
+  padding-bottom: 1rem;
+}
+.time-step span {
+  background: #23261C;
+  border: 2px solid #97A419;
+  color: #FBFAF3;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.time-step p {
+  color: #C7C4AE;
+  font-size: 0.85rem;
+  margin: 0;
+}
+.time-arrow {
+  color: #54574E;
+  font-size: 1.5rem;
+}
+/* ============ Interfaz ZUI (Motor Espacial) ============ */
+.zui-wrapper { position: relative; width: 100%; height: 650px; background: #181A12; border-radius: 16px; border: 1px solid #363B12; overflow: hidden; margin: 3rem 0; box-shadow: inset 0 0 100px rgba(0,0,0,0.5); }
+.zui-controls { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 1.5rem; z-index: 100; background: rgba(35, 38, 28, 0.9); padding: 0.8rem 1.5rem; border-radius: 50px; border: 1px solid rgba(151, 164, 25, 0.4); backdrop-filter: blur(10px); }
+.zui-btn { background: transparent; border: none; color: #FDD000; font-family: var(--font-mono); font-size: 0.85rem; cursor: pointer; font-weight: 700; transition: color 0.3s ease; }
+.zui-btn:hover { color: #FFF; }
+.zui-indicator { color: #C7C4AE; font-size: 0.8rem; text-transform: uppercase; font-family: var(--font-mono); font-weight: bold; width: 140px; text-align: center; }
+.zui-canvas { position: absolute; top: 50%; left: 50%; transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1); transform-origin: 0 0; }
+.zui-node { position: absolute; display: flex; flex-direction: column; justify-content: center; }
+.zui-title { color: #97A419; font-family: var(--font-display); font-size: 2rem; margin-bottom: 1.5rem; }
+.zui-card-list { display: flex; flex-direction: column; gap: 1rem; }
+.zui-card { background: rgba(255,255,255,0.05); border: 1px solid #54574E; padding: 1rem; border-radius: 8px; color: #FFF; font-weight: bold; display:flex; align-items:center; gap: 1rem;}
+.zui-card span { font-size: 1.5rem; }
+.zui-core { background: #23261C; border: 2px solid #97A419; border-radius: 50%; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; position: relative; box-shadow: 0 0 50px rgba(151,164,25,0.1); }
+.core-ring { position: absolute; inset: -20px; border: 1px dashed #FDD000; border-radius: 50%; animation: spin 20s linear infinite; opacity: 0.3; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.zui-anexos-grid { display: grid; gap: 1rem; }
+.anexo-pill-detailed { background: rgba(35, 38, 28, 0.8); border: 1px solid rgba(151, 164, 25, 0.3); padding: 1.2rem; border-radius: 8px; transition: transform 0.3s ease, border-color 0.3s ease; }
+.anexo-pill-detailed:hover { transform: translateY(-5px); border-color: #FDD000; }
+.anexo-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+.anexo-header strong { color: #FDD000; font-size: 1.4rem; font-family: var(--font-display); }
+.anexo-header span { color: #97A419; font-size: 0.8rem; font-weight: bold; }
+.anexo-pill-detailed p { color: #C7C4AE; font-size: 0.85rem; line-height: 1.5; margin: 0; }
+
+/* Complementos Internos */
+.core-label { position: absolute; background: rgba(255,255,255,0.05); border: 1px solid rgba(151,164,25,0.4); color: #C7C4AE; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.75rem; font-family: var(--font-mono); white-space: nowrap; }
+.core-result-box { position: absolute; bottom: -150px; left: 50%; transform: translateX(-50%); width: 120%; background: rgba(151,164,25,0.1); border: 2px solid #97A419; color: #FBFAF3; text-align: center; padding: 1rem; border-radius: 8px; font-weight: bold; font-size: 0.85rem; }
+.timeline-row { display: flex; align-items: center; justify-content: space-between; background: rgba(35,38,28,0.8); border: 1px solid #54574E; padding: 2rem; border-radius: 12px; }
+.time-step { display: flex; flex-direction: column; align-items: center; text-align: center; width: 150px; border-bottom: 3px solid #97A419; padding-bottom: 1rem; }
+.time-step span { background: #23261C; border: 2px solid #97A419; color: #FBFAF3; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; margin-bottom: 1rem; }
+.time-step p { color: #C7C4AE; font-size: 0.85rem; margin: 0; }
+.time-arrow { color: #54574E; font-size: 1.5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .zui-canvas, .anexo-pill-detailed, .core-ring { transition: none; animation: none; transform: none !important; }
+  .zui-canvas { position: relative; left: 0; top: 0; }
+  .zui-node { position: relative; transform: none !important; width: 100% !important; left: 0 !important; top: 0 !important; margin-bottom: 2rem; }
+  .zui-wrapper { height: auto; padding: 2rem; }
+  .zui-controls { display: none; }
+}
+/* ============ NODO 2: Tarjetas de Insumos (Bento Style) ============ */
+.insumos-bento {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.insumo-card {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease, border-color 0.4s ease;
+}
+
+/* Línea lateral que se dibuja al hacer hover */
+.insumo-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0; width: 4px;
+  background: #FDD000;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.insumo-card:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(151, 164, 25, 0.4);
+}
+
+.insumo-card:hover::before {
+  transform: scaleY(1);
+}
+
+.insumo-icon {
+  width: 48px; height: 48px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(151, 164, 25, 0.15); /* Verde Oliva muy tenue */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FDD000; /* Amarillo GEOTEC */
+  transition: transform 0.4s ease, background 0.4s ease, color 0.4s ease;
+}
+
+.insumo-icon svg { width: 26px; height: 26px; }
+
+.insumo-card:hover .insumo-icon {
+  background: #FDD000;
+  color: #23261C;
+  transform: scale(1.05) rotate(5deg);
+}
+
+.insumo-text h4 {
+  color: #FBFAF3;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem 0;
+}
+
+.insumo-text p {
+  color: #A7A38A;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 0;
+}
+/* ============ Ajuste de espaciado: Marco Ecopetrol -> Equipo ============ */
+#marco-ecopetrol { padding-bottom: 2rem !important; }
+#equipo { padding-top: 2rem !important; }
+/* ============ Brillo extra para textos de Aplicativos ============ */
+
+/* 1. Título principal de la tarjeta (antes de pasar el mouse) */
+.app-title-minimal {
+  color: #FBFAF3 !important; /* Cambia a un crema muy brillante */
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Leve resplandor para destacar más */
+}
+
+/* 2. Párrafo descriptivo (cuando pasas el mouse) */
+.card-content-reveal p {
+  color: #FFFFFF !important; /* Blanco puro para lectura clara y sin opacidad */
+  font-weight: 400; /* Le da un poco más de cuerpo a la letra */
+}
+
+/* 3. Etiqueta pequeña (Opcional: hacerla brillar más) */
+.app-tag-outline {
+  color: #FDD000 !important; /* Amarillo GEOTEC vibrante */
+  border-color: rgba(253, 208, 0, 0.6) !important;
+}
+/* ============ Mejora de legibilidad: Enlace de detalle de Aplicativos ============ */
+.app-detail-hint {
+  font-size: 0.88rem !important; /* Aumentamos el tamaño casi un 25% */
+  font-weight: 700 !important; /* Hacemos la letra más gruesa */
+  color: #FDD000 !important; /* Aseguramos el amarillo vibrante GEOTEC */
+  letter-spacing: 0.08em; /* Damos más aire entre las letras para facilitar la lectura */
+  margin-top: 1.2rem !important; /* Lo separamos un poco más del texto descriptivo */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Sombra oscura de fondo para que resalte más */
+  transition: transform 0.3s ease, color 0.3s ease; /* Preparamos una animación suave */
+}
+
+/* Pequeño efecto extra para que se mueva ligeramente al pasar el mouse por la tarjeta */
+.premium-app-card:hover .app-detail-hint {
+  transform: translateX(5px);
+}
+/* ============ Botón frontal: Clic para ver detalle ============ */
+.app-click-hint {
+  font-size: 0.60rem !important; /* Hacemos la letra mucho más grande */
+  font-weight: 700 !important; /* Letra en negrita */
+  color: #FDD000 !important; /* Amarillo GEOTEC brillante */
+  opacity: 1 !important; /* Le quitamos el efecto opaco/transparente */
+  letter-spacing: 0.08em !important;
+  
+  /* Lo convertimos en un botón real */
+  background: rgba(35, 38, 28, 0.9) !important; /* Fondo negro mate */
+  padding: 8px 16px !important; /* Le damos espacio interno */
+  border-radius: 50px !important; /* Bordes totalmente redondeados */
+  border: 1px solid rgba(253, 208, 0, 0.4) !important; /* Borde amarillo tenue */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5) !important; /* Sombra para que flote sobre la luz */
+}
+
+/* Hacemos que la pequeña flechita/icono también crezca */
+.app-click-hint svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Efecto al pasar el mouse por la tarjeta: el botón sube y desaparece suavemente */
+.premium-app-card:hover .app-click-hint {
+  transform: translateY(-10px);
+  opacity: 0 !important;
+}
+/* ============ Agrandar y destacar la sección de navegación ============ */
+
+.nav-links {
+  gap: 3.5rem !important; /* Aumenta la separación horizontal entre cada palabra (puedes subirlo a 4rem si quieres más aire) */
+}
+
+.nav-links a {
+  font-size: 1.05rem !important; /* Aumenta el tamaño de la letra (antes solía ser de aprox 0.82rem) */
+  font-weight: 700 !important; /* Hace la tipografía más gruesa y legible */
+  letter-spacing: 0.08em; /* Da un espaciado elegante entre las letras */
+}
+
+/* ============ Geovisor: Estilos de capas, tooltips y popups ============ */
+.ecopetrol-map .leaflet-control-layers {
+  background: rgba(18, 24, 10, 0.94) !important;
+  border: 1.5px solid rgba(253, 208, 0, 0.5) !important;
+  border-radius: 10px !important;
+  color: #FBFAF3 !important;
+  padding: 8px 14px !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(8px);
+}
+.ecopetrol-map .leaflet-control-layers-base label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 6px 0 !important;
+  cursor: pointer !important;
+  color: #E2DFD2 !important;
+}
+.ecopetrol-map .leaflet-control-layers-base input[type="radio"] {
+  accent-color: #FDD000 !important;
+  cursor: pointer !important;
+}
+.geo-custom-tooltip {
+  background: rgba(17, 23, 10, 0.96) !important;
+  border: 1.5px solid #FDD000 !important;
+  border-radius: 8px !important;
+  color: #FBFAF3 !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+  font-family: var(--font-ui, sans-serif) !important;
+  pointer-events: none !important;
+}
+.geo-custom-tooltip::before {
+  border-top-color: #FDD000 !important;
+}
+.geo-tip-mun {
+  color: #FDD000 !important;
+  font-size: 0.92rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
+.geo-tip-pro {
+  color: #FBFAF3 !important;
+  font-size: 0.82rem !important;
+  margin-top: 3px;
+  max-width: 250px;
+  line-height: 1.35;
+}
+.geo-tip-dep {
+  color: #AEC832 !important;
+  font-size: 0.72rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+.geo-popup-container {
+  padding: 4px 0;
+  font-family: var(--font-ui, sans-serif);
+}
+.geo-popup-badge {
+  display: inline-block;
+  background: rgba(253, 208, 0, 0.15);
+  border: 1px solid #FDD000;
+  color: #FDD000;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.geo-popup-title {
+  font-size: 0.98rem !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.geo-popup-row {
+  font-size: 0.84rem !important;
+  color: #E2DFD2 !important;
+  margin: 4px 0 !important;
+  line-height: 1.4;
+}
+.geo-popup-row b {
+  color: #FFE875 !important;
+}

@@ -35,19 +35,22 @@ carpeta. **Se genera localmente; no se publica en GitHub.** Después de tocar
 `index.html`, `styles.css` o `script.js`:
 
 ```powershell
-python CODE/construir_portable_marco.py
+python CODE/construir_portable_marco.py --dir "ruta/a/esta/carpeta"
 ```
 
-El script reporta los recursos incrustados y falla de forma visible si queda
-alguna referencia local sin resolver.
+(El script vive en `CODE/` en la raíz del proyecto local, junto a esta carpeta
+de la presentación; no está incluido en este repositorio.) Reporta los
+recursos incrustados y falla de forma visible si queda alguna referencia local
+sin resolver.
 
 ## Correspondencia con la propuesta
 
 El contenido es trazable a
-`PROPUESTA/PROPUESTA_TECNICA_FACTORES_1241_1244_V8_AUDITADA_TRAZABILIDAD_ALBA.docx`.
-Cuando el documento cambie, esta presentación debe revisarse contra él: las
-cifras, los nombres de proyecto y los compromisos de alcance no deben divergir.
+`PROPUESTA/PROPUESTA_TECNICA_FACTORES_1241_1244_Alba_2.0.docx` (versión vigente
+al 2026-09-09). Cuando el documento cambie, esta presentación debe revisarse
+contra él: las cifras, los nombres de proyecto y los compromisos de alcance no
+deben divergir.
 
 ## Nota de confidencialidad
 
-La presentación omite nombres de proyectos y datos no relacionados con Ecopetrol. El repositorio debe mantenerse privado salvo autorización expresa.
+La presentación omite nombres de proyectos y datos no relacionados con Ecopetrol. Este repositorio es público por decisión de la propietaria; si esa decisión cambia, debe pasarse a privado desde la configuración del repositorio en GitHub.

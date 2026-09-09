@@ -4,6 +4,102 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   const navOffset = () => (navbar ? navbar.offsetHeight : 64) + 12;
 
+  /* ---------- Utilidad: envolver texto en palabras enmascaradas ---------- */
+  const wrapWords = node => {
+    Array.from(node.childNodes).forEach(child => {
+      if (child.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach(part => {
+          if (part.trim() === '') { frag.appendChild(document.createTextNode(part)); return; }
+          const mask = document.createElement('span');
+          mask.className = 'word-mask';
+          const inner = document.createElement('span');
+          inner.className = 'word-inner';
+          inner.textContent = part;
+          mask.appendChild(inner);
+          frag.appendChild(mask);
+        });
+        node.replaceChild(frag, child);
+      } else if (child.nodeType === Node.ELEMENT_NODE) {
+        wrapWords(child);
+      }
+    });
+  };
+  const staggerWords = (el, stepMs) => {
+    el.querySelectorAll('.word-inner').forEach((inner, i) => {
+      inner.style.setProperty('--w-stagger', `${i * stepMs}ms`);
+    });
+  };
+
+  /* ---------- Reveal por palabras del h1 del hero ---------- */
+  const heroTitle = document.querySelector('.hero h1');
+  if (heroTitle && !reduceMotion) {
+    heroTitle.classList.add('kinetic-title');
+    wrapWords(heroTitle);
+    staggerWords(heroTitle, 35);
+  }
+
+  /* ---------- Reveal por palabras de los títulos de sección ---------- */
+  if (!reduceMotion) {
+    document.querySelectorAll('.section-head h2').forEach(h2 => {
+      h2.classList.add('kinetic-title');
+      wrapWords(h2);
+      staggerWords(h2, 25);
+    });
+  }
+
+  /* ---------- Cursor personalizado ---------- */
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorRing = document.querySelector('.cursor-ring');
+  if (cursorDot && cursorRing && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    document.body.classList.add('custom-cursor-active');
+    window.addEventListener('mousemove', e => {
+      const pos = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      cursorDot.style.transform = pos;
+      cursorRing.style.transform = pos;
+    });
+    document.addEventListener('mouseleave', () => {
+      cursorDot.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursorDot.style.opacity = '1';
+      cursorRing.style.opacity = '1';
+    });
+    const hoverTargets = 'a, button, [role="button"], input, select, textarea, .lightbox-trigger, .tilt-card';
+    document.addEventListener('mouseover', e => {
+      if (e.target.closest(hoverTargets)) cursorRing.classList.add('is-active');
+    });
+    document.addEventListener('mouseout', e => {
+      if (e.target.closest(hoverTargets)) cursorRing.classList.remove('is-active');
+    });
+  }
+
+  /* ---------- Intro Motion (Preloader) ---------- */
+  window.addEventListener('load', () => {
+    const introDelay = reduceMotion ? 0 : 1800;
+    const revealDelay = reduceMotion ? 0 : 400;
+    setTimeout(() => {
+      document.body.classList.add('is-loaded');
+      setTimeout(() => {
+        document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+          el.style.setProperty('--stagger', reduceMotion ? '0ms' : `${i * 90}ms`);
+          el.classList.add('is-visible');
+        });
+      }, revealDelay);
+    }, introDelay);
+  });
+
+  /* ---------- Glow ambiental del hero ---------- */
+  const hero = document.querySelector('.hero');
+  if (hero && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('pointermove', e => {
+      const rect = hero.getBoundingClientRect();
+      hero.style.setProperty('--gx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+      hero.style.setProperty('--gy', `${((e.clientY - rect.top) / rect.height) * 100}%`);
+    });
+  }
+
   /* ---------- Barra de progreso de lectura ---------- */
   const progress = document.createElement('div');
   progress.className = 'scroll-progress';
@@ -77,6 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          const title = entry.target.querySelector('.kinetic-title');
+          if (title) title.classList.add('is-visible');
           obs.unobserve(entry.target);
         }
       });
@@ -283,28 +381,76 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', toggleTop, { passive: true });
   toggleTop();
 
-  /* ---------- Terminal de validación (firma visual) ---------- */
-  const terminal = document.getElementById('terminal');
-  if (terminal) {
-    const lines = terminal.querySelectorAll('.t-line');
-    let played = false;
-    const playTerminal = () => {
-      if (played) return;
-      played = true;
-      if (reduceMotion) {
-        lines.forEach(l => l.style.opacity = 1);
-        return;
+  /* ---------- Terminal Interactiva (Live Typing) ---------- */
+  const termBody = document.getElementById('term-body');
+  let isTyping = false;
+  let typingTimeout;
+
+  const simulations = {
+    qaqc: [
+      { text: "> Iniciando entorno de validación VALIDA_APP...", class: "p" },
+      { text: "> Conectando con Geodatabase [Proyecto_Ejemplo_v2.gdb]...", delay: 800 },
+      { text: "> Ejecutando Módulo 1: Esquema de Capas MAG ANLA (Res. 2182)...", delay: 500 },
+      { text: "[OK] 242 Feature Classes verificadas.", class: "ok", delay: 1200 },
+      { text: "> Ejecutando Módulo 3: Dominios y Atributos...", delay: 300 },
+      { text: "[WARN] 2 valores nulos técnicos detectados en capa [Zonificacion_Manejo].", class: "warn", delay: 1800 },
+      { text: "> Ejecutando Módulo 7: Relaciones Padre-Hijo...", delay: 400 },
+      { text: "[OK] Consistencia topológica al 100%. Cero huérfanos.", class: "ok", delay: 1500 },
+      { text: "> Generando reporte de conformidad (Excel)...", delay: 600 },
+      { text: "[OK] Proceso completado en 14.3 segundos.", class: "ok", delay: 1000 }
+    ],
+    kmz: [
+      { text: "> Lanzando Extractor KMZ / CAMPO_KMZ...", class: "p" },
+      { text: "> Analizando directorio de fotografías [Campaña_Flora_04]...", delay: 600 },
+      { text: "> Leyendo metadatos EXIF (Lat/Lon, Fecha, Hora)...", delay: 800 },
+      { text: "[OK] 345 imágenes procesadas.", class: "ok", delay: 1100 },
+      { text: "> Estructurando subcarpetas por ID de punto de muestreo...", delay: 500 },
+      { text: "[OK] Vínculos relativos creados en tabla de atributos.", class: "ok", delay: 900 },
+      { text: "> Exportando visor HTML autocontenido...", delay: 400 },
+      { text: "[OK] Geovisor y KMZ generados exitosamente.", class: "ok", delay: 1200 }
+    ]
+  };
+
+  function typeLine(lineData, callback) {
+    const span = document.createElement('span');
+    span.className = 't-line ' + (lineData.class ? lineData.class : '');
+    let htmlContent = lineData.text;
+    if (htmlContent.startsWith("> ")) {
+        htmlContent = `<span class="p">> </span>${htmlContent.substring(2)}`;
+    }
+    span.innerHTML = htmlContent + '\n';
+    const cursor = termBody.querySelector('.cursor');
+    termBody.insertBefore(span, cursor);
+    termBody.parentElement.scrollTop = termBody.parentElement.scrollHeight;
+    if (callback) typingTimeout = setTimeout(callback, lineData.delay || 300);
+  }
+
+  window.runTerminalSim = function(type) {
+    if (!termBody || isTyping) return;
+    const lines = simulations[type];
+    if (!lines) return;
+    isTyping = true;
+    termBody.innerHTML = '<span class="cursor"></span>';
+    let currentLine = 0;
+    function processNextLine() {
+      if (currentLine < lines.length) {
+        typeLine(lines[currentLine], processNextLine);
+        currentLine++;
+      } else {
+        isTyping = false;
+        const span = document.createElement('span');
+        span.className = 't-line';
+        span.innerHTML = '<span class="p">> </span>\n';
+        termBody.insertBefore(span, termBody.querySelector('.cursor'));
+        termBody.parentElement.scrollTop = termBody.parentElement.scrollHeight;
       }
-      lines.forEach((line, i) => {
-        setTimeout(() => { line.style.transition = 'opacity .25s ease'; line.style.opacity = 1; }, i * 380);
-      });
-    };
-    const termObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { playTerminal(); obs.unobserve(entry.target); }
-      });
-    }, { threshold: 0.4 });
-    termObserver.observe(terminal);
+    }
+    processNextLine();
+  };
+
+  window.clearTerminal = function() {
+      if(isTyping) { clearTimeout(typingTimeout); isTyping = false; }
+      termBody.innerHTML = '<span class="p">> </span>Sistema en espera. Seleccione un flujo para simular...<span class="cursor"></span>';
   }
 
   /* ---------- Nav activo según sección visible ---------- */
@@ -320,6 +466,122 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.35, rootMargin: '-80px 0px -35% 0px' });
   sections.forEach(sec => navObserver.observe(sec));
+
+  /* ---------- Efecto Tilt 3D Inmersivo ---------- */
+  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    const tiltCards = document.querySelectorAll('.geo-stat-card, .evidence-card, .route-card, .tool-card');
+    tiltCards.forEach(card => {
+      card.classList.add('tilt-card');
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+        const centerX = rect.width / 2; const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+        card.style.setProperty('--mx', `${x}px`);
+        card.style.setProperty('--my', `${y}px`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      });
+    });
+  }
+
+  /* ---------- Hilo narrativo del Diagnóstico ---------- */
+  const storyThread = document.querySelector('.story-thread');
+  if (storyThread) {
+    const threadProgress = storyThread.querySelector('.thread-progress');
+    const chapters = storyThread.querySelectorAll('.story-chapter');
+    const lightUpChapter = chapter => {
+      chapter.classList.add('is-visible');
+      const marker = chapter.querySelector('.chapter-marker');
+      if (threadProgress && marker) {
+        const threadTop = storyThread.getBoundingClientRect().top;
+        const markerRect = marker.getBoundingClientRect();
+        const lineStart = markerRect.height / 2;
+        const markerCenter = markerRect.top - threadTop + lineStart;
+        threadProgress.style.height = `${Math.max(0, markerCenter - lineStart)}px`;
+      }
+    };
+    if (reduceMotion) {
+      chapters.forEach(lightUpChapter);
+    } else {
+      const chapterObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            lightUpChapter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.35, rootMargin: '0px 0px -15% 0px' });
+      chapters.forEach(ch => chapterObserver.observe(ch));
+    }
+  }
+
+  /* ---------- Globo de texto de la respuesta, desde Dato Crítico ---------- */
+  const respuestaBubble = document.getElementById('respuesta-bubble');
+  const respuestaToggleBtn = document.getElementById('respuesta-toggle');
+  window.toggleRespuesta = function () {
+    if (!respuestaBubble || !respuestaToggleBtn) return;
+    const open = respuestaBubble.classList.toggle('is-open');
+    respuestaToggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  if (respuestaBubble && respuestaToggleBtn) {
+    const closeRespuesta = () => {
+      respuestaBubble.classList.remove('is-open');
+      respuestaToggleBtn.setAttribute('aria-expanded', 'false');
+    };
+    document.addEventListener('click', e => {
+      if (!respuestaBubble.classList.contains('is-open')) return;
+      if (!respuestaBubble.contains(e.target) && !respuestaToggleBtn.contains(e.target)) closeRespuesta();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && respuestaBubble.classList.contains('is-open')) closeRespuesta();
+    });
+  }
+
+  /* ---------- Lightbox de diagramas ---------- */
+  const lightbox = document.getElementById('diagram-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  window.openLightbox = function (imgEl) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = imgEl.currentSrc || imgEl.src;
+    lightboxImg.alt = imgEl.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeLightbox = function () {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+  if (lightbox) {
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+  }
+
+  /* ---------- Modal de detalle de aplicativos ---------- */
+  const appModal = document.getElementById('app-modal');
+  const appModalContents = appModal ? appModal.querySelectorAll('.app-modal-content') : [];
+  window.openAppModal = function (id) {
+    if (!appModal) return;
+    appModalContents.forEach(c => c.classList.toggle('is-active', c.id === id));
+    appModal.classList.add('active');
+    appModal.querySelector('.app-modal-panel').scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeAppModal = function () {
+    if (!appModal) return;
+    appModal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+  if (appModal) {
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && appModal.classList.contains('active')) closeAppModal();
+    });
+  }
 });
 
 /* ---------- Carrusel de clientes (marquee) ---------- */
@@ -363,3 +625,40 @@ document.addEventListener('DOMContentLoaded', () => {
   [...rowA, ...rowA].forEach(c => mq1.appendChild(makeChip(c)));
   [...rowB, ...rowB, ...rowB].forEach(c => mq2.appendChild(makeChip(c)));
 }());
+
+/* ---------- Motor ZUI (Zooming User Interface) ---------- */
+const zui = (function() {
+  const canvas = document.getElementById('zui-canvas');
+  const counter = document.getElementById('zui-counter');
+  
+  // 6 paradas narrativas con coordenadas calculadas para enfocar cada nodo
+  const steps = [
+    { id: 'intro',    x: 0,       y: 900,   scale: 0.8,  label: '1. El Reto' }, 
+    { id: 'insumos',  x: 1000,    y: 0,     scale: 1.1,  label: '2. Insumos' },   
+    { id: 'motor',    x: 0,       y: 0,     scale: 1,  label: '3. Núcleo' },   
+    { id: 'motor',    x: 0,       y: -430,     scale: 1,  label: '3. Núcleo' },   
+    { id: 'anexos',   x: -1500,   y: 120,     scale: 0.95, label: '4. Entregables' }, 
+    { id: 'anexos',   x: -1500,   y: -150,     scale: 0.95, label: '4. Entregables' }, 
+    { id: 'timeline', x: 0,       y: -1000, scale: 0.9,  label: '5. El Flujo' },
+  ];
+  
+  let currentStep = 0;
+
+  function goTo(stepIndex) {
+    if (!canvas) return;
+    if (stepIndex < 0) stepIndex = steps.length - 1;
+    if (stepIndex >= steps.length) stepIndex = 0;
+    currentStep = stepIndex;
+    
+    const step = steps[currentStep];
+    canvas.style.transform = `scale(${step.scale}) translate(${step.x}px, ${step.y}px)`;
+    if(counter) counter.textContent = step.label;
+  }
+
+  if(canvas) { setTimeout(() => goTo(0), 500); }
+
+  return {
+    next: () => goTo(currentStep + 1),
+    prev: () => goTo(currentStep - 1)
+  };
+})();

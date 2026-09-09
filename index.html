@@ -13,6 +13,15 @@
 </head>
 <body>
 
+<!-- ================= PRELOADER / INTRO MOTION ================= -->
+<div id="geotec-preloader" aria-hidden="true">
+  <img src="assets/logo_geotec_horizontal_star.png" alt="GEOTEC Ingeniería Ltda." class="preloader-logo" width="300" height="auto">
+</div>
+
+<!-- Cursor personalizado (acompaña la flecha del sistema, no la reemplaza) -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
 <nav class="navbar">
   <div class="brand-lockup">
     <img src="assets/logo_geotec_horizontal_star.png" alt="GEOTEC Ingeniería Ltda." class="logo" width="549" height="143">
@@ -37,6 +46,7 @@
 <!-- ================= HERO ================= -->
 <header id="inicio" class="hero">
   <div class="weave"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
   <img src="assets/animal_garza.png" alt="" class="hero-fauna" aria-hidden="true">
   <div class="container">
     <div class="hero-alliance">
@@ -47,8 +57,8 @@
       <div>
         <p class="eyebrow">Factores 12.4.1 y 12.4.4</p>
         <h1 class="reveal">La calidad se construye desde el primer dato <em>y se valida al final.</em></h1>
-        <p class="hero-lede reveal">GEOTEC acompaña el estudio ambiental desde el punto de muestreo hasta la radicación, con un portafolio propio que <strong>hoy está en operación</strong>: captura digital en campo, certificación automatizada de la geodatabase frente al MAG de la ANLA y entregables que Ecopetrol puede consultar por su cuenta. El propósito es único — que cada radicación salga con <strong>evidencia de conformidad verificable</strong>, no con una revisión de confianza.</p>
-        <p class="hero-lede hero-lede--tight reveal">La captura digital en campo ya es práctica extendida en el sector. El diferencial está en lo que ocurre <em>después</em> del dato: la certificación contra las <strong>242 clases de entidad, 308 dominios y 248 relaciones</strong> del modelo de la autoridad. Ese es el tramo donde se devuelven los expedientes.</p>
+        <p class="hero-lede reveal"><span class="brand-mark">GEOTEC</span> acompaña el estudio ambiental desde el punto de muestreo hasta la radicación, con un portafolio propio que <strong>hoy está en operación</strong>: captura digital en campo, certificación automatizada de la geodatabase frente al MAG de la ANLA y entregables que Ecopetrol puede consultar por su cuenta. El propósito es único — que cada radicación salga con <strong>evidencia de conformidad verificable</strong>, no con una revisión de confianza.</p>
+        <p class="hero-lede hero-lede--tight reveal"><span class="brand-mark">GEOTEC</span> certifica cada geodatabase contra las <strong>242 clases de entidad, 308 dominios y 248 relaciones</strong> del modelo de la autoridad, antes de que el expediente llegue a la ANLA. Ese es el tramo exacto donde se devuelven los expedientes — y donde este modelo pone el control.</p>
         <div class="hero-cta-row reveal">
           <a href="#diagnostico" class="btn">Ver el modelo completo</a>
           <a href="#aseguramiento" class="btn btn-ghost">Ir a los factores 12.4.1 / 12.4.4</a>
@@ -57,17 +67,30 @@
       </div>
 
       <div class="hero-stats reveal">
-        <div class="hero-stat">
-          <div class="num"><span data-count="68">0</span><span class="unit">%</span></div>
+        <!-- Tarjeta Grande (100% de ancho) -->
+        <div class="hero-stat data-ring-container tilt-card">
+          <div style="position:relative; width: 65px; height: 65px; flex-shrink: 0;">
+            <svg class="data-ring" viewBox="0 0 100 100" style="position:absolute; inset:0; width:100%; height:100%;">
+              <circle class="ring-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="ring-progress" cx="50" cy="50" r="45" style="--target-dash: 90;"></circle>
+            </svg>
+            <div class="num-wrapper" style="position:absolute; inset:0; left:50%; top:50%; transform:translate(-50%, -50%); display:flex; align-items:center; justify-content:center;"><div class="num" style="font-size:1.1rem; display:flex; align-items:baseline;"><span data-count="68">0</span><span class="unit" style="font-size:0.75rem;">%</span></div></div>
+          </div>
           <div class="label">de las Verificaciones Preliminares de Documentos no fueron aprobadas por la ANLA en 2024 — <a class="source-link source-link--dark" href="https://www.anla.gov.co/images/documentos/informes/2025-01-30-anla-InformeGestion-2024.pdf" target="_blank" rel="noopener">Informe de Gestión ANLA</a></div>
         </div>
-        <div class="hero-stat">
+
+        <!-- Tarjeta Pequeña Izquierda -->
+        <div class="hero-stat hero-stat--plain tilt-card" style="flex-direction: column; align-items: flex-start;">
           <div class="num"><span data-count="15">0</span><span class="unit">min</span></div>
-          <div class="label">para validar una GDB completa con VALIDA_APP, frente a 1 día de revisión manual</div>
+          <span class="stat-accent" style="background:#97A419;"></span>
+          <div class="label" style="margin:0;">para validar una GDB completa con VALIDA_APP, frente a 1 día de revisión manual</div>
         </div>
-        <div class="hero-stat">
+
+        <!-- Tarjeta Pequeña Derecha -->
+        <div class="hero-stat hero-stat--plain tilt-card" style="flex-direction: column; align-items: flex-start;">
           <div class="num"><span data-count="36">0</span><span class="unit">proyectos</span></div>
-          <div class="label">con la geodatabase certificada por VALIDA_APP en Frontera Energy Sucursal Colombia — Canaguaro, Arrendajo, Corcel, Cubiro, Sabanero, Copa, Chiguiro, Topoyaco, Río Ariari y CPO-01, entre otros</div>
+          <span class="stat-accent" style="background:#A9B15E;"></span>
+          <div class="label" style="margin:0;">con la geodatabase certificada por VALIDA_APP en Frontera Energy Sucursal Colombia — Canaguaro, Arrendajo, Corcel, Cubiro, Sabanero, Copa, Chiguiro, Topoyaco, Río Ariari y CPO-01, entre otros</div>
         </div>
       </div>
     </div>
@@ -97,34 +120,71 @@
     <div class="section-head reveal">
       <p class="eyebrow">El punto de partida</p>
       <h2>Dónde se pierde la calidad de un estudio ambiental</h2>
-      <p>El diagnóstico no es una hipótesis: son los datos oficiales de la ANLA y las condiciones reales de operación en bloques de hidrocarburos. El reto no está solo en generar la información, sino en que conserve integridad, consistencia y trazabilidad desde la captura en campo hasta el producto final — lo que obliga a migrar de un control correctivo a uno preventivo.</p>
+      <p>El diagnóstico no es una hipótesis: son los datos oficiales de la ANLA y las condiciones reales de operación en bloques de hidrocarburos. El reto está en conservar la integridad, consistencia y trazabilidad desde la captura en campo hasta el producto final — lo que obliga a migrar de un control correctivo a uno preventivo.</p>
     </div>
 
-    <figure class="sector-visual reveal">
-      <img src="assets/sector_hidrocarburos.jpg" alt="Operación de hidrocarburos al atardecer">
-      <figcaption>Contexto operativo: estudios ambientales para activos energéticos con exigencia técnica, trazabilidad y control documental.</figcaption>
-    </figure>
+    <div class="story-thread">
+      <div class="thread-line" aria-hidden="true"></div>
+      <div class="thread-progress" aria-hidden="true"></div>
 
-    <div class="diag-block reveal">
-      <figure class="figura-doc figura-doc--ancha">
-        <img src="assets/figuras/error_tardio.webp" alt="El costo multiplicador de los errores tardíos: reproceso, corrección extensa y riesgo de no conformidad en cadena" loading="lazy">
-        <figcaption>Un hallazgo que aparece tarde no cuesta una corrección: cuesta tres. El reproceso, la pérdida de coherencia entre entregables y la no conformidad en cadena se multiplican con cada etapa que avanza sin detección.</figcaption>
-      </figure>
-      <div class="diag-note">
-        <strong>68% de las VPD no fueron aprobadas en 2024</strong> (<a class="source-link" href="https://www.anla.gov.co/images/documentos/informes/2025-01-30-anla-InformeGestion-2024.pdf" target="_blank" rel="noopener">167 de 246, Informe de Gestión ANLA 2024</a>) — cifra que se mantuvo en <a class="source-link" href="https://www.anla.gov.co/images/documentos/ren_cuentas/2025/2025-08-16-anla-InformeRendicionCuentas-2024-2025.pdf" target="_blank" rel="noopener">69% entre julio de 2024 y junio de 2025</a>. Las inconsistencias en el modelo de almacenamiento geográfico son una causal recurrente reportada por la propia autoridad.
+      <!-- 01 — Contexto -->
+      <div class="story-chapter">
+        <div class="chapter-marker"><span>01</span></div>
+        <div class="chapter-body">
+          <figure class="sector-visual">
+            <img src="assets/sector_hidrocarburos.jpg" alt="Operación de hidrocarburos al atardecer">
+            <figcaption>Contexto operativo: estudios ambientales para activos energéticos con exigencia técnica, trazabilidad y control documental.</figcaption>
+          </figure>
+        </div>
       </div>
 
-      <div class="respuesta reveal">
-        <span class="respuesta-kicker">La respuesta</span>
-        <h3>Si el error caro es el que se descubre tarde, hay que buscarlo temprano</h3>
-        <p>Ninguno de esos errores es difícil de corregir. Todos son difíciles de encontrar a tiempo. Por eso el modelo de GEOTEC no añade una revisión más al final: <strong>reparte el control a lo largo de todo el estudio</strong>, de modo que cada fase entregue a la siguiente información ya verificada.</p>
-        <p class="respuesta-pie">Así se ve completo — cuatro fases, cada una con su punto de control, y el soporte que las acompaña:</p>
+      <!-- 02 — El problema, la evidencia y la respuesta -->
+      <div class="story-chapter">
+        <div class="chapter-marker"><span>02</span></div>
+        <div class="chapter-body">
+          <div class="diag-story-grid">
+            <div class="diag-story-visual tilt-card">
+              <figure class="figura-doc" style="margin: 0;">
+                <img class="lightbox-trigger" src="assets/figuras/error_tardio.webp" alt="El costo multiplicador de los errores tardíos: reproceso, corrección extensa y riesgo de no conformidad en cadena" loading="lazy" style="background: #ffffff; border-radius: 12px; box-shadow: 0 20px 40px rgba(35, 38, 28, 0.15);" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+                <figcaption style="text-align: left; margin-top: 1rem;">Un hallazgo que aparece tarde no cuesta una corrección: cuesta tres. El reproceso, la pérdida de coherencia entre entregables y la no conformidad en cadena se multiplican con cada etapa que avanza sin detección.</figcaption>
+              </figure>
+            </div>
+
+            <div class="diag-story-content">
+              <div class="glass-panel pulse-panel">
+                <div class="pulse-indicator">
+                  <span class="pulse-dot"></span>
+                  <span class="pulse-label mono">Dato Crítico</span>
+                </div>
+                <div class="diag-note" style="margin-top: 0; padding: 0; background: transparent; border: none;">
+                  <strong>68% de las VPD no fueron aprobadas en 2024</strong> (<a class="source-link" href="https://www.anla.gov.co/images/documentos/informes/2025-01-30-anla-InformeGestion-2024.pdf" target="_blank" rel="noopener">167 de 246, Informe de Gestión ANLA 2024</a>) — cifra que se mantuvo en <a class="source-link" href="https://www.anla.gov.co/images/documentos/ren_cuentas/2025/2025-08-16-anla-InformeRendicionCuentas-2024-2025.pdf" target="_blank" rel="noopener">69% entre julio de 2024 y junio de 2025</a>. Las inconsistencias en el modelo de almacenamiento geográfico son una causal recurrente reportada por la propia autoridad.
+                </div>
+                <button type="button" class="pulse-cta mono" id="respuesta-toggle" onclick="toggleRespuesta()" aria-expanded="false" aria-controls="respuesta-bubble">
+                  Ver la respuesta <span class="pulse-cta-arrow">→</span>
+                </button>
+
+                <div class="respuesta-bubble" id="respuesta-bubble" role="dialog" aria-label="La respuesta">
+                  <span class="respuesta-kicker" style="margin: 0 0 .5rem;">La respuesta</span>
+                  <h3>Si el error caro es el que se descubre tarde, hay que buscarlo temprano</h3>
+                  <p>Ninguno de esos errores es difícil de corregir. Todos son difíciles de encontrar a tiempo. Por eso el modelo de <span class="brand-mark">GEOTEC</span> <strong>reparte el control a lo largo de todo el estudio</strong>, de modo que cada fase entregue a la siguiente información ya verificada.</p>
+                  <p class="respuesta-pie" style="margin-bottom: 0;">Así se ve completo — cuatro fases, cada una con su punto de control, y el soporte que las acompaña:</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <figure class="figura-doc figura-doc--lamina reveal">
-        <img src="assets/figuras/ciclo_y_metodologia.webp" alt="Fases del ciclo del estudio ambiental —planeación y conceptualización, pre-campo, campo, post-campo y soporte transversal— y metodología de estudios ambientales con sus procesos de aseguramiento, herramientas y resultado final" loading="lazy">
-        <figcaption>El ciclo completo en una lectura: las cuatro fases del estudio con el soporte que las acompaña, y debajo la metodología —insumos, información de campo, generación del estudio, aseguramiento y herramientas— hasta el documento integral listo para radicación.</figcaption>
-      </figure>
+      <!-- 03 — El modelo completo -->
+      <div class="story-chapter">
+        <div class="chapter-marker"><span>03</span></div>
+        <div class="chapter-body">
+          <figure class="figura-doc figura-doc--lamina">
+            <img class="lightbox-trigger" src="assets/figuras/ciclo_y_metodologia.webp" alt="Fases del ciclo del estudio ambiental —planeación y conceptualización, pre-campo, campo, post-campo y soporte transversal— y metodología de estudios ambientales con sus procesos de aseguramiento, herramientas y resultado final" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+            <figcaption>El ciclo completo en una lectura: las cuatro fases del estudio con el soporte que las acompaña, y debajo la metodología —insumos, información de campo, generación del estudio, aseguramiento y herramientas— hasta el documento integral listo para radicación.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
 
 
@@ -139,13 +199,16 @@
     <div class="section-head reveal">
       <p class="eyebrow">El modelo</p>
       <h2>Quién responde por la calidad, y bajo qué reglas</h2>
-      <p>Un modelo así existe en el papel de cualquier consultora. La diferencia está en si hay alguien responsable de cada control y una regla que diga cuándo se activa: quién lo ejecuta, qué puede tocar cada quien, cómo se ajusta la intensidad según la complejidad del estudio y qué principios no se negocian en ningún proyecto.</p>
+      <p>Cada control tiene un responsable y una regla que dice cuándo se activa: quién lo ejecuta, qué puede tocar cada quien, cómo se ajusta la intensidad según la complejidad del estudio y qué principios no se negocian en ningún proyecto.</p>
     </div>
 
     <div class="diag-block reveal" style="margin-top:4rem;">
       <div class="diag-head">
         <h3>Roles, responsabilidades y permisos sobre la información</h3>
         <span class="diag-stat-badge">Segregación de funciones</span>
+      </div>
+      <div class="perm-pipeline" aria-hidden="true">
+        <div class="perm-pipeline-line"><div class="data-flow-particle"></div></div>
       </div>
       <div class="perm-flow">
         <div class="perm-step"><span class="perm-role">Administración</span><p>Configura catálogos y estructura.</p></div>
@@ -154,7 +217,41 @@
         <div class="perm-step perm-step--client"><span class="perm-role">Ecopetrol</span><p>Consulta avances y evidencias habilitados para la ODS.</p></div>
       </div>
       <div class="diag-note">
-        Los permisos se asignan por usuario y por necesidad de uso, <strong>sin alterar los perfiles corporativos de Ecopetrol</strong>. El equipo mínimo de aseguramiento se deriva de la misma estructura de personal facturable de la ODS: no es una estructura adicional, sino la forma en que GEOTEC distribuye las responsabilidades de calidad desde el inicio.
+        Los permisos se asignan por usuario y por necesidad de uso, <strong>sin alterar los perfiles corporativos de Ecopetrol</strong>. El equipo mínimo de aseguramiento se deriva de la misma estructura de personal facturable de la ODS: no es una estructura adicional, sino la forma en que <span class="brand-mark">GEOTEC</span> distribuye las responsabilidades de calidad desde el inicio.
+      </div>
+    </div>
+
+    <div class="diag-block reveal">
+      <div class="diag-head">
+        <h3>Fases del estudio</h3>
+        <span class="diag-stat-badge">Un hilo continuo, no un checklist al final</span>
+      </div>
+      <p class="scale-lede">El modelo opera en cuatro momentos. Cada uno entrega al siguiente información ya verificada, para que el error se detecte cuando todavía es barato corregirlo.</p>
+      <div class="scale-grid">
+        <article class="scale-card">
+          <span class="scale-level">Fase 1 · Planeación y conceptualización</span>
+          <h4>El estudio arranca con el alcance ya acordado</h4>
+          <p>Cada aporte de Ecopetrol se registra, se cruza con el Anexo 5 y la HSE-G-163, y se traduce en reglas de formulario, campos de la GDB o requisitos de revisión — antes de movilizar el equipo.</p>
+          <p class="scale-why">Un aporte solo se cierra cuando el ajuste queda incorporado, validado y registrado en la matriz de control.</p>
+        </article>
+        <article class="scale-card">
+          <span class="scale-level">Fase 2 · Pre-campo</span>
+          <h4>La GDB y los mapas llegan listos antes de salir</h4>
+          <p>Se verifican las fuentes geográficas corporativas de Ecopetrol para no duplicar información, se presentan las metodologías al área SIG y se generan los mapas temáticos base que guían la campaña.</p>
+          <p class="scale-why">El equipo sale a campo con la estructura del MAG ANLA ya cargada en los formularios.</p>
+        </article>
+        <article class="scale-card">
+          <span class="scale-level">Fase 3 · Campo</span>
+          <h4>El control ocurre mientras se captura, no después</h4>
+          <p>Formularios sin conexión, curvas de acumulación en tiempo real y protocolos diferenciados según conectividad, acceso o sensibilidad ambiental de la zona.</p>
+          <p class="scale-why">Cada captura espacial se registra en MAGNA-SIRGAS origen nacional desde el origen — no se transforma después.</p>
+        </article>
+        <article class="scale-card">
+          <span class="scale-level">Fase 4 · Post-campo</span>
+          <h4>La geodatabase se certifica antes de que la vea la autoridad</h4>
+          <p>Revisión de coherencia interdisciplinaria, matriz de validación GDB-documento e informe general de calidad geográfica conforme a los Anexos 50 a 57, antes de la verificación final con VALIDA_APP.</p>
+          <p class="scale-why">Cada hallazgo se corrige aquí, no en la respuesta a un requerimiento de la ANLA.</p>
+        </article>
       </div>
     </div>
 
@@ -164,31 +261,74 @@
         <span class="diag-stat-badge">Se acuerda en la conceptualización</span>
       </div>
       <div class="route-grid">
-        <article class="route-card">
-          <span class="route-tag">Ruta A</span>
-          <h4>PMA / PMAE e informes de cumplimiento</h4>
-          <p><b>Alcance.</b> Se parte del acto administrativo, el PMA vigente, sus programas, fichas, obligaciones, indicadores, frecuencias y puntos de monitoreo. Se construye la matriz obligación–medida–indicador–soporte–GDB.</p>
-          <p><b>Ejecución.</b> Captura periódica de evidencias con QField y GEOTAC, permanencia de identificadores y coordenadas entre momentos de monitoreo, coherencia de los informes de laboratorio.</p>
-          <p><b>Cierre.</b> Correspondencia verificada entre obligación, actividad ejecutada, indicador, resultado, soporte, mapa y registro de la GDB.</p>
+        <article class="route-card hold-to-reveal" tabindex="0">
+          <span class="route-tag" style="color: #97A419;">Ruta A</span>
+          <h4>PMAE, monitoreos y estudios específicos</h4>
+          <div class="hold-indicator mono"><span class="pulse-dot-small"></span> Pasa el mouse para ver el detalle</div>
+          <div class="route-content">
+            <p><b>Alcance.</b> Se parte del documento base vigente (EIA o PMA), sus programas y fichas, obligaciones, indicadores, resultados históricos y los informes de Cumplimiento Ambiental. Se construye la matriz obligación–medida–indicador–soporte–GDB.</p>
+            <p><b>Ejecución.</b> Captura de evidencias con QField y GEOTAC, permanencia de identificadores y coordenadas entre momentos de monitoreo, coherencia de los informes de laboratorio y cierre de hallazgos en la matriz de seguimiento.</p>
+            <p><b>Cierre.</b> Correspondencia verificada entre obligación, actividad, indicador, resultado, soporte, mapa y registro de la GDB — paquete trazable para PMA/PMAE o Estudio Especializado.</p>
+          </div>
         </article>
-        <article class="route-card">
-          <span class="route-tag">Ruta B</span>
-          <h4>Estudios de impacto ambiental</h4>
-          <p><b>Alcance.</b> Términos de referencia, descripción del proyecto, áreas de influencia, metodologías por componente, plan de campo, permisos y restricciones territoriales, con hitos definidos para cada capítulo.</p>
-          <p><b>Ejecución.</b> Antes del campo se validan fuentes, GDB, formularios, dominios y diseño de muestreo; durante el campo, suficiencia y trazabilidad; en post-campo, la coherencia interdisciplinaria completa.</p>
-          <p><b>Cierre.</b> Revisión por pares, matriz GDB–documento, validación de anexos y controles de radicabilidad, con reunión conjunta de preentrega.</p>
+        <article class="route-card route-card--dark hold-to-reveal" tabindex="0">
+          <span class="route-tag" style="color: #FDD000;">Ruta B</span>
+          <h4 style="color: #FBFAF3;">Estudios de impacto ambiental</h4>
+          <div class="hold-indicator mono" style="color: #FDD000;"><span class="pulse-dot-small" style="background: #FDD000;"></span> Pasa el mouse para ver el detalle</div>
+          <div class="route-content">
+            <p><b>Alcance.</b> Empieza desde la propuesta, con lecciones aprendidas de estudios similares. Se revisan términos de referencia, descripción del proyecto, área de influencia preliminar, metodologías por componente, plan de campo, permisos de ingreso a predios y restricciones territoriales.</p>
+            <p><b>Ejecución.</b> Antes del campo se validan fuentes, GDB, formularios, dominios y diseño de muestreo por componente; durante el campo, suficiencia y trazabilidad; en post-campo, coherencia interdisciplinaria completa — con la Guía de Participación Ciudadana y el principio de Escazú para el componente social.</p>
+            <p><b>Cierre.</b> Revisión por pares, matriz GDB–documento, validación de anexos y controles de radicabilidad, con reunión conjunta de preentrega y un esquema interactivo de revisión constante entre GEOTEC y Ecopetrol.</p>
+          </div>
         </article>
       </div>
     </div>
 
     <div class="diag-block reveal">
       <div class="diag-head">
-        <h3>Principios operativos del modelo</h3>
-        <span class="diag-stat-badge">9 reglas no negociables</span>
+        <h3>Seis instrumentos del modelo de aseguramiento</h3>
+        <span class="diag-stat-badge">Factor 12.4.1 · activos en todas las fases</span>
       </div>
-      <figure class="figura-doc figura-doc--columna">
-        <img src="assets/figuras/principios_operativos.webp" alt="Los nueve principios operativos del modelo: coherencia integral, foco en lo significativo, trazabilidad documental, control interdisciplinario, uso responsable de tecnología e IA, adaptabilidad por ODS, cierre verificable, trazabilidad para reporte y mejora continua" loading="lazy">
-      </figure>
+      <div class="principles-3d-canvas">
+        <div class="principles-pillar-stack">
+          <div class="p-item">
+            <div class="p-pillar"><span class="p-num">1</span></div>
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+            <div class="p-line"></div>
+            <div class="p-text"><h4>Listas de chequeo por fase</h4><p>Cada fase del estudio tiene su propia lista de chequeo. Ninguna avanza sin que el líder de aseguramiento confirme el cierre de la anterior.</p></div>
+          </div>
+          <div class="p-item">
+            <div class="p-pillar"><span class="p-num">2</span></div>
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+            <div class="p-line"></div>
+            <div class="p-text"><h4>Matriz de coherencia integral</h4><p>Cruza descripción del proyecto, áreas de influencia, recursos y línea base, para que el estudio no se contradiga entre componentes.</p></div>
+          </div>
+          <div class="p-item">
+            <div class="p-pillar"><span class="p-num">3</span></div>
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon></svg></div>
+            <div class="p-line"></div>
+            <div class="p-text"><h4>Control de observaciones</h4><p>Cada observación de Ecopetrol o de GEOTEC se rastrea hasta su cierre, con responsable, fecha y evidencia del ajuste.</p></div>
+          </div>
+          <div class="p-item">
+            <div class="p-pillar"><span class="p-num">4</span></div>
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"></circle><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path></svg></div>
+            <div class="p-line"></div>
+            <div class="p-text"><h4>Revisión por pares</h4><p>Los productos de mayor complejidad técnica los revisa un profesional distinto al autor antes de llegar al supervisor de ODS.</p></div>
+          </div>
+          <div class="p-item">
+            <div class="p-pillar"><span class="p-num">5</span></div>
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+            <div class="p-line"></div>
+            <div class="p-text"><h4>Control de versiones</h4><p>Documentos, bases de datos y geodatabases mantienen historial de versión, fecha y responsable. Sin versiones paralelas.</p></div>
+          </div>
+          <div class="p-item">
+            <div class="p-pillar"><span class="p-num">6</span></div>
+            <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline></svg></div>
+            <div class="p-line"></div>
+            <div class="p-text"><h4>Matriz de cumplimiento Anexos 50-57</h4><p>Cruza producto, fuente, responsable y estado de cierre frente a los ocho procedimientos corporativos de información geográfica de Ecopetrol.</p></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -229,7 +369,7 @@
             <div class="marco-texto">
               <span class="marco-kicker">Anexo 5 · HSE-G-163 · Reglas Particulares</span>
               <h3>El estudio se ordena con los documentos del propio cliente</h3>
-              <p>No se propone un método paralelo. El Anexo 5 y la HSE-G-163 definen la elaboración del estudio, los momentos de aseguramiento, la revisión de la información cartográfica y geográfica, la preparación de entregables y el cierre documental — y sobre esa estructura se montan los controles de GEOTEC. La trazabilidad queda demostrable entre el pliego, el contrato marco, la Orden de Servicio, el PDT, los productos SIG/GDB y el cierre.</p>
+              <p>No se propone un método paralelo. El Anexo 5 y la HSE-G-163 definen la elaboración del estudio, los momentos de aseguramiento, la revisión de la información cartográfica y geográfica, la preparación de entregables y el cierre documental — y sobre esa estructura se montan los controles de <span class="brand-mark">GEOTEC</span>. La trazabilidad queda demostrable entre el pliego, el contrato marco, la Orden de Servicio, el PDT, los productos SIG/GDB y el cierre.</p>
             </div>
           </div>
         </li>
@@ -252,7 +392,7 @@
             <div class="marco-texto">
               <span class="marco-kicker">Propósito en la oferta</span>
               <h3>Mostrar correspondencia, no sobredimensionar compromisos</h3>
-              <p>La presentación del marco normativo permite explicar qué controles existen, cómo se relacionan con el modelo de GEOTEC y bajo qué condiciones se ejecutan. Los reportes especializados se activan solo cuando el producto, la ODS o Ecopetrol los requieran.</p>
+              <p>La presentación del marco normativo permite explicar qué controles existen, cómo se relacionan con el modelo de <span class="brand-mark">GEOTEC</span> y bajo qué condiciones se ejecutan. Los reportes especializados se activan solo cuando el producto, la ODS o Ecopetrol los requieran.</p>
             </div>
           </div>
         </li>
@@ -284,17 +424,110 @@
       <div class="marco-borde" aria-hidden="true"></div>
       <div class="marco-zona"></div>
     </div>
+    <!-- ================= MOTOR DE LA VERIFICABILIDAD (ZUI) ================= -->
+<div class="zui-wrapper reveal" id="zui-container">
+  <!-- Controles de navegación -->
+  <div class="zui-controls">
+    <button class="zui-btn" onclick="zui.prev()">❮ Anterior</button>
+    <span class="zui-indicator" id="zui-counter">1. El Reto</span>
+    <button class="zui-btn" onclick="zui.next()">Siguiente ❯</button>
+  </div>
 
-    <div class="diag-block reveal">
-      <div class="diag-head">
-        <h3>Anexos 50-57: estándares SIG inmersos en el aseguramiento</h3>
-        <span class="diag-stat-badge">Aplicación proporcional</span>
-      </div>
-      <figure class="diagram-showcase diagram-showcase--wide visual-replace">
-        <img src="assets/diagramas/anexos_50_57_verificabilidad_20260824.png" alt="Los Anexos 50 a 57 con su procedimiento corporativo: gobierno de la información geográfica (CTI-P-043), especificaciones técnicas de productos (CTI-P-014), entrega de productos de sensores remotos (GDI-G-038), adquisición de información geográfica (GDI-G-045), control de datos geoespaciales (GDI-I-010), control posicional (GDI-P-004), muestreo de información geográfica (GDI-P-010) y evaluación de calidad (GDI-P-011), sobre el flujo que va de los insumos SIG a la información verificable" loading="lazy">
-        <figcaption>Cada anexo se traduce en un control con nombre y procedimiento: de los insumos SIG a la entrega confiable, pasando por estándares corporativos, verificaciones, trazabilidad y metadatos. El reporte de VALIDA_APP se integra como soporte del informe general de calidad de la información geográfica.</figcaption>
-      </figure>
+  <!-- Lienzo Espacial (Canvas) -->
+  <div class="zui-canvas" id="zui-canvas">
+    
+    <!-- Nodo 1: Introducción -->
+    <div class="zui-node" id="node-intro" style="width: 800px; height: 300px; left: -400px; top: -150px; transform: translate(0, -900px) scale(1.2); text-align: center;">
+      <h4 style="color: #97A419; font-family: var(--font-mono); letter-spacing: 2px;">DESDE LA PARTE SIG</h4>
+      <h1 style="color: #FDD000; font-size: 3.5rem; line-height: 1.1; margin: 1rem 0; font-family: var(--font-display); text-transform: uppercase;">Somos el motor de la verificabilidad</h1>
+      <h3 style="color: #FBFAF3; font-size: 1.8rem; margin-bottom: 2rem;">PARA SU PROPUESTA COMERCIAL</h3>
+      <p style="color: #C7C4AE; font-size: 1.1rem; line-height: 1.6; max-width: 700px; margin: 0 auto;">Nuestro modelo de aseguramiento convierte cada control en información verificable, trazable y confiable, alineado con los Procedimientos Corporativos de Información Geográfica (Adendo 3 — Anexos 50 a 57).</p>
     </div>
+
+  <!-- Nodo 2: Insumos -->
+    <div class="zui-node" id="node-insumos" style="width: 450px; height: 400px; left: -225px; top: -200px; transform: translate(-1000px, 0) scale(1.1);">
+      <h3 class="zui-title" style="margin-bottom: 1rem;">1. INSUMOS SIG</h3>
+      
+      <div class="insumos-bento">
+        <!-- Tarjeta 1 -->
+        <div class="insumo-card tilt-card">
+          <div class="insumo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12a10 10 0 0 0 20 0"></path><path d="M12 2a10 10 0 0 0 0 20"></path><path d="M2 12h20"></path><path d="M12 2v20"></path><circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <div class="insumo-text">
+            <h4>Datos Satelitales</h4>
+            <p>Modelos digitales de elevación e imágenes.</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="insumo-card tilt-card">
+          <div class="insumo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle><path d="M12 22v-4"></path>
+            </svg>
+          </div>
+          <div class="insumo-text">
+            <h4>Información de Campo</h4>
+            <p>Coordenadas, atributos y metadatos EXIF.</p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="insumo-card tilt-card">
+          <div class="insumo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+          </div>
+          <div class="insumo-text">
+            <h4>Fuentes Oficiales</h4>
+            <p>Cartografía base y bases de datos Ecopetrol.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nodo 3: El Motor -->
+    <div class="zui-node" id="node-motor" style="width: 445px; height: 445px; left: -260px; top: -190px; transform: translate(0, 0) scale(1.6);">
+      <div class="zui-core">
+        <div class="core-ring"></div>
+        <h2 style="color: #FDD000; font-size: 1.5rem; text-align:center; margin-bottom: 1rem;">ASEGURAMIENTO SIG BAJO PROCEDIMIENTOS CORPORATIVOS</h2>
+        <p style="color: #FBFAF3; text-align:center; font-size: 0.9rem;">Convertimos datos en decisiones seguras mediante controles alineados a los procedimientos corporativos de Ecopetrol.</p>
+      </div>
+      <div class="core-result-box" style="bottom: -110px;">✅ INFORMACIÓN VERIFICABLE, TRAZABLE Y CONFIABLE PARA DECISIONES SEGURAS</div>
+    </div>
+
+    <!-- Nodo 4: Los Anexos -->
+    <div class="zui-node" id="node-anexos" style="width: 960px; height: 750px; left: -480px; top: -375px; transform: translate(1500px, 0) scale(1.1);">
+      <h3 class="zui-title">ENTREGABLES VERIFICABLES</h3>
+      <div class="zui-anexos-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>50</strong> <span>GOBIERNO DE LA INFO (CTI-P-043)</span></div><p>Roles de productor, responsable y gestor de metadatos. Custodia y entrega de la información original a Ecopetrol.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>51</strong> <span>ESPECIFICACIONES TÉCNICAS (CTI-P-014)</span></div><p>Productos (GDB, salidas cartográficas, sensores remotos) con estándares cartográficos de Ecopetrol y metadatos ANLA estructurados según ISO 19115.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>52</strong> <span>SENSORES REMOTOS (GDI-G-038)</span></div><p>Entregas completas, oficiales y finales en MAGNA-SIRGAS origen nacional, según nomenclatura y lineamientos.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>53</strong> <span>ADQUISICIÓN DE INFO (GDI-G-045)</span></div><p>Lista de chequeo pre-campo con consulta previa a bases y SharePoint de Ecopetrol y adquisición ante fuentes oficiales.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>54</strong> <span>CONTROL DATOS GEOESPACIALES (GDI-I-010)</span></div><p>Verificación de correspondencia del producto contra la solicitud de la ODS y revisión por muestra aleatoria de datos geoespaciales.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>55</strong> <span>CONTROL POSICIONAL (GDI-P-004)</span></div><p>Referente técnico para evaluación de exactitud posicional. Su aplicación según alcance, escala, fuente, referencias disponibles y criterios definidos por Ecopetrol.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>56</strong> <span>MUESTREO GEOGRÁFICO (GDI-P-010)</span></div><p>Referente metodológico para revisiones proporcionales de calidad SIG. Definición de población, lotes, nivel de inspección, NCA o reinspección según alcance y coordinación con aseguramiento e interventoría.</p></div>
+        <div class="anexo-pill-detailed"><div class="anexo-header"><strong>57</strong> <span>EVALUACIÓN DE CALIDAD (GDI-P-011)</span></div><p>El reporte de conformidad de VALIDA_APP se integra como soporte del Informe General de Calidad de la Información Geográfica, con alcance, métodos, resultados en metadatos y cierre de hallazgos.</p></div>
+      </div>
+    </div>
+
+    <!-- Nodo 5: Línea de tiempo -->
+    <div class="zui-node" id="node-timeline" style="width: 1000px; height: 250px; left: -500px; top: -125px; transform: translate(0, 1000px) scale(1.2);">
+      <h3 class="zui-title" style="text-align: center;">EL FLUJO DE TRABAJO</h3>
+      <div class="timeline-row">
+        <div class="time-step"><span>1</span><p>Definimos el alcance y requisitos</p></div><div class="time-arrow">➔</div>
+        <div class="time-step"><span>2</span><p>Adquirimos y preparamos la información</p></div><div class="time-arrow">➔</div>
+        <div class="time-step"><span>3</span><p>Ejecutamos controles bajo Anexos 50 a 57</p></div><div class="time-arrow">➔</div>
+        <div class="time-step"><span>4</span><p>Documentamos y generamos evidencia</p></div><div class="time-arrow">➔</div>
+        <div class="time-step" style="border-color:#FDD000;"><span>5</span><p style="color:#FDD000;">Entregamos información verificable</p></div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="assurance-row reveal">
       <div>
@@ -312,7 +545,7 @@
     <div class="section-head reveal">
       <p class="eyebrow">Equipo y criterio profesional</p>
       <h2>La tecnología escala el criterio profesional, no lo reemplaza</h2>
-      <p>Cada validador, cada formulario y cada automatización nació de problemas reales identificados en campo y en procesos de validación con la ANLA — no son desarrollos genéricos. GEOTEC participa en las etapas críticas de decisión del estudio (revisión de alcances, validación de insumos, mesas de avance y cierre de expediente) como interlocutor técnico, no solo como ejecutor.</p>
+      <p>Cada validador, cada formulario y cada automatización nació de problemas reales identificados en campo y en procesos de validación con la ANLA — no son desarrollos genéricos. <span class="brand-mark">GEOTEC</span> participa en las etapas críticas de decisión del estudio (revisión de alcances, validación de insumos, mesas de avance y cierre de expediente) como interlocutor técnico, no solo como ejecutor.</p>
     </div>
 
     <div class="diag-block reveal">
@@ -328,55 +561,139 @@
         <article class="rol-lamina" aria-roledescription="lámina" aria-label="Rol 1 de 6">
           <div class="rol-panel rol-panel--titulo" data-par="-16">
             <div class="rol-caja">
-              <svg viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rol-arte" aria-hidden="true">
-      <rect x="76" y="18" width="48" height="30" rx="4" stroke="var(--olive)" stroke-width="2.4"/>
-      <path d="M100 48v26M40 100V74h120v26" stroke="var(--olive)" stroke-width="2.4"/>
-      <rect x="16" y="100" width="48" height="30" rx="4" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <rect x="76" y="100" width="48" height="30" rx="4" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <rect x="136" y="100" width="48" height="30" rx="4" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <path d="M100 130v26" stroke="var(--olive-line)" stroke-width="2.2" stroke-dasharray="4 5"/>
-      <circle cx="100" cy="168" r="10" stroke="var(--mustard)" stroke-width="2.6"/>
-    </svg>
+              <svg viewBox="0 0 160 160" fill="none" class="rol-arte" aria-hidden="true">
+                <defs>
+                  <linearGradient id="grad-rol1-a" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FDD000" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#97A419" stop-opacity="0.12"/>
+                  </linearGradient>
+                  <linearGradient id="grad-rol1-b" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#97A419" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.5"/>
+                  </linearGradient>
+                </defs>
+                <!-- Anillos orbitales de coordinación estratégica -->
+                <circle cx="80" cy="80" r="72" stroke="#97A419" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.4"/>
+                <circle cx="80" cy="80" r="54" stroke="#FDD000" stroke-width="1" opacity="0.25"/>
+                <!-- Líneas jerárquicas conectoras -->
+                <path d="M80 54 V82 M80 82 H36 V102 M80 82 H124 V102 M80 82 V102" stroke="#AEC832" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- Nodo Director General (Superior) -->
+                <rect x="50" y="14" width="60" height="40" rx="10" fill="url(#grad-rol1-a)" stroke="#FDD000" stroke-width="2.4"/>
+                <!-- Estrella insignia de liderazgo -->
+                <path d="M80 22 L82.5 28.5 L89 29 L84 33.5 L85.5 40 L80 36.5 L74.5 40 L76 33.5 L71 29 L77.5 28.5 Z" fill="#FDD000"/>
+                <circle cx="80" cy="46" r="3.2" fill="#FBFAF3"/>
+                <path d="M70 51 C70 47 74 45 80 45 C86 45 90 47 90 51" stroke="#FBFAF3" stroke-width="1.8" stroke-linecap="round"/>
+                <!-- Tres nodos de coordinación por frente -->
+                <rect x="18" y="102" width="36" height="28" rx="6" fill="url(#grad-rol1-b)" stroke="#AEC832" stroke-width="1.8"/>
+                <circle cx="36" cy="111" r="3.2" fill="#AEC832"/>
+                <path d="M28 121 C28 117 31 116 36 116 C41 116 44 117 44 121" stroke="#AEC832" stroke-width="1.4" stroke-linecap="round"/>
+                <rect x="62" y="102" width="36" height="28" rx="6" fill="url(#grad-rol1-b)" stroke="#AEC832" stroke-width="1.8"/>
+                <circle cx="80" cy="111" r="3.2" fill="#AEC832"/>
+                <path d="M72 121 C72 117 75 116 80 116 C85 116 88 117 88 121" stroke="#AEC832" stroke-width="1.4" stroke-linecap="round"/>
+                <rect x="106" y="102" width="36" height="28" rx="6" fill="url(#grad-rol1-b)" stroke="#AEC832" stroke-width="1.8"/>
+                <circle cx="124" cy="111" r="3.2" fill="#AEC832"/>
+                <path d="M116 121 C116 117 119 116 124 116 C129 116 132 117 132 121" stroke="#AEC832" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Punto de control activo en la base -->
+                <circle cx="80" cy="144" r="9" fill="#23261C" stroke="#FDD000" stroke-width="2.2"/>
+                <path d="M76 144 L79 147 L85 141" stroke="#FDD000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
               <h4>Director <span class="rol-emph">o coordinador</span><br><span class="rol-cola">del estudio</span></h4>
               <p class="rol-meta">Rol 01 / 06</p>
             </div>
           </div>
           <div class="rol-panel rol-panel--texto" data-par="22">
             <div class="rol-caja">
-              <p class="rol-parrafo">Responsable del cumplimiento técnico, contractual y del Plan Detallado de Trabajo. Es la contraparte única frente al supervisor de la orden de servicio.</p>
+              <p class="rol-parrafo">Responsable del cumplimiento técnico, contractual y del Plan Detallado de Trabajo. Activa los puntos de control por fase, consolida observaciones y verifica su cierre antes de cada entrega.</p>
             </div>
           </div>
         </article>
         <article class="rol-lamina" aria-roledescription="lámina" aria-label="Rol 2 de 6">
           <div class="rol-panel rol-panel--titulo" data-par="-16">
             <div class="rol-caja">
-              <svg viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rol-arte" aria-hidden="true">
-      <rect x="34" y="20" width="106" height="140" rx="6" stroke="var(--olive)" stroke-width="2.4"/>
-      <rect x="70" y="10" width="34" height="20" rx="4" stroke="var(--olive)" stroke-width="2.2"/>
-      <path d="M52 62l7 7 13-15M52 96l7 7 13-15M52 130l7 7 13-15" stroke="var(--mustard)" stroke-width="2.6"/>
-      <path d="M88 62h34M88 96h34M88 130h22" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <circle cx="152" cy="140" r="26" stroke="var(--olive)" stroke-width="2.4"/>
-      <path d="M141 140l8 8 15-17" stroke="var(--mustard)" stroke-width="2.8"/>
-    </svg>
-              <h4>Líder de <span class="rol-emph">aseguramiento</span><br><span class="rol-cola">de calidad</span></h4>
+              <svg viewBox="0 0 160 160" fill="none" class="rol-arte" aria-hidden="true">
+                <defs>
+                  <linearGradient id="grad-rol2-m1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#97A419" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.6"/>
+                  </linearGradient>
+                  <linearGradient id="grad-rol2-m2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#AEC832" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.6"/>
+                  </linearGradient>
+                  <linearGradient id="grad-rol2-m3" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FDD000" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.6"/>
+                  </linearGradient>
+                </defs>
+                <!-- Triángulo de conexión entre los tres medios -->
+                <polygon points="46,50 114,50 80,116" stroke="#97A419" stroke-width="1.8" stroke-dasharray="3 4" opacity="0.45"/>
+                <!-- Medio Abiótico (Físico / Geología / Montaña) -->
+                <circle cx="46" cy="46" r="26" fill="url(#grad-rol2-m1)" stroke="#AEC832" stroke-width="2"/>
+                <circle cx="38" cy="36" r="4" fill="#FDD000"/>
+                <path d="M28 56 L42 38 L54 52 L60 46 L66 56 Z" fill="#4F5927" stroke="#AEC832" stroke-width="1.6" stroke-linejoin="round"/>
+                <!-- Medio Biótico (Flora / Fauna / Hoja) -->
+                <circle cx="114" cy="46" r="26" fill="url(#grad-rol2-m2)" stroke="#AEC832" stroke-width="2"/>
+                <path d="M104 56 C104 38 122 36 126 34 C126 48 116 58 104 56 Z" fill="#97A419" fill-opacity="0.5" stroke="#FBFAF3" stroke-width="1.8"/>
+                <path d="M107 54 Q116 46 123 37 M114 47 L120 49 M111 51 L116 53" stroke="#FBFAF3" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- Medio Socioeconómico (Comunidad / Personas) -->
+                <circle cx="80" cy="116" r="26" fill="url(#grad-rol2-m3)" stroke="#FDD000" stroke-width="2"/>
+                <circle cx="73" cy="108" r="4" fill="#FBFAF3"/>
+                <path d="M64 124 C64 117 68 115 73 115 C78 115 82 117 82 124" stroke="#FBFAF3" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="87" cy="109" r="3.5" fill="#FDD000"/>
+                <path d="M80 124 C80 119 83 117 87 117 C91 117 94 119 94 124" stroke="#FDD000" stroke-width="1.6" stroke-linecap="round"/>
+                <!-- Insignia central de convergencia técnica -->
+                <circle cx="80" cy="70" r="14" fill="#23261C" stroke="#FDD000" stroke-width="2.2"/>
+                <path d="M74 70 L78 74 L86 66" stroke="#FDD000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <h4>Líderes <span class="rol-emph">técnicos</span><br><span class="rol-cola">por medio</span></h4>
               <p class="rol-meta">Rol 02 / 06</p>
             </div>
           </div>
           <div class="rol-panel rol-panel--texto" data-par="22">
             <div class="rol-caja">
-              <p class="rol-parrafo">Activa los puntos de control por fase, consolida observaciones y verifica su cierre antes de cada entrega. Ninguna fase avanza sin que confirme el chequeo anterior.</p>
+              <p class="rol-parrafo">Un líder técnico por cada medio —abiótico, biótico y socioeconómico-cultural— interviene en cada fase del proyecto según el requerimiento del componente.</p>
             </div>
           </div>
         </article>
         <article class="rol-lamina" aria-roledescription="lámina" aria-label="Rol 3 de 6">
           <div class="rol-panel rol-panel--titulo" data-par="-16">
             <div class="rol-caja">
-              <svg viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rol-arte" aria-hidden="true">
-      <path d="M100 24l72 34-72 34-72-34 72-34z" stroke="var(--olive)" stroke-width="2.4"/>
-      <path d="M28 92l72 34 72-34" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <path d="M28 126l72 34 72-34" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <circle cx="100" cy="58" r="9" stroke="var(--mustard)" stroke-width="2.6"/>
-    </svg>
+              <svg viewBox="0 0 160 160" fill="none" class="rol-arte" aria-hidden="true">
+                <defs>
+                  <linearGradient id="grad-rol3-c1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#97A419" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.6"/>
+                  </linearGradient>
+                  <linearGradient id="grad-rol3-c2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FDD000" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#97A419" stop-opacity="0.1"/>
+                  </linearGradient>
+                </defs>
+                <!-- Capa 1: Base de coordenadas y grilla -->
+                <path d="M80 96 L136 120 L80 144 L24 120 Z" fill="url(#grad-rol3-c1)" stroke="#4F5927" stroke-width="1.8"/>
+                <line x1="52" y1="108" x2="108" y2="132" stroke="#97A419" stroke-width="1" opacity="0.6"/>
+                <line x1="108" y1="108" x2="52" y2="132" stroke="#97A419" stroke-width="1" opacity="0.6"/>
+                <!-- Capa 2: Cobertura de zonificación temática -->
+                <path d="M80 66 L136 90 L80 114 L24 90 Z" fill="url(#grad-rol3-c1)" stroke="#AEC832" stroke-width="2"/>
+                <polygon points="56,84 76,76 96,86 78,98 52,94" fill="#97A419" fill-opacity="0.4" stroke="#FDD000" stroke-width="1.4"/>
+                <polygon points="98,85 118,78 126,88 106,95" fill="#AEC832" fill-opacity="0.3" stroke="#AEC832" stroke-width="1.2"/>
+                <!-- Capa 3: Puntos de control MAG y Pin -->
+                <path d="M80 36 L136 60 L80 84 L24 60 Z" fill="url(#grad-rol3-c2)" stroke="#FBFAF3" stroke-width="2"/>
+                <ellipse cx="80" cy="60" rx="18" ry="8" stroke="#FDD000" stroke-width="1.2" stroke-dasharray="2 3"/>
+                <ellipse cx="80" cy="60" rx="9" ry="4" stroke="#FDD000" stroke-width="1.2"/>
+                <!-- Pin de Geolocalización 3D -->
+                <g transform="translate(80, 50)">
+                  <path d="M0 -22 C-7 -22 -11 -17 -11 -11 C-11 -3 0 8 0 8 C0 8 11 -3 11 -11 C11 -17 7 -22 0 -22 Z" fill="#FDD000" stroke="#23261C" stroke-width="1.5"/>
+                  <circle cx="0" cy="-11" r="3.5" fill="#23261C"/>
+                </g>
+                <!-- Cilindro Geodatabase (GDB) -->
+                <g transform="translate(122, 100)">
+                  <ellipse cx="14" cy="6" rx="14" ry="6" fill="#97A419" stroke="#FDD000" stroke-width="1.6"/>
+                  <path d="M0 6 V22 C0 25.3 6.3 28 14 28 C21.7 28 28 25.3 28 22 V6" fill="#23261C" stroke="#FDD000" stroke-width="1.6"/>
+                  <path d="M0 14 C0 17.3 6.3 20 14 20 C21.7 20 28 17.3 28 14" stroke="#AEC832" stroke-width="1.2"/>
+                  <circle cx="14" cy="21" r="1.5" fill="#FDD000"/>
+                </g>
+              </svg>
               <h4>Especialista <span class="rol-emph">SIG / GDB</span><br><span class="rol-cola">del proyecto</span></h4>
               <p class="rol-meta">Rol 03 / 06</p>
             </div>
@@ -390,13 +707,43 @@
         <article class="rol-lamina" aria-roledescription="lámina" aria-label="Rol 4 de 6">
           <div class="rol-panel rol-panel--titulo" data-par="-16">
             <div class="rol-caja">
-              <svg viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rol-arte" aria-hidden="true">
-      <path d="M58 96c0-20 14-34 34-34 0 20-14 34-34 34zM58 96v34" stroke="var(--olive)" stroke-width="2.4"/>
-      <path d="M142 62c9 13 14 22 14 29a14 14 0 0 1-28 0c0-7 5-16 14-29z" stroke="var(--olive)" stroke-width="2.4"/>
-      <circle cx="100" cy="150" r="12" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <path d="M76 178c4-11 13-17 24-17s20 6 24 17" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <path d="M34 30h132" stroke="var(--mustard)" stroke-width="2.6"/>
-    </svg>
+              <svg viewBox="0 0 160 160" fill="none" class="rol-arte" aria-hidden="true">
+                <defs>
+                  <linearGradient id="grad-rol4" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#97A419" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.6"/>
+                  </linearGradient>
+                </defs>
+                <!-- Hexágono exterior de especialidades -->
+                <polygon points="80,12 138,45 138,115 80,148 22,115 22,45" fill="url(#grad-rol4)" stroke="#AEC832" stroke-width="2"/>
+                <line x1="80" y1="12" x2="80" y2="148" stroke="#4F5927" stroke-width="1.6" stroke-dasharray="4 4"/>
+                <line x1="22" y1="80" x2="138" y2="80" stroke="#4F5927" stroke-width="1.6" stroke-dasharray="4 4"/>
+                <!-- Flora / Vegetación (Arriba Izq) -->
+                <g transform="translate(42, 34)">
+                  <path d="M12 28 C12 14 24 10 26 8 C26 20 18 28 12 28 Z" fill="#AEC832" fill-opacity="0.5" stroke="#FBFAF3" stroke-width="1.6"/>
+                  <line x1="14" y1="26" x2="24" y2="11" stroke="#FBFAF3" stroke-width="1.2"/>
+                </g>
+                <!-- Agua / Hidrología (Arriba Der) -->
+                <g transform="translate(94, 34)">
+                  <path d="M18 10 C18 10 28 22 28 28 C28 34 23 38 18 38 C13 38 8 34 8 28 C8 22 18 10 18 10 Z" fill="#97A419" fill-opacity="0.4" stroke="#FDD000" stroke-width="1.6"/>
+                  <path d="M15 25 C15 22 21 18 21 18" stroke="#FBFAF3" stroke-width="1.2" stroke-linecap="round"/>
+                </g>
+                <!-- Fauna / Ecosistemas (Abajo Izq) -->
+                <g transform="translate(40, 92)">
+                  <path d="M6 22 Q16 12 26 18 Q36 12 46 22 Q34 16 26 24 Q18 16 6 22 Z" fill="#FDD000" fill-opacity="0.75" stroke="#FDD000" stroke-width="1.5"/>
+                </g>
+                <!-- Zonificación / Impactos (Abajo Der) -->
+                <g transform="translate(96, 92)">
+                  <circle cx="18" cy="18" r="14" stroke="#AEC832" stroke-width="1.5"/>
+                  <circle cx="18" cy="18" r="7" stroke="#FDD000" stroke-width="1.2"/>
+                  <circle cx="18" cy="18" r="2.5" fill="#FBFAF3"/>
+                  <line x1="18" y1="0" x2="18" y2="36" stroke="#AEC832" stroke-width="1.2" stroke-dasharray="2 2"/>
+                  <line x1="0" y1="18" x2="36" y2="18" stroke="#AEC832" stroke-width="1.2" stroke-dasharray="2 2"/>
+                </g>
+                <!-- Núcleo central de integración -->
+                <circle cx="80" cy="80" r="10" fill="#23261C" stroke="#FDD000" stroke-width="2.2"/>
+                <circle cx="80" cy="80" r="4" fill="#FDD000"/>
+              </svg>
               <h4>Especialistas <span class="rol-emph">temáticos</span><br><span class="rol-cola">por componente</span></h4>
               <p class="rol-meta">Rol 04 / 06</p>
             </div>
@@ -410,33 +757,93 @@
         <article class="rol-lamina" aria-roledescription="lámina" aria-label="Rol 5 de 6">
           <div class="rol-panel rol-panel--titulo" data-par="-16">
             <div class="rol-caja">
-              <svg viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rol-arte" aria-hidden="true">
-      <path d="M26 54h52l10 14h86v96a8 8 0 0 1-8 8H34a8 8 0 0 1-8-8V54z" stroke="var(--olive)" stroke-width="2.4"/>
-      <path d="M26 92h148" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <path d="M52 118h60M52 140h44" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <circle cx="146" cy="130" r="16" stroke="var(--mustard)" stroke-width="2.6"/>
-      <path d="M146 122v9l6 4" stroke="var(--mustard)" stroke-width="2.4"/>
-    </svg>
-              <h4>Gestión <span class="rol-emph">documental</span><br><span class="rol-cola">del expediente</span></h4>
+              <svg viewBox="0 0 160 160" fill="none" class="rol-arte" aria-hidden="true">
+                <defs>
+                  <linearGradient id="grad-rol5-folder" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#97A419" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#23261C" stop-opacity="0.6"/>
+                  </linearGradient>
+                  <linearGradient id="grad-rol5-doc" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#FBFAF3" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#E5E2D8" stop-opacity="0.85"/>
+                  </linearGradient>
+                </defs>
+                <!-- Pestaña posterior de expediente -->
+                <path d="M22 42 H56 L66 52 H128 C132 52 136 56 136 60 V126 C136 130 132 134 128 134 H22 C18 134 14 130 14 126 V50 C14 46 18 42 22 42 Z" fill="#23261C" stroke="#4F5927" stroke-width="2"/>
+                <!-- Hoja técnica foliada -->
+                <g transform="translate(36, 22)">
+                  <rect x="0" y="0" width="68" height="88" rx="4" fill="url(#grad-rol5-doc)" stroke="#AEC832" stroke-width="1.8"/>
+                  <path d="M52 0 L68 16 H56 C53.8 16 52 14.2 52 12 V0 Z" fill="#AEC832"/>
+                  <line x1="12" y1="18" x2="42" y2="18" stroke="#4F5927" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="12" y1="28" x2="56" y2="28" stroke="#23261C" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+                  <line x1="12" y1="36" x2="56" y2="36" stroke="#23261C" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+                  <line x1="12" y1="44" x2="48" y2="44" stroke="#23261C" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+                  <line x1="12" y1="52" x2="52" y2="52" stroke="#23261C" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+                </g>
+                <!-- Frente de la carpeta técnica -->
+                <path d="M14 68 H138 V126 C138 131 134 135 129 135 H23 C18 135 14 131 14 126 V68 Z" fill="url(#grad-rol5-folder)" stroke="#AEC832" stroke-width="2"/>
+                <!-- Sello de certificación y trazabilidad -->
+                <g transform="translate(106, 98)">
+                  <circle cx="18" cy="18" r="20" fill="#23261C" stroke="#FDD000" stroke-width="2.4"/>
+                  <circle cx="18" cy="18" r="16" stroke="#AEC832" stroke-width="1" stroke-dasharray="2 3"/>
+                  <path d="M10 18 L15 23 L26 12" stroke="#FDD000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <rect x="26" y="82" width="46" height="13" rx="4" fill="#23261C" stroke="#FDD000" stroke-width="1.2"/>
+                <text x="31" y="92" fill="#FDD000" font-family="monospace" font-size="8" font-weight="bold">REV. OK</text>
+              </svg>
+              <h4>Gestión <span class="rol-emph">documental</span><br><span class="rol-cola">y de cumplimiento</span></h4>
               <p class="rol-meta">Rol 05 / 06</p>
             </div>
           </div>
           <div class="rol-panel rol-panel--texto" data-par="22">
             <div class="rol-caja">
-              <p class="rol-parrafo">Orden, nomenclatura, soportes, anexos, control de versiones y cierre documental. El expediente llega a la autoridad con la estructura que espera.</p>
+              <p class="rol-parrafo">Orden, nomenclatura, soportes, anexos, control de versiones y cierre documental. Controla el Plan de Trabajo por orden de servicio, con informes semanales y alertas de desviación.</p>
             </div>
           </div>
         </article>
         <article class="rol-lamina" aria-roledescription="lámina" aria-label="Rol 6 de 6">
           <div class="rol-panel rol-panel--titulo" data-par="-16">
             <div class="rol-caja">
-              <svg viewBox="0 0 200 200" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rol-arte" aria-hidden="true">
-      <rect x="22" y="34" width="156" height="106" rx="7" stroke="var(--olive)" stroke-width="2.4"/>
-      <path d="M78 140v22M122 140v22M62 172h76" stroke="var(--olive-line)" stroke-width="2.2"/>
-      <path d="M48 112V88M74 112V70M100 112V96M126 112V62" stroke="var(--olive-line)" stroke-width="3"/>
-      <path d="M152 112V78" stroke="var(--mustard)" stroke-width="3"/>
-      <path d="M42 60h44" stroke="var(--olive-line)" stroke-width="2.2" stroke-dasharray="3 5"/>
-    </svg>
+              <svg viewBox="0 0 160 160" fill="none" class="rol-arte" aria-hidden="true">
+                <defs>
+                  <linearGradient id="grad-rol6-screen" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#282D1D"/>
+                    <stop offset="100%" stop-color="#181A12"/>
+                  </linearGradient>
+                  <linearGradient id="grad-rol6-bars" x1="0%" y1="100%" x2="0%" y2="0%">
+                    <stop offset="0%" stop-color="#4F5927"/>
+                    <stop offset="50%" stop-color="#97A419"/>
+                    <stop offset="100%" stop-color="#FDD000"/>
+                  </linearGradient>
+                </defs>
+                <!-- Monitor / Consola de analítica -->
+                <rect x="14" y="24" width="132" height="92" rx="8" fill="url(#grad-rol6-screen)" stroke="#AEC832" stroke-width="2"/>
+                <line x1="14" y1="38" x2="146" y2="38" stroke="#4F5927" stroke-width="1.5"/>
+                <!-- Indicadores de estado -->
+                <circle cx="26" cy="31" r="2.5" fill="#FDD000"/>
+                <circle cx="34" cy="31" r="2.5" fill="#AEC832"/>
+                <circle cx="42" cy="31" r="2.5" fill="#97A419"/>
+                <line x1="54" y1="31" x2="90" y2="31" stroke="#AEC832" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <!-- Barras de métricas ascendentes -->
+                <rect x="28" y="86" width="12" height="20" rx="2" fill="url(#grad-rol6-bars)"/>
+                <rect x="46" y="74" width="12" height="32" rx="2" fill="url(#grad-rol6-bars)"/>
+                <rect x="64" y="62" width="12" height="44" rx="2" fill="url(#grad-rol6-bars)"/>
+                <rect x="82" y="52" width="12" height="54" rx="2" fill="url(#grad-rol6-bars)"/>
+                <rect x="100" y="44" width="12" height="62" rx="2" fill="url(#grad-rol6-bars)"/>
+                <!-- Curva analítica suave de tendencia -->
+                <path d="M26 94 Q48 76 68 62 T108 42 T132 38" stroke="#FBFAF3" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="108" cy="42" r="4.5" fill="#FDD000" stroke="#23261C" stroke-width="1.5"/>
+                <circle cx="108" cy="42" r="8" stroke="#FDD000" stroke-width="1" stroke-dasharray="2 2"/>
+                <!-- Soporte de monitor -->
+                <path d="M66 116 L60 134 H100 L94 116 Z" fill="#23261C" stroke="#AEC832" stroke-width="1.6"/>
+                <line x1="50" y1="134" x2="110" y2="134" stroke="#FDD000" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Engranaje de automatización / Python Toolbox -->
+                <g transform="translate(124, 16)">
+                  <circle cx="16" cy="16" r="14" fill="#23261C" stroke="#FDD000" stroke-width="2"/>
+                  <circle cx="16" cy="16" r="5" fill="#FDD000"/>
+                  <path d="M16 0 V6 M16 26 V32 M0 16 H6 M26 16 H32 M5 5 L9 9 M23 23 L27 27 M5 27 L9 23 M23 9 L27 5" stroke="#FDD000" stroke-width="2.5" stroke-linecap="round"/>
+                </g>
+              </svg>
               <h4>Apoyo digital <span class="rol-emph">y analítica</span><br><span class="rol-cola">transversal</span></h4>
               <p class="rol-meta">Rol 06 / 06</p>
             </div>
@@ -571,6 +978,42 @@
     <figcaption>La respuesta es operativa: digitalizar la captura traslada el control de calidad al momento en que nace el dato, incluso sin conexión y con acceso restringido.</figcaption>
     </figure>
 
+    <div class="diag-block reveal" style="margin-top:3rem;" id="areas-dificiles">
+      <div class="diag-head">
+        <h3>Estrategias de captura en áreas de difícil acceso</h3>
+        <span class="diag-stat-badge">Factor 12.4.4 · criterio 2 del pliego</span>
+      </div>
+      <p class="scale-lede">No toda área se captura igual. Cuando la conectividad, el acceso, la sensibilidad ambiental o las condiciones sociales lo impiden, GEOTEC activa un protocolo específico — sin dejar de garantizar la representatividad de la información.</p>
+      <div class="scale-grid">
+        <article class="scale-card">
+          <span class="scale-level">Ausencia o intermitencia de conectividad</span>
+          <h4>Captura totalmente sin conexión</h4>
+          <p>Los dominios del modelo quedan precargados en el dispositivo antes de salir a campo.</p>
+          <p class="scale-why">Formularios digitales con almacenamiento local y sincronización diferida al recuperar señal.</p>
+        </article>
+        <article class="scale-card">
+          <span class="scale-level">Imposibilidad de acceso terrestre</span>
+          <h4>Protocolo adaptado a acceso aéreo o fluvial</h4>
+          <p>Formularios reducidos, pensados para jornadas cortas cuando el desplazamiento es la principal restricción.</p>
+          <p class="scale-why">Priorización de puntos, registro fotográfico georreferenciado y respaldo diario de la información.</p>
+        </article>
+        <article class="scale-card">
+          <span class="scale-level">Alta sensibilidad ambiental</span>
+          <h4>Captura de mínima huella</h4>
+          <p>Validación de coordenadas en el sistema oficial en el momento mismo de la toma del dato.</p>
+          <p class="scale-why">Registro en MAGNA-SIRGAS origen nacional y verificación de la posición antes de cerrar el punto.</p>
+        </article>
+        <article class="scale-card">
+          <span class="scale-level">Conflictividad social o restricciones de seguridad</span>
+          <h4>Protocolo simplificado con sabedores locales</h4>
+          <p>Apoyo de líderes comunitarios entrenados en el uso de los formularios, sin comprometer estándares HSE.</p>
+          <p class="scale-why">Sincronización segura al retornar a zona controlada, conforme al Procedimiento GDE-P-008 y la Guía GDE-G-006.</p>
+        </article>
+      </div>
+      <div class="diag-note">
+        Estas cuatro estrategias no son una lista cerrada: cada territorio es distinto, y el protocolo se ajusta a la condición real identificada en la conceptualización del estudio.
+      </div>
+    </div>
 
   </div>
 </section>
@@ -586,194 +1029,343 @@
       <p>Queda la pregunta que decide una oferta técnica: con qué se hace todo esto. Lo que sigue es una muestra del portafolio —se escogieron los aplicativos que mejor explican el modelo—, con la pantalla real de cada uno y el resultado que entrega, de modo que el alcance descrito pueda contrastarse con el producto.</p>
     </div>
 
-    <article class="app-row reveal">
-      <div class="app-copy">
-        <span class="app-tag app-tag--core">Factor 12.4.1 · Eje del modelo</span>
-        <h3>VALIDA_APP</h3>
-        <p class="app-sub">Certificación de la geodatabase frente al MAG de la ANLA</p>
-        <p><b>Qué hace.</b> Recibe la geodatabase del proyecto y, de manera opcional, el archivo LEAME, el libro de metadatos, la carpeta de rásteres y una geodatabase anterior para comparar versiones. Los módulos se activan por perfil de trámite o de forma individual, organizados en diez categorías: estructura y modelo, campos y dominios, geometría y sistema de referencia, temporal y documental, geográfico y territorial, topología, compensaciones, cruce documental, reportes y los módulos de la versión más reciente. Opera en <b>modo solo lectura</b>: no modifica la geodatabase original.</p>
-        <p><b>Qué entrega.</b> Un libro de Excel por módulo ejecutado, numerado y fechado —consistencia documental, unicidad de identificadores, rangos permitidos, coherencia padre-hijo, campos obligatorios y condicionales, relaciones, dominios, LEAME, metadatos, sistema de referencia, esquema, dependencias mutuas, contenimiento en área de influencia, calidad geométrica, compensaciones y cruce documental— más un resumen ejecutivo consolidado.</p>
+            <div class="premium-apps-grid reveal">
 
-        <p><b>Contra qué valida.</b> El modelo de almacenamiento geográfico de la ANLA no es un formato: es un catálogo cerrado. Cada capa, cada campo y cada relación tienen una definición exacta, y basta una desviación para que el expediente se devuelva.</p>
-
-        <p>Su valor para Ecopetrol está en anticipar inconsistencias antes de las entregas, con evidencia verificable y controles repetibles alineados con el MAG ANLA.</p>
-
-        <div class="mag-stats">
-          <div><div class="n">242</div><div class="l">Clases de entidad</div></div>
-          <div><div class="n">308</div><div class="l">Dominios</div></div>
-          <div><div class="n">248</div><div class="l">Relaciones</div></div>
-          <div><div class="n">15</div><div class="l">Módulos de validación</div></div>
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-valida')" aria-haspopup="dialog" aria-label="Ver detalle completo de VALIDA_APP"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">VALIDA_APP</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
         </div>
-
-        <div class="window-note">
-          <span class="window-kicker">Por qué importa la velocidad</span>
-          <p>Según la respuesta de Ecopetrol a la <strong>observación 149 del Consolidado Final V4</strong>, la Minuta fija <strong>diez (10) días hábiles</strong> para las observaciones sobre el paquete completo — y ese mismo plazo comprende la primera revisión de Ecopetrol, la subsanación del contratista y la revisión final. Una validación que se resuelve en minutos y localiza el hallazgo capa por capa es lo que hace viable subsanar dentro de esa ventana compartida. Una revisión manual consumiría el plazo completo.</p>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Factor 12.4.1 &middot; Eje del modelo</span>
+          <h4>Certificación de la geodatabase frente al MAG de la ANLA</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de VALIDA_APP &rarr;</span>
         </div>
+      </article>
 
-        <p class="app-nota"><b>Cero instalación.</b> No requiere programas ni licencias en los equipos de Ecopetrol: la validación corre en el entorno de GEOTEC.</p>
-      </div>
-      <div class="app-shots app-shots--pair">
-        <figure><img src="assets/apps/valida_app.webp" alt="Pantalla principal de VALIDA_APP" loading="lazy"><figcaption>Configuración de rutas, selección de módulos por perfil de trámite y log de ejecución.</figcaption></figure>
-        <figure><img src="assets/apps/valida_app_modulos.webp" alt="Módulos de validación de VALIDA_APP agrupados por categoría" loading="lazy"><figcaption>Módulos agrupados por categoría: se activan todos o según el perfil del trámite.</figcaption></figure>
-      </div>
-    </article>
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-curvas')" aria-haspopup="dialog" aria-label="Ver detalle completo de Curvas de acumulación de especies"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">Curvas de acumulación</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Factor 12.4.4 &middot; Campo</span>
+          <h4>Suficiencia del muestreo verificada en campo</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de Curvas de acumulación de especies &rarr;</span>
+        </div>
+      </article>
 
-    <figure class="diagram-showcase diagram-showcase--wide reveal">
-      <img src="assets/diagramas/fig03_valida_app.png" alt="Comparativo de revisión manual de una GDB contra certificación automatizada en 15 minutos con VALIDA_APP" loading="lazy">
-      <figcaption>VALIDA_APP convierte una revisión manual extensa en una certificación reproducible, de solo lectura y con reporte de conformidad verificable.</figcaption>
-    </figure>
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-kmz')" aria-haspopup="dialog" aria-label="Ver detalle completo de CAMPO_KMZ y Extractor KMZ"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">CAMPO_KMZ + Extractor</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Campo y pre-campo &middot; KMZ</span>
+          <h4>Registro fotográfico consultable e integración de insumos geográficos</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de CAMPO_KMZ y Extractor KMZ &rarr;</span>
+        </div>
+      </article>
 
-    <div class="validation-map reveal">
-      <div class="validation-copy">
-        <p class="eyebrow">Cómo opera en el contrato</p>
-        <h3>Validación técnica sin prometer más de lo que la herramienta hace</h3>
-        <p>VALIDA_APP no reemplaza el criterio SIG, la revisión temática ni el aseguramiento de Ecopetrol. Lo que sí aporta es una lectura sistemática de la GDB para que el especialista concentre su tiempo en interpretar hallazgos, priorizar correcciones y dejar evidencia de cierre.</p>
-      </div>
-      <div class="validation-steps" aria-label="Flujo operativo de VALIDA_APP">
-        <div class="validation-step"><span>01</span><strong>Seleccionar módulos</strong><p>El especialista activa grupos de validación según fase y tipo de entrega.</p></div>
-        <div class="validation-step"><span>02</span><strong>Ejecutar lectura</strong><p>La herramienta consulta capas, campos, dominios, relaciones y metadatos.</p></div>
-        <div class="validation-step"><span>03</span><strong>Consolidar hallazgos</strong><p>El reporte clasifica inconsistencias para revisión SIG y cierre documental.</p></div>
-        <div class="validation-step"><span>04</span><strong>Dejar trazabilidad</strong><p>El líder de aseguramiento verifica responsables, evidencia y estado de cierre.</p></div>
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-registro')" aria-haspopup="dialog" aria-label="Ver detalle completo de Registro fotográfico a Excel"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">Registro Fotográfico</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Post-campo &middot; Documental</span>
+          <h4>Inventario del material de campo</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de Registro fotográfico a Excel &rarr;</span>
+        </div>
+      </article>
+
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-bases')" aria-haspopup="dialog" aria-label="Ver detalle completo de Bases de verificación cartográfica"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">Bases de Verificación</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Factor 12.4.1 &middot; Memoria institucional</span>
+          <h4>La experiencia de la firma, escrita como criterio</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de Bases de verificación cartográfica &rarr;</span>
+        </div>
+      </article>
+
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-gestion')" aria-haspopup="dialog" aria-label="Ver detalle completo de Gestión documental"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">Gestión Documental</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Cierre &middot; Expediente</span>
+          <h4>El expediente ordenado antes de radicarlo</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de Gestión documental &rarr;</span>
+        </div>
+      </article>
+
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-funias')" aria-haspopup="dialog" aria-label="Ver detalle completo de FUNIAS"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">FUNIAS</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Permisos &middot; Trámites</span>
+          <h4>Automatización del formulario único</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de FUNIAS &rarr;</span>
+        </div>
+      </article>
+
+      <article class="premium-app-card">
+        <button type="button" class="premium-app-hit" onclick="openAppModal('app-modal-arcgis')" aria-haspopup="dialog" aria-label="Ver detalle completo de Cajas de herramientas para ArcGIS Pro"></button>
+        <div class="ambient-glow" aria-hidden="true"></div>
+        <div class="card-content-front">
+          <h3 class="app-title-minimal">Cajas ArcGIS Pro</h3>
+          <span class="app-click-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9l6 6M9 15V9h6"></path></svg>Clic para ver el detalle</span>
+        </div>
+        <div class="card-content-reveal">
+          <span class="app-tag-outline">Automatización SIG</span>
+          <h4>37 módulos ArcPy en dos conjuntos complementarios</h4>
+          <span class="app-detail-hint">Clic para ver el detalle técnico completo de Cajas de herramientas para ArcGIS Pro &rarr;</span>
+        </div>
+      </article>
+
+    </div>
+<div id="app-modal" class="app-modal-overlay" role="dialog" aria-modal="true" aria-label="Detalle del aplicativo" onclick="if(event.target===this) closeAppModal()">
+      <div class="app-modal-panel">
+        <button type="button" class="app-modal-close" onclick="closeAppModal()" aria-label="Cerrar">&#10005;</button>
+        <div class="app-modal-body">
+
+          <div class="app-modal-content" id="app-modal-valida">
+      <article class="app-row">
+            <div class="app-copy">
+              <span class="app-tag app-tag--core">Factor 12.4.1 · Eje del modelo</span>
+              <h3>VALIDA_APP</h3>
+              <p class="app-sub">Certificación de la geodatabase frente al MAG de la ANLA</p>
+              <p><b>Qué hace.</b> Recibe la geodatabase del proyecto y, de manera opcional, el archivo LEAME, el libro de metadatos, la carpeta de rásteres y una geodatabase anterior para comparar versiones. Los módulos se activan por perfil de trámite o de forma individual, organizados en diez categorías: estructura y modelo, campos y dominios, geometría y sistema de referencia, temporal y documental, geográfico y territorial, topología, compensaciones, cruce documental, reportes y los módulos de la versión más reciente. Opera en <b>modo solo lectura</b>: no modifica la geodatabase original.</p>
+              <p><b>Qué entrega.</b> Un libro de Excel por módulo ejecutado, numerado y fechado —consistencia documental, unicidad de identificadores, rangos permitidos, coherencia padre-hijo, campos obligatorios y condicionales, relaciones, dominios, LEAME, metadatos, sistema de referencia, esquema, dependencias mutuas, contenimiento en área de influencia, calidad geométrica, compensaciones y cruce documental— más un resumen ejecutivo consolidado.</p>
+
+              <p><b>Contra qué valida.</b> El modelo de almacenamiento geográfico de la ANLA no es un formato: es un catálogo cerrado. Cada capa, cada campo y cada relación tienen una definición exacta, y basta una desviación para que el expediente se devuelva.</p>
+
+              <p>Su valor para Ecopetrol está en anticipar inconsistencias antes de las entregas, con evidencia verificable y controles repetibles alineados con el MAG ANLA.</p>
+
+              <div class="mag-stats">
+                <div><div class="n">242</div><div class="l">Clases de entidad</div></div>
+                <div><div class="n">308</div><div class="l">Dominios</div></div>
+                <div><div class="n">248</div><div class="l">Relaciones</div></div>
+                <div><div class="n">15</div><div class="l">Módulos de validación</div></div>
+              </div>
+
+              <div class="window-note">
+                <span class="window-kicker">Por qué importa la velocidad</span>
+                <p>Según la respuesta de Ecopetrol a la <strong>observación 149 del Consolidado Final V4</strong>, la Minuta fija <strong>diez (10) días hábiles</strong> para las observaciones sobre el paquete completo — y ese mismo plazo comprende la primera revisión de Ecopetrol, la subsanación del contratista y la revisión final. Una validación que se resuelve en minutos y localiza el hallazgo capa por capa es lo que hace viable subsanar dentro de esa ventana compartida. Una revisión manual consumiría el plazo completo.</p>
+              </div>
+
+              <p class="app-nota"><b>Cero instalación.</b> No requiere programas ni licencias en los equipos de Ecopetrol: la validación corre en el entorno de <span class="brand-mark">GEOTEC</span>.</p>
+
+              <div class="terminal" id="terminal" style="margin-top: 2rem;">
+                <div class="term-header">
+                  <span class="term-title">GEOTEC InnoLab — Live Sandbox</span>
+                  <div class="term-actions">
+                    <button class="term-btn" onclick="runTerminalSim('qaqc')">Ejecutar QA/QC</button>
+                    <button class="term-btn" onclick="runTerminalSim('kmz')">Extraer KMZ</button>
+                    <button class="term-btn term-btn-clear" onclick="clearTerminal()">Limpiar</button>
+                  </div>
+                </div>
+                <div class="term-body-container">
+                  <pre id="term-body" class="mono"><span class="p">&gt; </span>Sistema en espera. Seleccione un flujo para simular...<span class="cursor"></span></pre>
+                </div>
+              </div>
+            </div>
+            <div class="app-shots app-shots--pair">
+              <figure><img class="lightbox-trigger" src="assets/apps/valida_app.webp" alt="Pantalla principal de VALIDA_APP" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Configuración de rutas, selección de módulos por perfil de trámite y log de ejecución.</figcaption></figure>
+              <figure><img class="lightbox-trigger" src="assets/apps/valida_app_modulos.webp" alt="Módulos de validación de VALIDA_APP agrupados por categoría" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Módulos agrupados por categoría: se activan todos o según el perfil del trámite.</figcaption></figure>
+            </div>
+          </article>
+
+      <figure class="diagram-showcase diagram-showcase--wide">
+            <img class="lightbox-trigger" src="assets/diagramas/fig03_valida_app.png" alt="Comparativo de revisión manual de una GDB contra certificación automatizada en 15 minutos con VALIDA_APP" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+            <figcaption>VALIDA_APP convierte una revisión manual extensa en una certificación reproducible, de solo lectura y con reporte de conformidad verificable.</figcaption>
+          </figure>
+
+      <div class="validation-map">
+            <div class="validation-copy">
+              <p class="eyebrow">Cómo opera en el contrato</p>
+              <h3>Validación técnica sin prometer más de lo que la herramienta hace</h3>
+              <p>VALIDA_APP no reemplaza el criterio SIG, la revisión temática ni el aseguramiento de Ecopetrol. Lo que sí aporta es una lectura sistemática de la GDB para que el especialista concentre su tiempo en interpretar hallazgos, priorizar correcciones y dejar evidencia de cierre.</p>
+            </div>
+            <div class="validation-steps" aria-label="Flujo operativo de VALIDA_APP">
+              <div class="validation-step"><span>01</span><strong>Seleccionar módulos</strong><p>El especialista activa grupos de validación según fase y tipo de entrega.</p></div>
+              <div class="validation-step"><span>02</span><strong>Ejecutar lectura</strong><p>La herramienta consulta capas, campos, dominios, relaciones y metadatos.</p></div>
+              <div class="validation-step"><span>03</span><strong>Consolidar hallazgos</strong><p>El reporte clasifica inconsistencias para revisión SIG y cierre documental.</p></div>
+              <div class="validation-step"><span>04</span><strong>Dejar trazabilidad</strong><p>El líder de aseguramiento verifica responsables, evidencia y estado de cierre.</p></div>
+            </div>
+          </div>
+
+      <details class="accordion">
+            <summary>Ver los 15 módulos de validación y su cobertura frente al validador institucional de la ANLA <span class="chev">+</span></summary>
+            <div class="accordion-body">
+              <div class="table-scroll">
+              <table class="mini-table">
+                <thead><tr><th>N.º</th><th>Módulo</th><th>Qué verifica</th><th>Frente al validador ANLA</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>Esquema de capas MAG</td><td>Presencia de feature classes con nombre, geometría y campos correctos.</td><td class="crit yes">✓ Presencia de capas</td></tr>
+                  <tr><td>2</td><td>Campos obligatorios</td><td>Ningún campo requerido con valores equivalentes a vacío (más de 50 variantes semánticas: "n/a", "pendiente", "sin dato"…).</td><td class="crit no">✗ Solo NULL técnico</td></tr>
+                  <tr><td>3</td><td>Dominios válidos</td><td>Todo valor codificado pertenece al catálogo de la Resolución 2182.</td><td class="crit yes">✓ Cobertura completa</td></tr>
+                  <tr><td>4</td><td>Sistema de referencia espacial</td><td>Todas las capas en el mismo sistema, comparado por igualdad real, no solo por código EPSG.</td><td class="crit no">✗ Solo por código EPSG</td></tr>
+                  <tr><td>5</td><td>Coordenadas en rango válido</td><td>Las coordenadas están dentro del territorio colombiano.</td><td class="crit yes">✓ Cobertura completa</td></tr>
+                  <tr><td>6</td><td>Geometrías válidas</td><td>Sin geometrías nulas, vacías o auto-intersectantes.</td><td class="crit no">✗ Solo geometrías nulas</td></tr>
+                  <tr><td>7</td><td>Relaciones padre-hijo</td><td>Todo registro hijo tiene un padre existente. Detecta huérfanos.</td><td class="crit yes">✓ Cobertura completa</td></tr>
+                  <tr><td>8</td><td>Dependencias mutuas entre capas</td><td>Si la capa A existe, las capas B y C relacionadas también deben tener registros.</td><td class="crit no">✗ No verificado</td></tr>
+                  <tr><td>9</td><td>Unicidad de identificadores</td><td>Sin claves primarias duplicadas en capas padre.</td><td class="crit yes">✓ Cobertura completa</td></tr>
+                  <tr><td>10</td><td>Rangos numéricos</td><td>Áreas, longitudes y concentraciones dentro de rangos plausibles.</td><td class="crit yes">✓ Cobertura completa</td></tr>
+                  <tr><td>11</td><td>Actos administrativos</td><td>NUM_ACT_AD, FEC_ACT_AD y ART_ACT_AD diligenciados, coherentes entre sí.</td><td class="crit no">✗ Solo presencia del campo</td></tr>
+                  <tr><td>12</td><td>Metadatos por capa</td><td>Extensión espacial y campos de metadatos contra la GDB real.</td><td class="crit no">✗ Solo existencia del archivo</td></tr>
+                  <tr><td>13</td><td>LEAME vs. GDB real</td><td>Las capas declaradas en el LEAME existen efectivamente en la GDB.</td><td class="crit no">✗ Sin cruce LEAME–GDB</td></tr>
+                  <tr><td>14</td><td>Longitud y formato de texto</td><td>Campos de texto dentro de la longitud máxima del estándar MAG.</td><td class="crit no">✗ No validado</td></tr>
+                  <tr><td>15</td><td>Contención espacial</td><td>Las capas están contenidas dentro de UnidadTerritorial y AreaInfluencia.</td><td class="crit no">✗ No validado</td></tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </details>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-curvas">
+      <article class="app-row app-row--flip">
+            <div class="app-copy">
+              <span class="app-tag">Factor 12.4.4 · Campo</span>
+              <h3>Curvas de acumulación de especies</h3>
+              <p class="app-sub">Suficiencia del muestreo verificada en campo</p>
+              <p><b>Qué hace.</b> Responde en campo la pregunta que hasta ahora solo se resolvía semanas después en oficina: ¿el muestreo ya es suficiente? Importa los registros de la jornada, valida su consistencia y calcula las curvas de acumulación y los índices de completitud por grupo taxonómico, dejando listas las matrices de entrada para <b>iNEXT</b> y <b>EstimateS</b>.</p>
+              <p><b>Qué entrega.</b> La decisión de cerrar o extender la campaña se toma con la curva a la vista, todavía en el sitio. Ecopetrol recibe un muestreo con representatividad sustentable ante la autoridad y se evita la comisión de retorno — que es donde suele romperse el cronograma del componente biótico.</p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/curvas_acumulacion.webp" alt="Interfaz de seguimiento de suficiencia del muestreo en campo" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Importación de datos, validación, selección del grupo de fauna y generación de las curvas.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-kmz">
+      <article class="app-row">
+            <div class="app-copy">
+              <span class="app-tag">Factor 12.4.4 · Consulta</span>
+              <h3>CAMPO_KMZ</h3>
+              <p class="app-sub">Registro fotográfico consultable</p>
+              <p><b>Qué hace.</b> Toma la información de campo —capas vectoriales o tablas con coordenadas— junto con la carpeta de fotografías, y construye una geodatabase con las imágenes adjuntas y un archivo KMZ con las fotografías embebidas y una ficha por punto. Permite escoger el identificador del punto, la etiqueta visible, el filtro de puntos y el sistema de referencia de origen.</p>
+              <p><b>Qué entrega.</b> Geodatabase con adjuntos y archivo KMZ autocontenido, consultable en Google Earth, Google Maps o ArcGIS Online sin instalar programas especializados. El registro deja de ser una carpeta que solo interpreta quien estuvo en campo.</p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/campo_kmz.webp" alt="Interfaz de CAMPO_KMZ" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Selección de la fuente de datos, mapeo de campos y configuración de las salidas geoespaciales con fotografías.</figcaption></figure>
+            </div>
+          </article>
+
+      <article class="app-row">
+            <div class="app-copy">
+              <span class="app-tag">Pre-campo · Insumos</span>
+              <h3>Extractor KMZ</h3>
+              <p class="app-sub">Integración de insumos geográficos al expediente</p>
+              <p><b>Qué hace.</b> Procesa archivos KML y KMZ recibidos del cliente o levantados en campo, extrae su geometría y atributos y organiza las fotografías asociadas a cada punto en subcarpetas por registro.</p>
+              <p><b>Qué entrega.</b> Capas en formato compatible con la geodatabase y el material fotográfico ordenado por punto, listos para su integración al expediente <b>el mismo día</b> en que se recibe el insumo.</p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/extractor_kmz.webp" alt="Interfaz del Extractor KMZ" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Selección del archivo de entrada y de la carpeta matriz donde se organizan las fotografías por punto.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-registro">
+      <article class="app-row app-row--flip">
+            <div class="app-copy">
+              <span class="app-tag">Post-campo · Documental</span>
+              <h3>Registro fotográfico a Excel</h3>
+              <p class="app-sub">Inventario del material de campo</p>
+              <p><b>Qué hace.</b> Procesa la carpeta de fotografías de la campaña y extrae de cada archivo su nombre, las coordenadas en proyección WGS84 y en el sistema nacional, y una miniatura de la imagen.</p>
+              <p><b>Qué entrega.</b> Un formato en Excel con el registro fotográfico consolidado y su miniatura por imagen, que permite seleccionar las fotografías del informe y levantar el inventario de puntos de control sobre una sola tabla, sin abrir los archivos uno por uno.</p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/registro_fotografico.webp" alt="Aplicativo de registro fotográfico a Excel" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Procesamiento por lotes de la carpeta de imágenes hacia el formato de inventario.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-bases">
+      <article class="app-row app-row--flip">
+            <div class="app-copy">
+              <span class="app-tag">Factor 12.4.1 · Memoria institucional</span>
+              <h3>Bases de verificación cartográfica</h3>
+              <p class="app-sub">La experiencia de la firma, escrita como criterio</p>
+              <p><b>Qué hace.</b> Concentra, componente por componente del modelo de la ANLA, los criterios de revisión que <span class="brand-mark">GEOTEC</span> ha acumulado estudio tras estudio. Para cobertura de la tierra, por ejemplo: duplicados en el identificador, bosques o vegetación secundaria interceptando drenajes, bosques de galería sin cuerpo de agua asociado, cumplimiento de la unidad mínima cartografiable, y homologación del código de cobertura entre CoberturaTierra y cada capa de muestreo. La versión para informes de cumplimiento cubre los criterios propios del seguimiento.</p>
+              <p><b>Qué entrega.</b> El hallazgo que le costó un requerimiento a un proyecto anterior no se repite en el siguiente. La experiencia deja de depender de quién haga la revisión: queda escrita como criterio y se aplica igual en cada estudio. <b>Es memoria institucional convertida en control.</b></p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/base_verificacion.webp" alt="Base de verificación cartográfica" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Hoja de chequeo con sus criterios asociados, por componente del modelo.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-gestion">
+      <article class="app-row">
+            <div class="app-copy">
+              <span class="app-tag">Cierre · Expediente</span>
+              <h3>Gestión documental</h3>
+              <p class="app-sub">El expediente ordenado antes de radicarlo</p>
+              <p><b>Qué hace.</b> Levanta el listado completo de archivos del proyecto y reorganiza la información bajo la estructura exigida para el informe de cumplimiento ambiental.</p>
+              <p><b>Qué entrega.</b> El expediente llega a la autoridad con la estructura que espera, sin la búsqueda manual de archivos ni el reordenamiento de última hora que suele consumir los días previos a la radicación — justamente los más críticos del cronograma.</p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/gestion_documental.webp" alt="Aplicativo de gestión documental" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Control del inventario, la nomenclatura y las versiones del expediente.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-funias">
+      <article class="app-row app-row--flip">
+            <div class="app-copy">
+              <span class="app-tag">Permisos · Trámites</span>
+              <h3>FUNIAS</h3>
+              <p class="app-sub">Automatización del formulario único</p>
+              <p><b>Qué hace.</b> Automatiza el diligenciamiento del Formulario Único Nacional de Solicitud de Aprovechamiento de Aguas y su exportación a PDF, tomando la información del proyecto ya estructurada.</p>
+              <p><b>Qué entrega.</b> El formulario sale consistente con el expediente y listo para revisión y firma, sin la transcripción entre formatos que es la fuente habitual de error en este trámite y de devoluciones que retrasan el permiso.</p>
+            </div>
+            <div class="app-shots">
+              <figure><img class="lightbox-trigger" src="assets/apps/funias.webp" alt="Hojas de trabajo del aplicativo FUNIAS" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Hojas del aplicativo con el formato, la información base y el registro de pozos.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+          <div class="app-modal-content" id="app-modal-arcgis">
+      <article class="app-row">
+            <div class="app-copy">
+              <span class="app-tag">Automatización SIG</span>
+              <h3>Cajas de herramientas para ArcGIS Pro</h3>
+              <p class="app-sub">Suite GIS — 37 módulos ArcPy en dos conjuntos complementarios, instalados en el entorno del especialista</p>
+              <p><b>Qué hace.</b> Las cajas de Python agrupan el mantenimiento y la validación de la geodatabase: recálculo de campos nulos y de nombre geográfico, de área, longitud y coordenadas Este/Norte, actualización de EXPEDIENTE, OPERADOR, PROYECTO e ICA, la herramienta «Recalcular todo en uno» que encadena esos procesos en un solo paso, el filtrado y la fusión de geodatabases, la comprobación de dominios y códigos, y los reportes de relaciones y valores inválidos. Los modelos de ModelBuilder cubren los procesos cartográficos recurrentes.</p>
+              <p><b>Qué entrega.</b> Geodatabases con los campos obligatorios recalculados y homogéneos, topología construida y verificada, y reportes en Excel de dominios, relaciones y valores inválidos. Todo el procesamiento ocurre <b>dentro de ArcGIS Pro</b>, sobre la misma geodatabase que después certifica VALIDA_APP, sin exportaciones intermedias.</p>
+            </div>
+            <div class="app-shots app-shots--pair">
+              <figure><img class="lightbox-trigger" src="assets/apps/python_toolbox.webp" alt="Cajas de Python instaladas en ArcGIS Pro" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Cajas de Python: cálculos, compensación, geodatabase, procesos, recálculos y validaciones.</figcaption></figure>
+              <figure><img class="lightbox-trigger" src="assets/apps/modelbuilder.webp" alt="Modelos de ModelBuilder" loading="lazy" onclick="openLightbox(this)" tabindex="0" role="button" onkeydown="if(event.key==='Enter'){openLightbox(this)}"><span class="zoom-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span><figcaption>Modelos: hectáreas, conversión al origen nacional, exportación a Excel, cargue de KML y topología.</figcaption></figure>
+            </div>
+          </article>
+          </div>
+
+        </div>
       </div>
     </div>
-
-    <details class="accordion reveal">
-      <summary>Ver los 15 módulos de validación y su cobertura frente al validador institucional de la ANLA <span class="chev">+</span></summary>
-      <div class="accordion-body">
-        <div class="table-scroll">
-        <table class="mini-table">
-          <thead><tr><th>N.º</th><th>Módulo</th><th>Qué verifica</th><th>Frente al validador ANLA</th></tr></thead>
-          <tbody>
-            <tr><td>1</td><td>Esquema de capas MAG</td><td>Presencia de feature classes con nombre, geometría y campos correctos.</td><td class="crit yes">✓ Presencia de capas</td></tr>
-            <tr><td>2</td><td>Campos obligatorios</td><td>Ningún campo requerido con valores equivalentes a vacío (más de 50 variantes semánticas: "n/a", "pendiente", "sin dato"…).</td><td class="crit no">✗ Solo NULL técnico</td></tr>
-            <tr><td>3</td><td>Dominios válidos</td><td>Todo valor codificado pertenece al catálogo de la Resolución 2182.</td><td class="crit yes">✓ Cobertura completa</td></tr>
-            <tr><td>4</td><td>Sistema de referencia espacial</td><td>Todas las capas en el mismo sistema, comparado por igualdad real, no solo por código EPSG.</td><td class="crit no">✗ Solo por código EPSG</td></tr>
-            <tr><td>5</td><td>Coordenadas en rango válido</td><td>Las coordenadas están dentro del territorio colombiano.</td><td class="crit yes">✓ Cobertura completa</td></tr>
-            <tr><td>6</td><td>Geometrías válidas</td><td>Sin geometrías nulas, vacías o auto-intersectantes.</td><td class="crit no">✗ Solo geometrías nulas</td></tr>
-            <tr><td>7</td><td>Relaciones padre-hijo</td><td>Todo registro hijo tiene un padre existente. Detecta huérfanos.</td><td class="crit yes">✓ Cobertura completa</td></tr>
-            <tr><td>8</td><td>Dependencias mutuas entre capas</td><td>Si la capa A existe, las capas B y C relacionadas también deben tener registros.</td><td class="crit no">✗ No verificado</td></tr>
-            <tr><td>9</td><td>Unicidad de identificadores</td><td>Sin claves primarias duplicadas en capas padre.</td><td class="crit yes">✓ Cobertura completa</td></tr>
-            <tr><td>10</td><td>Rangos numéricos</td><td>Áreas, longitudes y concentraciones dentro de rangos plausibles.</td><td class="crit yes">✓ Cobertura completa</td></tr>
-            <tr><td>11</td><td>Actos administrativos</td><td>NUM_ACT_AD, FEC_ACT_AD y ART_ACT_AD diligenciados, coherentes entre sí.</td><td class="crit no">✗ Solo presencia del campo</td></tr>
-            <tr><td>12</td><td>Metadatos por capa</td><td>Extensión espacial y campos de metadatos contra la GDB real.</td><td class="crit no">✗ Solo existencia del archivo</td></tr>
-            <tr><td>13</td><td>LEAME vs. GDB real</td><td>Las capas declaradas en el LEAME existen efectivamente en la GDB.</td><td class="crit no">✗ Sin cruce LEAME–GDB</td></tr>
-            <tr><td>14</td><td>Longitud y formato de texto</td><td>Campos de texto dentro de la longitud máxima del estándar MAG.</td><td class="crit no">✗ No validado</td></tr>
-            <tr><td>15</td><td>Contención espacial</td><td>Las capas están contenidas dentro de UnidadTerritorial y AreaInfluencia.</td><td class="crit no">✗ No validado</td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-    </details>
-
-    <figure class="figura-doc figura-doc--ancha reveal">
-      <img src="assets/figuras/verificacion_informacion.webp" alt="Somos el motor de la verificabilidad: aseguramiento SIG bajo procedimientos corporativos y controles de anexos 50 a 57" loading="lazy">
-      <figcaption>El aseguramiento SIG articula insumos, controles corporativos y anexos 50 a 57 para entregar información verificable, trazable y confiable.</figcaption>
-    </figure>
-
-    <article class="app-row app-row--flip reveal">
-      <div class="app-copy">
-        <span class="app-tag">Factor 12.4.4 · Campo</span>
-        <h3>Curvas de acumulación de especies</h3>
-        <p class="app-sub">Suficiencia del muestreo verificada en campo</p>
-        <p><b>Qué hace.</b> Responde en campo la pregunta que hasta ahora solo se resolvía semanas después en oficina: ¿el muestreo ya es suficiente? Importa los registros de la jornada, valida su consistencia y calcula las curvas de acumulación y los índices de completitud por grupo taxonómico, dejando listas las matrices de entrada para <b>iNEXT</b> y <b>EstimateS</b>.</p>
-        <p><b>Qué entrega.</b> La decisión de cerrar o extender la campaña se toma con la curva a la vista, todavía en el sitio. Ecopetrol recibe un muestreo con representatividad sustentable ante la autoridad y se evita la comisión de retorno — que es donde suele romperse el cronograma del componente biótico.</p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/curvas_acumulacion.webp" alt="Interfaz de seguimiento de suficiencia del muestreo en campo" loading="lazy"><figcaption>Importación de datos, validación, selección del grupo de fauna y generación de las curvas.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row reveal">
-      <div class="app-copy">
-        <span class="app-tag">Factor 12.4.4 · Consulta</span>
-        <h3>CAMPO_KMZ</h3>
-        <p class="app-sub">Registro fotográfico consultable</p>
-        <p><b>Qué hace.</b> Toma la información de campo —capas vectoriales o tablas con coordenadas— junto con la carpeta de fotografías, y construye una geodatabase con las imágenes adjuntas y un archivo KMZ con las fotografías embebidas y una ficha por punto. Permite escoger el identificador del punto, la etiqueta visible, el filtro de puntos y el sistema de referencia de origen.</p>
-        <p><b>Qué entrega.</b> Geodatabase con adjuntos y archivo KMZ autocontenido, consultable en Google Earth, Google Maps o ArcGIS Online sin instalar programas especializados. El registro deja de ser una carpeta que solo interpreta quien estuvo en campo.</p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/campo_kmz.webp" alt="Interfaz de CAMPO_KMZ" loading="lazy"><figcaption>Selección de la fuente de datos, mapeo de campos y configuración de las salidas geoespaciales con fotografías.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row app-row--flip reveal">
-      <div class="app-copy">
-        <span class="app-tag">Post-campo · Documental</span>
-        <h3>Registro fotográfico a Excel</h3>
-        <p class="app-sub">Inventario del material de campo</p>
-        <p><b>Qué hace.</b> Procesa la carpeta de fotografías de la campaña y extrae de cada archivo su nombre, las coordenadas en proyección WGS84 y en el sistema nacional, y una miniatura de la imagen.</p>
-        <p><b>Qué entrega.</b> Un formato en Excel con el registro fotográfico consolidado y su miniatura por imagen, que permite seleccionar las fotografías del informe y levantar el inventario de puntos de control sobre una sola tabla, sin abrir los archivos uno por uno.</p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/registro_fotografico.webp" alt="Aplicativo de registro fotográfico a Excel" loading="lazy"><figcaption>Procesamiento por lotes de la carpeta de imágenes hacia el formato de inventario.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row reveal">
-      <div class="app-copy">
-        <span class="app-tag">Pre-campo · Insumos</span>
-        <h3>Extractor KMZ</h3>
-        <p class="app-sub">Integración de insumos geográficos al expediente</p>
-        <p><b>Qué hace.</b> Procesa archivos KML y KMZ recibidos del cliente o levantados en campo, extrae su geometría y atributos y organiza las fotografías asociadas a cada punto en subcarpetas por registro.</p>
-        <p><b>Qué entrega.</b> Capas en formato compatible con la geodatabase y el material fotográfico ordenado por punto, listos para su integración al expediente <b>el mismo día</b> en que se recibe el insumo.</p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/extractor_kmz.webp" alt="Interfaz del Extractor KMZ" loading="lazy"><figcaption>Selección del archivo de entrada y de la carpeta matriz donde se organizan las fotografías por punto.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row app-row--flip reveal">
-      <div class="app-copy">
-        <span class="app-tag">Factor 12.4.1 · Memoria institucional</span>
-        <h3>Bases de verificación cartográfica</h3>
-        <p class="app-sub">La experiencia de la firma, escrita como criterio</p>
-        <p><b>Qué hace.</b> Concentra, componente por componente del modelo de la ANLA, los criterios de revisión que GEOTEC ha acumulado estudio tras estudio. Para cobertura de la tierra, por ejemplo: duplicados en el identificador, bosques o vegetación secundaria interceptando drenajes, bosques de galería sin cuerpo de agua asociado, cumplimiento de la unidad mínima cartografiable, y homologación del código de cobertura entre CoberturaTierra y cada capa de muestreo. La versión para informes de cumplimiento cubre los criterios propios del seguimiento.</p>
-        <p><b>Qué entrega.</b> El hallazgo que le costó un requerimiento a un proyecto anterior no se repite en el siguiente. La experiencia deja de depender de quién haga la revisión: queda escrita como criterio y se aplica igual en cada estudio. <b>Es memoria institucional convertida en control.</b></p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/base_verificacion.webp" alt="Base de verificación cartográfica" loading="lazy"><figcaption>Hoja de chequeo con sus criterios asociados, por componente del modelo.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row reveal">
-      <div class="app-copy">
-        <span class="app-tag">Cierre · Expediente</span>
-        <h3>Gestión documental</h3>
-        <p class="app-sub">El expediente ordenado antes de radicarlo</p>
-        <p><b>Qué hace.</b> Levanta el listado completo de archivos del proyecto y reorganiza la información bajo la estructura exigida para el informe de cumplimiento ambiental.</p>
-        <p><b>Qué entrega.</b> El expediente llega a la autoridad con la estructura que espera, sin la búsqueda manual de archivos ni el reordenamiento de última hora que suele consumir los días previos a la radicación — justamente los más críticos del cronograma.</p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/gestion_documental.webp" alt="Aplicativo de gestión documental" loading="lazy"><figcaption>Control del inventario, la nomenclatura y las versiones del expediente.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row app-row--flip reveal">
-      <div class="app-copy">
-        <span class="app-tag">Permisos · Trámites</span>
-        <h3>FUNIAS</h3>
-        <p class="app-sub">Automatización del formulario único</p>
-        <p><b>Qué hace.</b> Automatiza el diligenciamiento del Formulario Único Nacional de Solicitud de Aprovechamiento de Aguas y su exportación a PDF, tomando la información del proyecto ya estructurada.</p>
-        <p><b>Qué entrega.</b> El formulario sale consistente con el expediente y listo para revisión y firma, sin la transcripción entre formatos que es la fuente habitual de error en este trámite y de devoluciones que retrasan el permiso.</p>
-      </div>
-      <div class="app-shots">
-        <figure><img src="assets/apps/funias.webp" alt="Hojas de trabajo del aplicativo FUNIAS" loading="lazy"><figcaption>Hojas del aplicativo con el formato, la información base y el registro de pozos.</figcaption></figure>
-      </div>
-    </article>
-
-    <article class="app-row reveal">
-      <div class="app-copy">
-        <span class="app-tag">Automatización SIG</span>
-        <h3>Cajas de herramientas para ArcGIS Pro</h3>
-        <p class="app-sub">Suite GIS — 37 módulos ArcPy en dos conjuntos complementarios, instalados en el entorno del especialista</p>
-        <p><b>Qué hace.</b> Las cajas de Python agrupan el mantenimiento y la validación de la geodatabase: recálculo de campos nulos y de nombre geográfico, de área, longitud y coordenadas Este/Norte, actualización de EXPEDIENTE, OPERADOR, PROYECTO e ICA, la herramienta «Recalcular todo en uno» que encadena esos procesos en un solo paso, el filtrado y la fusión de geodatabases, la comprobación de dominios y códigos, y los reportes de relaciones y valores inválidos. Los modelos de ModelBuilder cubren los procesos cartográficos recurrentes.</p>
-        <p><b>Qué entrega.</b> Geodatabases con los campos obligatorios recalculados y homogéneos, topología construida y verificada, y reportes en Excel de dominios, relaciones y valores inválidos. Todo el procesamiento ocurre <b>dentro de ArcGIS Pro</b>, sobre la misma geodatabase que después certifica VALIDA_APP, sin exportaciones intermedias.</p>
-      </div>
-      <div class="app-shots app-shots--pair">
-        <figure><img src="assets/apps/python_toolbox.webp" alt="Cajas de Python instaladas en ArcGIS Pro" loading="lazy"><figcaption>Cajas de Python: cálculos, compensación, geodatabase, procesos, recálculos y validaciones.</figcaption></figure>
-        <figure><img src="assets/apps/modelbuilder.webp" alt="Modelos de ModelBuilder" loading="lazy"><figcaption>Modelos: hectáreas, conversión al origen nacional, exportación a Excel, cargue de KML y topología.</figcaption></figure>
-      </div>
-    </article>
 
     <div class="diag-note reveal" style="margin-top:2.5rem;">
       El portafolio completo de iniciativas del InnoLab —las que están en producción activa y las que se encuentran en fase beta— se relaciona en el <strong>Anexo A</strong> del documento técnico.
@@ -798,6 +1390,8 @@
       <div class="tool-card reveal"><span class="tag">Control de calidad</span><h4>Validadores Excel temáticos (×12)</h4><p>Un validador por componente del MAG — flora, fauna, hidrología, aire, socioeconómico y más — con dominios precargados.</p></div>
       <div class="tool-card reveal"><span class="tag">Analítica visual</span><h4>Tablero Power BI</h4><p>Seguimiento del PDT en tiempo real, semáforos por entregable y alertas de vencimiento para el supervisor de ODS.</p></div>
       <div class="tool-card reveal"><span class="tag">Precisión en campo</span><h4>GEOTAC — Registro Fotográfico v2.0</h4><p>Captura fotográfica georreferenciada con coordenadas MAGNA-SIRGAS, hora, autor y vínculo directo a la GDB.</p></div>
+      <div class="tool-card reveal"><span class="tag">Factor 12.4.4 · Laboratorio</span><h4>Validador de informes de laboratorio</h4><p>Cruza cada informe de laboratorio con los registros de la GDB — códigos de muestra, fechas, matrices, parámetros y coordenadas — y verifica identificador y coordenadas entre el primer y el segundo momento de monitoreo.</p></div>
+      <div class="tool-card reveal"><span class="tag">Captura en campo · QField</span><h4>Formularios QField (×20)</h4><p>Un formulario por componente físico, biótico y socioeconómico, con los dominios del MAG ANLA precargados. Operan sin conexión y sincronizan directo a la base de datos, sin transcripción manual.</p></div>
       <div class="tool-card reveal"><span class="tag">Inteligencia artificial · ejecución local</span><h4>IA documental con protocolo</h4><p>Búsqueda y cruce documental, análisis de normativa pública y preparación de respuestas regulatorias con asistentes de IA. La información confidencial del expediente se procesa exclusivamente en el entorno local: no sale a la nube.</p></div>
       <div class="tool-card reveal"><span class="tag tag--dev">En desarrollo · Anexo 38</span><h4>Exportador SiB Colombia / GBIF</h4><p>Convertirá los registros bióticos de la GDB validada al esquema Darwin Core para publicación en SiB Colombia y carga al IPT del GBIF, reduciendo la transcripción manual de metadatos.</p></div>
     </div>
@@ -859,13 +1453,13 @@
         <span class="channel-n">02</span>
         <h3>Registro en las plataformas del cliente</h3>
         <p class="channel-sub">Sobre la cartografía que Ecopetrol ya usa</p>
-        <p>El mismo KMZ de la ficha anterior se abre en <b>Google Earth, Google Maps o ArcGIS Online</b>, de modo que la revisión no pasa por GEOTEC ni por un visor propio.</p>
+        <p>El mismo KMZ de la ficha anterior se abre en <b>Google Earth, Google Maps o ArcGIS Online</b>, de modo que la revisión no pasa por <span class="brand-mark">GEOTEC</span> ni por un visor propio.</p>
         <ul class="channel-list">
           <li>Cualquier área de Ecopetrol lo revisa</li>
           <li>Sobre su propia cartografía</li>
           <li>Sin instalar programas</li>
         </ul>
-        <p class="channel-foot">La consulta no depende de que GEOTEC esté disponible.</p>
+        <p class="channel-foot">La consulta no depende de que <span class="brand-mark">GEOTEC</span> esté disponible.</p>
       </article>
 
       <article class="channel-card channel-card--cond">
@@ -874,7 +1468,7 @@
         <p class="channel-sub">Cuando exista el entorno de publicación</p>
         <p>Si Ecopetrol dispone de un entorno bajo sus políticas de seguridad de la información, la misma información puede exponerse como servicios <b>OGC</b> — WMS para visualización y WFS para consulta de atributos— desde el proyecto QGIS.</p>
         <ul class="channel-list">
-          <li>GEOTEC aporta la estructura del visor y la preparación de las capas</li>
+          <li><span class="brand-mark">GEOTEC</span> aporta la estructura del visor y la preparación de las capas</li>
           <li>La habilitación del entorno y del dominio corresponde a Ecopetrol</li>
         </ul>
         <p class="channel-foot">Se ofrece como posibilidad condicionada, no como compromiso.</p>
@@ -913,6 +1507,7 @@
       <div class="geo-map-panel">
         <div id="ecopetrol-map" class="ecopetrol-map" aria-label="Mapa de proyectos desarrollados con Ecopetrol en Colombia">
           <div class="map-loading">Cargando mapa...</div>
+          <div class="drag-indicator">Explorar Mapa</div>
         </div>
         <p>Algunos de los proyectos que hemos construido juntos.</p>
       </div>
@@ -948,7 +1543,7 @@
         <div class="alliance-badge"><span class="num">68+19</span><span class="txt">herramientas en producción activa y en beta al cierre de 2025 — catálogo InnoLab de 110 iniciativas, el resto en formulación</span></div>
         <div class="alliance-badge"><span class="num">3×1</span><span class="txt">revisiones cruzadas por entrega: SIG, especialista temático y líder de proyecto</span></div>
         <div class="alliance-badge"><span class="num">0%</span><span class="txt">de la información sensible de Ecopetrol sale a la nube — IA de ejecución local</span></div>
-        <div class="alliance-badge"><span class="num">70K+</span><span class="txt">registros biológicos de Ecopetrol en SiB Colombia — GEOTEC integra al flujo post-campo las plantillas Darwin Core desde la GDB validada (Anexo 38)</span></div>
+        <div class="alliance-badge"><span class="num">70K+</span><span class="txt">registros biológicos de Ecopetrol en SiB Colombia — <span class="brand-mark">GEOTEC</span> integra al flujo post-campo las plantillas Darwin Core desde la GDB validada (Anexo 38)</span></div>
         <div class="alliance-badge"><span class="num">+10%</span><span class="txt">de reducción en los tiempos de los procesos instrumentados — ganancia que se reinvierte en el propio proyecto para asegurar y mejorar productos y procesos</span></div>
       </div>
     </div>
@@ -957,7 +1552,11 @@
       <p style="font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:1rem;">Marco normativo y de referencia</p>
       <div class="norm-strip">
         <span class="norm-pill"><b>Res. 2182/2016</b> · MAG ANLA</span>
+        <span class="norm-pill"><b>Res. 0940/2026</b> · Metodología general de estudios ambientales</span>
         <span class="norm-pill"><b>HSE-G-163</b> · Anexos 1, 6, 8, 9</span>
+        <span class="norm-pill"><b>Anexo 00</b> · Reglas particulares del método de elección</span>
+        <span class="norm-pill"><b>Adendos 3 y 4</b> · Anexos 50-57 y cronograma vigente</span>
+        <span class="norm-pill"><b>Consolidado Final V4</b> · Respuestas a observaciones</span>
         <span class="norm-pill"><b>Decreto 1076</b> de 2015</span>
         <span class="norm-pill"><b>TDR HI-TER-1-03</b></span>
         <span class="norm-pill"><b>GDE-P-008</b> · Consulta previa</span>
@@ -1038,13 +1637,13 @@
       <div class="scale-grid">
         <article class="scale-card scale-card--full">
           <span class="scale-level">Despliegue completo</span>
-          <h4>EIA, DAA y estudios especiales</h4>
+          <h4>EIA, DAA y estudios especializados</h4>
           <p>El volumen de información y el número de especialistas hacen inviable el control manual. Se activan los formularios de captura de los tres medios, la verificación de suficiencia durante la campaña, el registro fotográfico georreferenciado con su visor, los validadores por componente, la certificación completa de la geodatabase y el tablero de seguimiento del PDT.</p>
           <p class="scale-why">Es también donde el aseguramiento rinde más: un error de dominio detectado en la radicación arrastra el texto del estudio, las tablas del informe y el mapa temático.</p>
         </article>
         <article class="scale-card">
           <span class="scale-level">Activación selectiva</span>
-          <h4>PMA, PMAE, actualizaciones e informes de cumplimiento</h4>
+          <h4>PMAE, actualizaciones e informes de cumplimiento</h4>
           <p>El peso recae en la certificación de la geodatabase, los validadores del componente que corresponda, las bases de verificación cartográfica —con versión específica para informes de cumplimiento— y el generador de metadatos y LEAME. Si el estudio es documental, el esfuerzo se concentra en el cruce entre geodatabase, informe y anexos.</p>
           <p class="scale-why">Un PMA se entrega con el mismo nivel de conformidad que un EIA, sin el costo de operar herramientas que no aportan a ese alcance.</p>
         </article>
@@ -1056,47 +1655,154 @@
         </article>
       </div>
       <div class="diag-note">
-        Esta gradación es la que permite ofrecer el mismo estándar de calidad en las <strong>seis ODS simultáneas</strong> que contempla la habilitación, con independencia de su tamaño.
+        Esta gradación es la que permite ofrecer el mismo estándar de calidad en las <strong>ODS simultáneas</strong> que contempla la habilitación, con independencia de su tamaño.
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= POR QUÉ GEOTEC ================= -->
-<section id="por-que" class="section section-dark">
+<section id="por-que" class="section section-why-bright">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">Por qué GEOTEC</p>
-      <h2>Tres razones, todas verificables en lo que acaba de leer</h2>
+      <div class="why-eyebrow-wrapper">
+        <span class="why-eyebrow-badge">
+          <svg class="why-sparkle-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+          FACTOR DIFERENCIAL · VALOR ESTRATÉGICO
+        </span>
+      </div>
+      <h2>¿Por qué <span class="why-brand-highlight">GEOTEC</span>? <span class="why-title-sub">Tres certezas operativas verificables</span></h2>
+      <p class="why-lede">Nuestro valor se fundamenta en <strong>software propio en operación real</strong>, procesos de aseguramiento que brindan solidez a cada expediente y un estándar metodológico probado en proyectos de alta exigencia del sector hidrocarburos.</p>
     </div>
 
     <div class="why-grid reveal">
+      <!-- Tarjeta 01 -->
       <article class="why-card">
-        <span class="why-n">01</span>
-        <h3>Las herramientas existen y están en uso</h3>
-        <p>No se ofrecen desarrollos por construir. Los aplicativos relacionados están instalados, tienen interfaz, generan salidas y se han aplicado en proyectos con nombre: <b>36 en Frontera Energy Sucursal Colombia</b>, el <b>EIA de Cubarral</b> y los <b>proyectos de Guamal</b>. Las capturas de pantalla incluidas corresponden a las versiones en operación, no a prototipos.</p>
+        <div class="why-card-top">
+          <span class="why-n">01</span>
+          <span class="why-badge-pill pill-live">
+            <span class="why-pulse-dot"></span> EN PRODUCCIÓN REAL
+          </span>
+        </div>
+        <h3>Herramientas reales en operación, no prototipos</h3>
+        <p>Los aplicativos relacionados están instalados, cuentan con interfaz funcional, generan salidas verificadas y respaldan proyectos de gran escala en la industria colombiana:</p>
+        
+        <div class="why-tags">
+          <span class="why-tag">⚡ 36 Proyectos en Frontera Energy</span>
+          <span class="why-tag">📍 EIA Cubarral & EIA Guamal</span>
+          <span class="why-tag">🌿 Monitoreos Pauto Sur B & Floreña U</span>
+        </div>
+
+        <p class="why-card-note">Las capturas de pantalla, salidas tabulares y tableros interactivos corresponden a las <strong>versiones en producción activa</strong>, listas para su aprovechamiento inmediato.</p>
+
+        <div class="why-card-callout">
+          <span class="why-callout-icon">💡</span>
+          <div class="why-callout-text">
+            <strong>Cero curva de desarrollo para Ecopetrol:</strong> el ecosistema está maduro, probado y listo para operar desde el primer día de la orden de servicio.
+          </div>
+        </div>
       </article>
+
+      <!-- Tarjeta 02 -->
       <article class="why-card">
-        <span class="why-n">02</span>
-        <h3>El aseguramiento cubre el tramo que decide la radicación</h3>
-        <p>Como se dijo al abrir: capturar en digital ya no distingue a nadie. Lo que distingue esta propuesta es lo que ocurre después: la certificación de la geodatabase contra el catálogo completo de la autoridad, la verificación cruzada entre el documento técnico, los anexos y la cartografía, y el reporte de conformidad que acompaña cada entrega. <b>Ese es el tramo donde se archivan los expedientes.</b></p>
+        <div class="why-card-top">
+          <span class="why-n">02</span>
+          <span class="why-badge-pill pill-shield">
+            🛡️ BLINDAJE JURÍDICO Y TÉCNICO
+          </span>
+        </div>
+        <h3>Aseguramiento del tramo que decide la radicación</h3>
+        <p><span class="brand-mark">GEOTEC</span> certifica la geodatabase contra el catálogo completo de la autoridad, cruza el documento técnico con los anexos y la cartografía, y emite un <strong>reporte de conformidad vinculante</strong> con cada radicación.</p>
+
+        <div class="why-tags">
+          <span class="why-tag">📋 242 Clases de Entidad MAG</span>
+          <span class="why-tag">🔗 248 Relaciones Validadas</span>
+          <span class="why-tag">⚖️ Cruce GDB ↔ Documento ↔ Anexos</span>
+        </div>
+
+        <p class="why-card-note">El 68% de las no conformidades ante la ANLA ocurren por inconsistencias entre cartografía y texto. <strong>Ese es el tramo exacto donde este modelo actúa y previene el archivo del expediente.</strong></p>
+
+        <div class="why-card-callout">
+          <span class="why-callout-icon">🎯</span>
+          <div class="why-callout-text">
+            <strong>Garantía de viabilidad:</strong> cada entrega sale con evidencia objetiva de no rechazo por inconsistencias cartográficas ni estructurales.
+          </div>
+        </div>
       </article>
+
+      <!-- Tarjeta 03 -->
       <article class="why-card">
-        <span class="why-n">03</span>
-        <h3>El estándar no depende de quién ejecute</h3>
-        <p>Los criterios de revisión están escritos y se acumulan proyecto tras proyecto; las validaciones son automáticas y repetibles; los roles y los permisos sobre la información están definidos. Eso permite sostener el mismo nivel de conformidad en las <b>seis ODS simultáneas</b> que contempla la habilitación, con independencia del tamaño y la complejidad de cada estudio.</p>
+        <div class="why-card-top">
+          <span class="why-n">03</span>
+          <span class="why-badge-pill pill-scale">
+            ⚖️ ESCALABILIDAD HOMOGÉNEA
+          </span>
+        </div>
+        <h3>Estándar institucional independiente del ejecutor</h3>
+        <p>Los criterios de revisión están estandarizados en código y se enriquecen proyecto tras proyecto; las validaciones son automáticas y repetibles; los roles y los permisos sobre la información están rigurosamente definidos.</p>
+
+        <div class="why-tags">
+          <span class="why-tag">⚙️ Reglas Automatizadas</span>
+          <span class="why-tag">🔄 Procesos 100% Repetibles</span>
+          <span class="why-tag">🎛️ Capacidad ODS Simultáneas</span>
+        </div>
+
+        <p class="why-card-note">La calidad no depende de qué contratista o profesional realice la labor, sino de un <strong>sistema de control gobernado por reglas inmutables</strong> que protegen los intereses de Ecopetrol.</p>
+
+        <div class="why-card-callout">
+          <span class="why-callout-icon">🚀</span>
+          <div class="why-callout-text">
+            <strong>Mismo rigor técnico:</strong> sostenemos el mismo nivel de conformidad tanto en macroestudios como en trámites ambientales específicos.
+          </div>
+        </div>
       </article>
     </div>
 
-    <p class="why-close reveal">GEOTEC no propone una metodología por implementar. Propone la que ya usa.</p>
+    <!-- Gran Banner de Cierre Ejecutivo -->
+    <div class="why-close-banner reveal">
+      <div class="why-banner-badge">
+        <img src="assets/logo_geotec.png" alt="GEOTEC" class="why-banner-logo" width="48" height="48">
+      </div>
+      <div class="why-banner-body">
+        <p class="why-banner-eyebrow">COMPROMISO DE VALOR Y EXCELENCIA TÉCNICA</p>
+        <blockquote class="why-banner-quote">
+          “<span class="brand-mark">GEOTEC</span> pone al servicio de <strong>Ecopetrol</strong> un modelo de aseguramiento maduro y probado, respaldado por herramientas tecnológicas que <em>operan y se perfeccionan de manera continua</em> en el sector ambiental e hidrocarburos.”
+        </blockquote>
+      </div>
+    </div>
 
+    <!-- Límites del Alcance y Exclusiones con diseño claro y transparente -->
     <div class="limits reveal">
-      <p class="limits-head">Límites del alcance y exclusiones</p>
+      <div class="limits-header">
+        <span class="limits-eyebrow">MARCO DE TRANSPARENCIA CONTRACTUAL</span>
+        <h3>Límites del alcance y exclusiones</h3>
+        <p>Pautas claras y precisas sobre la gobernanza y alcance de las herramientas y servicios ofrecidos.</p>
+      </div>
       <div class="limits-grid">
-        <div class="limit-item"><b>El criterio profesional no se sustituye.</b> Las herramientas automatizan la detección de inconsistencias, no la decisión técnica. La aceptación, corrección o justificación de cada hallazgo corresponde al especialista responsable del componente.</div>
-        <div class="limit-item"><b>La propiedad intelectual no se transfiere.</b> Los aplicativos, el código fuente, los complementos y los repositorios son propiedad de GEOTEC Ingeniería Ltda. Ecopetrol recibe los productos y resultados que estas herramientas generan, junto con acceso de consulta donde así se indique.</div>
-        <div class="limit-item"><b>Disponibilidad posterior de los servicios de consulta.</b> La vigencia del tablero de seguimiento y de los servicios de publicación en línea después de finalizado el contrato se define de acuerdo con lo que se acuerde con Ecopetrol.</div>
-        <div class="limit-item"><b>Actividades no previstas en el alcance aprobado de la ODS.</b> Los lineamientos, reglas, adendas y anexos se aplican cuando resulten pertinentes al contrato, la orden de servicio, el PDT o una solicitud formal de Ecopetrol. La propuesta no incorpora por sí sola recursos o productos adicionales.</div>
+        <div class="limit-item">
+          <b>El criterio profesional no se sustituye</b>
+          <span>Las herramientas automatizan la detección de inconsistencias, no la decisión técnica. La aceptación, corrección o justificación de cada hallazgo corresponde al especialista responsable del componente.</span>
+        </div>
+        <div class="limit-item">
+          <b>La propiedad intelectual no se transfiere</b>
+          <span>Los aplicativos, el código fuente, los complementos y los repositorios son propiedad de <span class="brand-mark">GEOTEC</span> Ingeniería Ltda. Ecopetrol recibe los productos y resultados que estas herramientas generan, junto con acceso de consulta donde así se indique.</span>
+        </div>
+        <div class="limit-item">
+          <b>Disponibilidad posterior de los servicios de consulta</b>
+          <span>La vigencia del tablero de seguimiento y de los servicios de publicación en línea después de finalizado el contrato se define de acuerdo con lo que se acuerde con Ecopetrol.</span>
+        </div>
+        <div class="limit-item">
+          <b>Innovaciones adicionales</b>
+          <span>Las que se desarrollen a solicitud de Ecopetrol se atienden siempre que estén contenidas dentro de los tipos de estudio objeto del contrato.</span>
+        </div>
+        <div class="limit-item">
+          <b>Transferencia de código fuente o licencias</b>
+          <span>El cliente recibe resultados, reportes y expedientes certificados; no el software ni el código base que los genera.</span>
+        </div>
+        <div class="limit-item">
+          <b>Actividades no previstas en el alcance aprobado</b>
+          <span>Los lineamientos, reglas, adendas y anexos se aplican cuando resulten pertinentes al contrato, la orden de servicio, el PDT o una solicitud formal de Ecopetrol. La propuesta no incorpora por sí sola recursos o productos adicionales.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1117,13 +1823,19 @@
   </div>
 </section>
 
+<!-- Lightbox de diagramas -->
+<div id="diagram-lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Diagrama ampliado" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
+
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
       <div>
         <img src="assets/logo_geotec_horizontal_star.png" alt="GEOTEC Ingeniería Ltda." class="footer-logo" width="549" height="143">
-        <p>Generando valor con SosTECnibilidad para el sector energético en Colombia. GEOTEC InnoLab: 68 herramientas en producción activa y 19 en beta, dentro de un catálogo de 110 iniciativas en evolución continua.</p>
+        <p>Generando valor con SosTECnibilidad para el sector energético en Colombia. <span class="brand-mark">GEOTEC</span> InnoLab: 68 herramientas en producción activa y 19 en beta, dentro de un catálogo de 110 iniciativas en evolución continua.</p>
       </div>
       <div class="footer-col">
         <h4>Propuesta</h4>
@@ -1141,8 +1853,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 GEOTEC Ingeniería Ltda.</span>
-      <span>Los estudios, GDB rigurosamente elaboradas e informes se entregan a Ecopetrol — el software que los genera es propiedad intelectual exclusiva de GEOTEC y no se transfiere.</span>
+      <span>© 2026 <span class="brand-mark">GEOTEC</span> Ingeniería Ltda.</span>
+      <span>Los estudios, GDB rigurosamente elaboradas e informes se entregan a Ecopetrol — el software que los genera es propiedad intelectual exclusiva de <span class="brand-mark">GEOTEC</span> y no se transfiere.</span>
     </div>
   </div>
 </footer>
