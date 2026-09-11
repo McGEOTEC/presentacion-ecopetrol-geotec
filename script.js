@@ -118,6 +118,82 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', navShadow, { passive: true });
   navShadow();
 
+  /* ---------- Detección inteligente de encuadre y ajuste dinámico del Navbar ---------- */
+  const navLinksList = document.getElementById('nav-links');
+  const brandLockup = document.querySelector('.navbar .brand-lockup');
+  const clientLogo = document.querySelector('.navbar .client-logo');
+
+  const fitNavbarToFrame = () => {
+    if (!navbar || !navLinksList) return;
+
+    const winW = window.innerWidth;
+    if (winW <= 1024) {
+      navLinksList.style.removeProperty('--dynamic-gap');
+      navLinksList.style.removeProperty('--dynamic-font-size');
+      navLinksList.style.removeProperty('--dynamic-letter-spacing');
+      return;
+    }
+
+    // Medir ancho real disponible entre los logotipos
+    const navW = navbar.clientWidth;
+    const brandW = brandLockup ? brandLockup.offsetWidth : 160;
+    const clientW = clientLogo ? clientLogo.offsetWidth : 140;
+    const navStyles = window.getComputedStyle(navbar);
+    const padL = parseFloat(navStyles.paddingLeft) || 20;
+    const padR = parseFloat(navStyles.paddingRight) || 20;
+    const colGap = parseFloat(navStyles.columnGap) || 20;
+
+    // Espacio libre total para la botonera (con margen de seguridad de 24px)
+    const availableWidth = Math.max(300, navW - brandW - clientW - padL - padR - (colGap * 2) - 24);
+
+    // Tabla de calibración responsiva según el ancho libre exacto:
+    const scales = [
+      { minW: 1360, gap: 2.4,  size: 1.00, ls: 0.07 },
+      { minW: 1220, gap: 1.9,  size: 0.94, ls: 0.06 },
+      { minW: 1080, gap: 1.45, size: 0.88, ls: 0.05 },
+      { minW: 950,  gap: 1.10, size: 0.82, ls: 0.04 },
+      { minW: 840,  gap: 0.80, size: 0.76, ls: 0.03 },
+      { minW: 720,  gap: 0.55, size: 0.70, ls: 0.02 },
+      { minW: 0,    gap: 0.40, size: 0.66, ls: 0.01 }
+    ];
+
+    let match = scales[scales.length - 1];
+    for (const s of scales) {
+      if (availableWidth >= s.minW) {
+        match = { ...s };
+        break;
+      }
+    }
+
+    // Aplicar valores iniciales óptimos
+    navLinksList.style.setProperty('--dynamic-gap', `${match.gap}rem`);
+    navLinksList.style.setProperty('--dynamic-font-size', `${match.size}rem`);
+    navLinksList.style.setProperty('--dynamic-letter-spacing', `${match.ls}em`);
+
+    // Ajuste de precisión por medición directa: si por render de fuentes el contenido excede el espacio,
+    // se reduce de forma progresiva hasta garantizar que jamás se recorte ni colisione.
+    let iterations = 0;
+    while (navLinksList.scrollWidth > availableWidth && iterations < 8) {
+      match.gap = Math.max(0.30, match.gap * 0.88);
+      match.size = Math.max(0.64, match.size * 0.95);
+      match.ls = Math.max(0.005, match.ls * 0.80);
+      navLinksList.style.setProperty('--dynamic-gap', `${match.gap.toFixed(2)}rem`);
+      navLinksList.style.setProperty('--dynamic-font-size', `${match.size.toFixed(3)}rem`);
+      navLinksList.style.setProperty('--dynamic-letter-spacing', `${match.ls.toFixed(3)}em`);
+      iterations++;
+    }
+  };
+
+  fitNavbarToFrame();
+  window.addEventListener('resize', fitNavbarToFrame, { passive: true });
+  window.addEventListener('orientationchange', fitNavbarToFrame, { passive: true });
+  if (window.ResizeObserver && navbar) {
+    new ResizeObserver(() => fitNavbarToFrame()).observe(navbar);
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fitNavbarToFrame);
+  }
+
   /* ---------- Menú móvil ---------- */
   const navToggle = document.querySelector('.nav-toggle');
   const closeMenu = () => {

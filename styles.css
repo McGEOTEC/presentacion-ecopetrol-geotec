@@ -3433,28 +3433,17 @@ body{
   .why-close{ font-size:1.25rem; }
 }
 
-/* La barra creció con las secciones nuevas: se aprieta el interlineado y se
-   permite que el bloque de enlaces ceda ancho antes que los logotipos. */
-.navbar{ padding-left:3.2vw !important; padding-right:3.2vw !important; }
-.nav-links{ gap:clamp(.5rem, 1.35vw, 1.5rem) !important; }
-.nav-links a{ font-size:clamp(.6rem, .38vw + .5rem, .82rem) !important; }
-@media (max-width: 1240px){
-  .nav-links a{ letter-spacing:.03em !important; }
-}
-/* Fix: en anchos intermedios (justo antes del menú hamburguesa) los 9
-   enlaces no cabían y, por el bug clásico de flexbox (min-width:auto por
-   defecto en los flex-items), en vez de encogerse se desbordaban ENCIMA de
-   los logos en lugar de dejarles espacio. Se obliga a .nav-links a poder
-   encogerse hasta 0 y se recorta cualquier remanente en vez de superponerlo;
-   los logos quedan con flex-shrink:0 para que nunca cedan ancho ellos. */
+/* La barra creció con las secciones nuevas: espaciado inteligente y adaptable */
+.navbar{ padding-left:clamp(0.8rem, 2.2vw, 2.8rem) !important; padding-right:clamp(0.8rem, 2.2vw, 2.8rem) !important; column-gap:clamp(0.6rem, 1.4vw, 1.8rem) !important; }
 .navbar .brand-lockup,
 .navbar .client-logo{ flex-shrink:0 !important; }
 .nav-links{
   min-width:0 !important;
-  overflow:hidden !important;
+  overflow:visible !important;
   flex-wrap:nowrap !important;
+  justify-content:center !important;
 }
-.nav-links a{ white-space:nowrap; }
+.nav-links a{ white-space:nowrap !important; }
 
 /* ============================================================
    V8.1 — Ajuste final de hero móvil
@@ -4359,11 +4348,11 @@ body:not(.is-loaded) .hero .reveal { opacity: 0 !important; transform: translate
    ese espacio libre sobre las tarjetas), como marca de agua cinemática */
 .hero-fauna {
   position: absolute;
-  top: clamp(14rem, 7vw, 4.5rem);
-  right: clamp(7rem, 4vw, 3rem);
+  top: clamp(2.5rem, 5vw, 4.5rem);
+  right: clamp(1.5rem, 3.5vw, 4rem);
   bottom: auto;
-  width: clamp(250px, 26vw, 500px);
-  opacity: 3;
+  width: clamp(220px, 20vw, 380px);
+  opacity: 0.85;
   z-index: 1; /* Detrás del grid */
   pointer-events: none;
   animation: hero-fauna-float 7s ease-in-out infinite;
@@ -5443,16 +5432,38 @@ html { scrollbar-width: thin; scrollbar-color: var(--olive-line) var(--paper); }
   transform: translateY(-10px);
   opacity: 0 !important;
 }
-/* ============ Agrandar y destacar la sección de navegación ============ */
+/* ============ Navegación inteligente y dinámica (auto-ajuste de encuadre) ============ */
+.navbar {
+  column-gap: clamp(0.6rem, 1.4vw, 1.8rem) !important;
+}
+
+.navbar .logo {
+  height: clamp(32px, 2.2vw, 42px) !important;
+  width: auto !important;
+  max-width: 170px !important;
+}
+
+.navbar .client-logo {
+  width: clamp(110px, 7.5vw, 150px) !important;
+  height: auto !important;
+  max-height: 58px !important;
+}
 
 .nav-links {
-  gap: 3.5rem !important; /* Aumenta la separación horizontal entre cada palabra (puedes subirlo a 4rem si quieres más aire) */
+  gap: var(--dynamic-gap, clamp(0.7rem, 1.6vw, 2.4rem)) !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  transition: gap 0.2s ease;
 }
 
 .nav-links a {
-  font-size: 1.05rem !important; /* Aumenta el tamaño de la letra (antes solía ser de aprox 0.82rem) */
-  font-weight: 700 !important; /* Hace la tipografía más gruesa y legible */
-  letter-spacing: 0.08em; /* Da un espaciado elegante entre las letras */
+  font-size: var(--dynamic-font-size, clamp(0.72rem, 0.25vw + 0.64rem, 0.98rem)) !important;
+  font-weight: 700 !important;
+  letter-spacing: var(--dynamic-letter-spacing, clamp(0.02em, 0.04vw, 0.06em)) !important;
+  white-space: nowrap !important;
+  transition: font-size 0.2s ease, letter-spacing 0.2s ease, color 0.2s ease;
 }
 
 /* ============ Geovisor: Estilos de capas, tooltips y popups ============ */
@@ -5543,4 +5554,281 @@ html { scrollbar-width: thin; scrollbar-color: var(--olive-line) var(--paper); }
 }
 .geo-popup-row b {
   color: #FFE875 !important;
+}
+
+/* ============================================================
+   DIAGRAMACIÓN RESPONSIVA DE TÍTULOS Y PREVENCIÓN DE COLISIÓN CON IMÁGENES
+   - Tipografía fluida (clamp) calculada según el ancho de pantalla
+   - Jerarquía visual calibrada para legibilidad total sin desbordamiento
+   - Espacio de seguridad garantizado frente a fauna, figuras y diagramas
+   ============================================================ */
+
+/* 1. Hero: Título principal equilibrado y dinámico */
+.hero h1 {
+  font-size: clamp(1.85rem, 1.25rem + 2.1vw, 3.25rem) !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.025em !important;
+  max-width: min(22ch, 100%) !important;
+  text-wrap: balance !important;
+  overflow-wrap: break-word !important;
+  margin-bottom: clamp(1rem, 1.8vw, 1.5rem) !important;
+}
+
+/* 2. Garza Hero: Ajuste cinemático sin invadir el título ni las tarjetas */
+.hero-fauna {
+  position: absolute !important;
+  top: clamp(2.5rem, 5vw, 4.5rem) !important;
+  right: clamp(2rem, 4vw, 5rem) !important;
+  bottom: auto !important;
+  width: clamp(220px, 20vw, 360px) !important;
+  opacity: 0.85 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  animation: hero-fauna-float 7s ease-in-out infinite;
+}
+
+/* En pantallas medianas y móviles, la garza pasa al fondo inferior como sutil marca de agua sin tocar el texto */
+@media (max-width: 1024px) {
+  .hero-fauna {
+    top: auto !important;
+    bottom: 2rem !important;
+    right: -35px !important;
+    width: clamp(140px, 20vw, 200px) !important;
+    opacity: 0.12 !important;
+    z-index: 0 !important;
+    animation: none !important;
+  }
+}
+
+/* 3. Encabezados de Sección (.section-head) */
+.section-head {
+  max-width: min(720px, 100%) !important;
+  margin-bottom: clamp(2.2rem, 4vw, 3.4rem) !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.section-head.center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* 4. Título h2 de Sección: Tipografía fluida y diagramación impecable */
+.section-head h2 {
+  font-size: clamp(1.4rem, 1.05rem + 1.25vw, 2.25rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--olive-deep, #20270D) !important;
+  text-wrap: balance !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  margin-bottom: clamp(0.75rem, 1.2vw, 1.1rem) !important;
+}
+
+.section-dark .section-head h2 {
+  color: #FBFAF3 !important;
+}
+
+.section-brand .section-head h2 {
+  color: var(--olive-deep, #20270D) !important;
+}
+
+/* 5. Eyebrow y Párrafo de la Sección */
+.section-head .eyebrow {
+  font-size: clamp(0.72rem, 0.68rem + 0.18vw, 0.84rem) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin-bottom: clamp(0.45rem, 0.8vw, 0.75rem) !important;
+}
+
+.section-head p {
+  font-size: clamp(0.96rem, 0.9rem + 0.28vw, 1.12rem) !important;
+  line-height: 1.62 !important;
+  color: var(--ink-soft, #525540) !important;
+  max-width: min(65ch, 100%) !important;
+  text-wrap: pretty !important;
+}
+
+.section-dark .section-head p {
+  color: #C7C4AE !important;
+}
+
+/* 6. Sección Alianza (#alianza) y Lorito (.alliance-fauna): Cero solapamiento */
+#alianza {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#alianza .section-head {
+  position: relative !important;
+  z-index: 4 !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  background: none !important;
+  max-width: min(620px, calc(100% - 300px)) !important;
+}
+
+.alliance-fauna {
+  position: absolute !important;
+  right: clamp(1.5rem, 4vw, 4rem) !important;
+  top: clamp(1.5rem, 3vw, 3.5rem) !important;
+  bottom: auto !important;
+  width: clamp(190px, 16vw, 270px) !important;
+  opacity: 0.95 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  filter: saturate(1.15) contrast(1.05) drop-shadow(0 14px 28px rgba(34,36,27,.18)) !important;
+  transition: opacity 0.3s ease, width 0.3s ease !important;
+}
+
+/* En tablets y móviles, el loro no compite con el título y pasa a la parte inferior como marca de agua */
+@media (max-width: 1024px) {
+  #alianza .section-head {
+    max-width: 100% !important;
+  }
+  .alliance-fauna {
+    top: auto !important;
+    bottom: 1.5rem !important;
+    right: -30px !important;
+    width: clamp(130px, 18vw, 180px) !important;
+    opacity: 0.10 !important;
+    z-index: 0 !important;
+    filter: grayscale(35%) !important;
+  }
+}
+
+/* 6b. Sección Equipo (#equipo) y Fauna (.equipo-fauna): Separado 2 cm del texto, cero solapamiento */
+#equipo {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#equipo .container {
+  position: relative !important;
+}
+
+#equipo .section-head {
+  position: relative !important;
+  z-index: 4 !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  background: none !important;
+  max-width: min(580px, calc(100% - 320px)) !important;
+}
+
+.equipo-fauna {
+  position: absolute !important;
+  left: calc(min(580px, calc(100% - 320px)) + clamp(4.2rem, 4.8vw, 5.2rem)) !important;
+  right: auto !important;
+  top: clamp(0.5rem, 1.2vw, 1.8rem) !important;
+  bottom: auto !important;
+  width: clamp(190px, 16vw, 245px) !important;
+  opacity: 0.96 !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  filter: saturate(1.10) contrast(1.04) drop-shadow(0 12px 24px rgba(34,36,27,.14)) !important;
+  transition: opacity 0.3s ease, width 0.3s ease, left 0.3s ease !important;
+}
+
+/* En tablets y móviles, el loro no compite con el título y pasa a la parte inferior como marca de agua */
+@media (max-width: 1024px) {
+  #equipo .section-head {
+    max-width: 100% !important;
+  }
+  .equipo-fauna {
+    left: auto !important;
+    top: auto !important;
+    bottom: 1.5rem !important;
+    right: -25px !important;
+    width: clamp(130px, 18vw, 180px) !important;
+    opacity: 0.10 !important;
+    z-index: 0 !important;
+    filter: grayscale(35%) !important;
+  }
+}
+
+/* 7. Sección ¿Por qué GEOTEC? (.section-why-bright) */
+.section-why-bright .section-head {
+  max-width: min(840px, 100%) !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.section-why-bright .section-head h2 {
+  font-size: clamp(1.55rem, 1.15rem + 1.4vw, 2.45rem) !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.02em !important;
+  color: #1E2310 !important;
+  font-weight: 900 !important;
+}
+
+.section-why-bright .why-title-sub {
+  display: block !important;
+  font-size: clamp(0.95rem, 0.82rem + 0.45vw, 1.22rem) !important;
+  font-weight: 500 !important;
+  opacity: 0.88 !important;
+  margin-top: 0.4rem !important;
+}
+
+/* 8. Separación garantizada frente a imágenes y figuras subsiguientes */
+.section-head + * {
+  position: relative;
+  z-index: 2;
+}
+
+.figura-doc,
+.diag-block,
+.evidence-grid,
+.portfolio-maturity,
+.tool-featured-visual {
+  clear: both;
+}
+
+/* 9. Asegurar que ningún encabezado desborde la pantalla en móviles pequeños (<= 480px) */
+@media (max-width: 480px) {
+  .section-head h2 {
+    font-size: clamp(1.35rem, 6vw, 1.65rem) !important;
+    line-height: 1.24 !important;
+  }
+  .hero h1 {
+    font-size: clamp(1.65rem, 7.5vw, 2.1rem) !important;
+    line-height: 1.18 !important;
+  }
+}
+
+/* 10. Centrado armónico de la 4.ª tarjeta en Áreas Difíciles (evita hueco asimétrico) */
+@media (min-width: 901px) {
+  .scale-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.3rem !important;
+    margin-bottom: 1.4rem !important;
+  }
+  .scale-grid .scale-card:nth-child(4) {
+    grid-column: 2 !important; /* Centrada en la columna del medio debajo de la tarjeta 2 */
+  }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .scale-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.2rem !important;
+  }
+  .scale-grid .scale-card:nth-child(4) {
+    grid-column: auto !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .scale-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .scale-grid .scale-card:nth-child(4) {
+    grid-column: auto !important;
+  }
 }
