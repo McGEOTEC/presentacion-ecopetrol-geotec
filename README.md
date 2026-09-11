@@ -13,6 +13,25 @@ Presentación web estática para la propuesta técnica de aseguramiento ambienta
 - `vendor/leaflet/`: dependencia local para el mapa interactivo.
 - `Presentacion_Portable.html`: archivo generado localmente; no se versiona en GitHub.
 
+## Publicación y subida automática a GitHub
+
+Para subir cualquier cambio de forma automática a GitHub:
+
+1. **Desde Windows (Doble clic):**
+   - Ejecuta `subir_a_github.bat`.
+   - Agrega automáticamente los cambios, solicita opcionalmente un mensaje de commit (o presiona ENTER para uno automático con fecha/hora), sincroniza con `origin main` y sube los cambios.
+
+2. **Desde PowerShell:**
+   ```powershell
+   .\subir_a_github.ps1
+   # O con mensaje personalizado directo:
+   .\subir_a_github.ps1 -Mensaje "Actualización de diapositivas técnicas"
+   ```
+
+3. **Despliegue automático (GitHub Pages):**
+   - Cada `push` a la rama `main` actualiza de forma automática el sitio en GitHub Pages (configurado como *Deploy from a branch -> main / root*).
+   - **URL de la presentación en vivo:** [https://mcgeotec.github.io/presentacion-ecopetrol-geotec/](https://mcgeotec.github.io/presentacion-ecopetrol-geotec/)
+
 ## Uso local
 
 Abrir `index.html` directamente en el navegador o servir la carpeta con un servidor estático:
