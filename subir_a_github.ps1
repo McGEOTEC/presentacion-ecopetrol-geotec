@@ -52,8 +52,8 @@ try {
     git pull --rebase origin main
     git push origin main
     Write-Host "`n=======================================================" -ForegroundColor Green
-    Write-Host " ¡LISTO! Cambios subidos exitosamente a GitHub." -ForegroundColor Green
-    Write-Host " GitHub Actions desplegará la presentación en:" -ForegroundColor Green
+    Write-Host " [EXITO] Cambios subidos exitosamente a GitHub." -ForegroundColor Green
+    Write-Host " GitHub Pages actualizara la presentacion en:" -ForegroundColor Green
     Write-Host " https://mcgeotec.github.io/presentacion-ecopetrol-geotec/" -ForegroundColor White
     Write-Host "=======================================================" -ForegroundColor Green
 } catch {
